@@ -27,6 +27,7 @@ public class TresEnRaya {
         boolean ocupado = false;
         int x;
         int y;
+        char turno = 'X';
         boolean tresEnRaya = false;
         do {
             do {
@@ -34,7 +35,7 @@ public class TresEnRaya {
                 x = sc.nextInt();
                 y = sc.nextInt();
                 comprobarOcupado(tresenraya, x, y);
-                if (!ocupado) {
+                if (ocupado == false) {
                     tresenraya[x][y] = 'X';
                 }
                 imprimirTablero(tresenraya);
@@ -45,11 +46,13 @@ public class TresEnRaya {
                 x = sc.nextInt();
                 y = sc.nextInt();
                 comprobarOcupado(tresenraya, x, y);
-                if (!ocupado) {
+                if (ocupado == false) {
                     tresenraya[x][y] = '0';
+
                 }
                 imprimirTablero(tresenraya);
             } while (ocupado == true);
+            comprobarTresEnRaya(tresenraya, turno, x, y);
         } while (tresEnRaya == false);
         // for de 9 veces, se sale si hay 3 en raya
         // se pide celda a poner, comprobar que no estaba ocupada
@@ -58,10 +61,10 @@ public class TresEnRaya {
         // dentro de la funcion llamar a funcion comprobarfila, comprobarcolumna
         // y comprobar diagonales.
         // misma fila
-        char turno = 'X';
-        boolean ganar = true;
 
-        imprimirTablero(tresenraya);
+        
+        //boolean ganar = true;
+       // imprimirTablero(tresenraya);
 
     }
 
@@ -87,17 +90,43 @@ public class TresEnRaya {
         return tresEnRaya;
     }
 
+    public static boolean comprobarDiagonal(char[][] tablero, char turno, int x, int y) {
+        boolean tresEnRaya = false;
+        if (tablero[0][0] != '-' && tablero[1][1] != '-' && tablero[2][2] != '-') {
+            tresEnRaya = true;
+        } else if (tablero[2][1] != '-' && tablero[1][1] != '-' && tablero[0][2] != '-') {
+            tresEnRaya = true;
+        }
+        return tresEnRaya;
+    }
+
     public static boolean comprobarTresEnRaya(char[][] tablero, char turno,
             int x, int y) {
         boolean tresEnRaya = false;
 
-        tresEnRaya = comprobarFila(tablero, turno, x);
-        if (tresEnRaya == false) {
-            tresEnRaya = comprobarFila(tablero, turno, x);
-            if (!tresEnRaya) {
+        do {
+             //tresEnRaya = comprobarFila(tablero, turno, x);
+            if (tresEnRaya == false) {
                 tresEnRaya = comprobarFila(tablero, turno, x);
+                if (!tresEnRaya) {
+                    tresEnRaya = comprobarFila(tablero, turno, x);
+                }
             }
-        }
+            
+            if (tresEnRaya==false){
+                tresEnRaya=comprobarColumna(tablero, turno, y);
+                if(!tresEnRaya){
+                    tresEnRaya=comprobarColumna(tablero, turno, y);
+                }
+            }
+           
+            if (tresEnRaya == false) {
+                tresEnRaya = comprobarDiagonal(tablero, turno, x, y);
+                if (!tresEnRaya) {
+                    tresEnRaya = comprobarDiagonal(tablero, turno, x, y);
+                }
+            }
+        } while (tresEnRaya == false);
 
         return tresEnRaya;
     }
