@@ -1,0 +1,70 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 09-ene-2018, 19:37:00
+    Author     : Erick
+*/
+
+.cuerpo{
+   background-color:#2A3C3E;
+}
+.fondo{
+    background-color: #009999;
+    margin-top: 10px;
+    
+}
+.felis{
+    text-align: center;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 100px;
+}
+.primerflex{
+    background-color: #2A3C3E;
+    display: flex;
+    margin: 20px;
+    flex-wrap: wrap;
+    color: white;
+    font-size: 25px;
+}
+.segun{
+    background-color: #009999;
+    margin: 5px;
+    color:black;
+    font-size: 25px;
+}
+.segundoflex{
+    background-color: #2A3C3E;
+    display:flex;
+    font-size: 25px;
+    color:white;
+    margin: 20px;
+    flex-wrap: wrap;
+}
+.color{
+    background-color: #009999;
+   color:black;
+    font-size: 25px;
+    margin: 5px;
+}
+.señor{
+    background-color: gray;
+    margin: 5%;
+    display: flex;
+}
+.orden{
+    background-color: #009999;
+    margin: 5px;
+    flex-wrap: wrap;
+}
+.imag1{
+    order:1;
+}
+.imag2{
+    order:3;
+}
+.imag3{
+    order:2;
+}
