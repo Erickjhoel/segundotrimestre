@@ -27,7 +27,8 @@ public class TresEnRaya {
         boolean ocupado = false;
         int x;
         int y;
-        char turno = 'X';
+        char turno1 = 'X';
+        char turno2='0';
         boolean tresEnRaya = false;
         do {
             do {
@@ -40,6 +41,7 @@ public class TresEnRaya {
                 }
                 imprimirTablero(tresenraya);
             } while (ocupado == true);
+            comprobarTresEnRaya(tresenraya, turno1, x, y);
 
             do {
                 System.out.println("Jugador numero 2 introduzca la posicion del 0");
@@ -52,7 +54,10 @@ public class TresEnRaya {
                 }
                 imprimirTablero(tresenraya);
             } while (ocupado == true);
-            comprobarTresEnRaya(tresenraya, turno, x, y);
+            comprobarTresEnRaya(tresenraya, turno2, x, y);
+            if(tresEnRaya==true){
+                System.out.println("Juego terminado");
+            }
         } while (tresEnRaya == false);
         // for de 9 veces, se sale si hay 3 en raya
         // se pide celda a poner, comprobar que no estaba ocupada
@@ -63,8 +68,8 @@ public class TresEnRaya {
         // misma fila
 
         
-        //boolean ganar = true;
-       // imprimirTablero(tresenraya);
+       boolean ganar = true;
+       imprimirTablero(tresenraya);
 
     }
 
@@ -103,31 +108,14 @@ public class TresEnRaya {
     public static boolean comprobarTresEnRaya(char[][] tablero, char turno,
             int x, int y) {
         boolean tresEnRaya = false;
-
-        do {
-             //tresEnRaya = comprobarFila(tablero, turno, x);
+//si comprobar fila es falso comrpobar columna si sigue siendo falo comprobar diagonal
+             tresEnRaya = comprobarFila(tablero, turno, x);
             if (tresEnRaya == false) {
-                tresEnRaya = comprobarFila(tablero, turno, x);
-                if (!tresEnRaya) {
-                    tresEnRaya = comprobarFila(tablero, turno, x);
-                }
-            }
-            
-            if (tresEnRaya==false){
-                tresEnRaya=comprobarColumna(tablero, turno, y);
-                if(!tresEnRaya){
-                    tresEnRaya=comprobarColumna(tablero, turno, y);
-                }
-            }
-           
-            if (tresEnRaya == false) {
-                tresEnRaya = comprobarDiagonal(tablero, turno, x, y);
-                if (!tresEnRaya) {
+                tresEnRaya = comprobarColumna(tablero, turno, x);
+                if (tresEnRaya==false) {
                     tresEnRaya = comprobarDiagonal(tablero, turno, x, y);
                 }
             }
-        } while (tresEnRaya == false);
-
         return tresEnRaya;
     }
 
