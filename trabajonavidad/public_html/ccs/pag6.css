@@ -8,7 +8,7 @@ and open the template in the editor.
     Author     : flotante
 */
 body{
-    background: #ffcccc;
+    background:#ffcccc;
 }
 .titulo{
     border: solid #cc0066;
@@ -16,10 +16,13 @@ body{
     margin: 3px;
     font-size: 40px;
 }
+.enorme{
+    display:flex;
+    flex-direction: row;
+}
 .a{
-    
-    display:inline-block;
-    float:left;
+    display:flex;
+    flex-direction: column;
     margin-right: 10px;
     
 }
@@ -30,32 +33,24 @@ body{
     text-align: center;
     background: white;
 }
-
-
 .grande{
-    display: block;
+    display: flex;
+    flex-direction: column;
     background: white;
-    width: 90%;
-    float:left;
-    overflow: auto;
 }
 .text1{
-    
     background: #cc0066;
     font-size: 30px;
     color: white;
-    
 }
-.text2{
-    display:inline-block;
-}
+
 .imag{
     text-align: center;
 }
+.desc{
+    display: flex;
+    flex-direction: column;
+}
 .ete{
-    
-    display: inline-block;
-    clear: left;
-    float:right;
-    width: 70px;
+    align-self: flex-end;
 }
