@@ -1,0 +1,55 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 11-ene-2018, 9:04:32
+    Author     : flotante
+*/
+.body{
+    background-color: #8DEA54;
+}
+.h1{
+    text-align: center;
+    color: red;
+    font-family:'Gloria Hallelujah';
+    font-size: 40px;
+}
+.contenedor{
+    
+    display:flex;
+    flex-direction: column;
+}
+.pri{
+    width: 65%;
+    text-align:left;
+    border-right:solid 5px;
+    align-self: flex-start;
+    border-right-color: white;
+    font-size: 35px;
+    margin-bottom: 25px;
+    text-indent: 40px;
+}
+.seg{
+    width: 65%;
+    align-self: flex-end;
+    border-left: solid 5px;
+    border-left-color: white;
+    font-size: 35px;
+    text-align:right;
+    margin-bottom: 25px;
+    font-family: 'Amatic SC';
+}
+.li1{
+    background-color: gray;
+    border-bottom: solid red;
+}
+.li2{
+    border-top: solid black;
+    margin: 8px;
+}
+.puntos{
+    border-bottom: dotted red;
+    font-weight: bold;
+}

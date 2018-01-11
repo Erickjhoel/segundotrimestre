@@ -1,0 +1,61 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 11-ene-2018, 9:46:08
+    Author     : flotante
+*/
+body{
+    background: #ffcccc;
+}
+.titulo{
+    border: solid #cc0066;
+    background: white;
+    margin: 3px;
+    font-size: 40px;
+}
+.a{
+    
+    display:inline-block;
+    float:left;
+    margin-right: 10px;
+    
+}
+.moviles{
+    border:solid #cc0066;
+    padding: 5px;
+    margin:3px;
+    text-align: center;
+    background: white;
+}
+
+
+.grande{
+    display: block;
+    background: white;
+    width: 90%;
+    float:left;
+    overflow: auto;
+}
+.text1{
+    
+    background: #cc0066;
+    font-size: 30px;
+    color: white;
+    
+}
+.text2{
+    display:inline-block;
+}
+.imag{
+    text-align: center;
+}
+.ete{
+    
+    display: inline-block;
+    clear: left;
+    float:right;
+    width: 70px;
+}

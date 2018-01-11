@@ -1,0 +1,54 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 11-ene-2018, 9:16:44
+    Author     : flotante
+*/
+.titulo{
+    border:solid;
+    margin-top: 10px;
+    text-align: center;
+    margin-bottom: 3%;
+}
+.contenedor{
+    display:flex;
+    flex-direction: column;
+}
+.contenedor2{
+    display: flex;
+}
+
+.pri{
+    border:solid red;
+    display: flex;
+    background: #ffcccc;
+    margin-right: 50%;
+    padding: 5px;
+}
+.seg{
+    border:solid blue;
+    width: 300px;
+    height: 100px;
+    align-self: flex-start;
+}
+.ter{
+    align-self: flex-end;
+    border:solid 5px blue;
+}
+.imag2{
+    padding: 5px;
+}
+.contenedor3{
+    display:flex;
+    flex-direction: column;
+}
+
+.jeje{
+    align-self: flex-end;
+}
+.new{
+    background: darkred;
+}
