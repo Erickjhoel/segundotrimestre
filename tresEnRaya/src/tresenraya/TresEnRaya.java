@@ -18,7 +18,7 @@ public class TresEnRaya {
 
         for (int i = 0; i < tresenraya.length; i++) {
             for (int j = 0; j < tresenraya[i].length; j++) {
-                tresenraya[j][i] = '-';
+                tresenraya[i][j] = '-';
             }
 
         }
@@ -122,7 +122,7 @@ public class TresEnRaya {
     public static void imprimirTablero(char[][] tablero) {
         for (int i = 0; i < tablero.length; i++) {
             for (int j = 0; j < tablero[i].length; j++) {
-                System.out.print(tablero[j][i]);
+                System.out.print(tablero[i][j]);
             }
             System.out.println("");
         }
