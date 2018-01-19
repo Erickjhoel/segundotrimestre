@@ -11,8 +11,14 @@ package clases;
  */
 public class Horario {
  private String dias;
- private int mañana;
- private int tarde;
+ private int horainicio;
+ private int horafin;
+
+    public Horario(String dias, int horainicio, int horafin) {
+        this.dias = dias;
+        this.horainicio = horainicio;
+        this.horafin = horafin;
+    }
 
     public String getDias() {
         return dias;
@@ -23,19 +29,19 @@ public class Horario {
     }
 
     public int getMañana() {
-        return mañana;
+        return horainicio;
     }
 
     public void setMañana(int mañana) {
-        this.mañana = mañana;
+        this.horainicio = mañana;
     }
 
     public int getTarde() {
-        return tarde;
+        return horafin;
     }
 
     public void setTarde(int tarde) {
-        this.tarde = tarde;
+        this.horafin = tarde;
     }
  
   

@@ -14,6 +14,16 @@ public class Alumno {
     private String apellido;
     private float pagames;
 
+    
+    //no hace falta poner el string de pagames dentro xque
+//    es un valor constante que siemprese inicia a 0,todos 
+//    los alunmnnos pgames=0 al inicio
+    public Alumno(String nombre, String apellido) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.pagames=0;
+    }
+    
     public String getNombre() {
         return nombre;
     }
