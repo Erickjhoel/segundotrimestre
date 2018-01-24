@@ -1,0 +1,41 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 24-ene-2018, 12:02:41
+    Author     : daw
+*/
+
+.Grande{
+    border: solid red;
+    background-color: gray;
+}
+.blanco{
+    border:solid blue;
+    background-color: white;
+    margin: 1%;
+    text-align: center;
+    color:red;
+}
+.advertencia{
+    border:solid yellow;
+    margin: 3%;
+}
+.linea{
+    border-bottom: solid 3px black;
+    color:black;
+}
+.e-mail{
+    text-align: left;
+}
+.pritres{
+    border:solid aqua;
+    float:left;
+    display:block;
+}
+.SR{
+    border: solid red;
+    
+}
