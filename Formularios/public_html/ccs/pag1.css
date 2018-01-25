@@ -9,33 +9,59 @@ and open the template in the editor.
 */
 
 .Grande{
-    border: solid red;
     background-color: gray;
 }
 .blanco{
-    border:solid blue;
     background-color: white;
     margin: 1%;
-    text-align: center;
     color:red;
+    padding: 3%;
 }
 .advertencia{
-    border:solid yellow;
+    text-align: center;
     margin: 3%;
 }
 .linea{
     border-bottom: solid 3px black;
     color:black;
+    text-align: center;
+    margin: 2%;
 }
 .e-mail{
     text-align: left;
 }
-.pritres{
-    border:solid aqua;
-    float:left;
-    display:block;
+.pridos{
+    display:inline-block;
 }
-.SR{
-    border: solid red;
-    
+.dosder{
+    display: inline-block;
+    float:right;
+}
+.ete1{
+    display:inline-block;
+}
+.ete{
+    display:inline-block;
+    width: 20%
+}
+.direccion{
+    width: 80%;
+}
+.pritres{
+    display:inline-block;
+    width: 48%;
+}
+.tresder{
+    display:inline-block;
+    float:right;
+    width: 48%;
+}
+.distrito{
+    width: 35%;
+}
+.res{
+    width: 25%;
+}
+.centro{
+    width: 70%;
 }
