@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package main;
+
 import javaapplication2.Poo;
 import java.util.Scanner;
 
@@ -12,14 +13,15 @@ import java.util.Scanner;
  * @author daw
  */
 public class main {
-     /**
+
+    /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
-        Poo polideportivo= new Poo();
-Scanner sc = new Scanner(System.in);
+
+        Poo polideportivo = new Poo();
+        Scanner sc = new Scanner(System.in);
         boolean salir = false;
         do {
             System.out.println("Elije el numero de ejercicio del 1 al 17, los enunciados son:\n"
@@ -28,9 +30,9 @@ Scanner sc = new Scanner(System.in);
                     + "3. Matricular Alumno \n"
                     + "4. Recibo Alumno \n"
                     + "5. Recibo Actividad \n"
-                    + "4. Imprimir Alumnos \n"
-                    + "5. Imprimir Actividades \n"
-                    + "6. Salir \n");
+                    + "6. Imprimir Alumnos \n"
+                    + "7. Imprimir Actividades \n"
+                    + "8. Salir \n");
             int opcion = sc.nextInt();
             sc.nextLine();
             switch (opcion) {
@@ -39,6 +41,15 @@ Scanner sc = new Scanner(System.in);
                     break;
                 case 2:
                     polideportivo.darBajaAlumno(sc);
+                    break;
+                case 3:
+                    polideportivo.matricularAlumno(sc);
+                    break;
+                case 4:
+                    polideportivo.matricularAlumno(sc);
+                    break;
+                case 5:
+                    polideportivo.matricularAlumno(sc);
                     break;
                 case 6:
                     salir = true;
@@ -50,5 +61,3 @@ Scanner sc = new Scanner(System.in);
 
     }
 }
-
-

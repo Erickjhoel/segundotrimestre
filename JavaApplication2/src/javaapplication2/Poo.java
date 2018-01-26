@@ -19,7 +19,6 @@ public class Poo {
         private Actividades[] tipo = new Actividades[11];
         private Alumno[] alumnos = new Alumno[50];
         int numAlumnos=0;
-
     public Poo() {
         tipo[0] = new Actividades("aerobic", 35, 47.60f, new Horario("L,X,V", 10, 11));//da valores
         tipo[1] = new Actividades("aerobic", 35, 47.60f, new Horario("L,X,V", 11, 12));
@@ -35,9 +34,7 @@ public class Poo {
         tipo[9] = new Actividades("natacion", 35, 47.60f, new Horario("L,X,V", 18, 19));
         tipo[10] = new Actividades("natacion", 35, 35.70f, new Horario("M,J", 17, 18));
         System.out.println("precio" + tipo[1].getTipo());//imprime el tipo
-    }
-        
-        
+    } 
     public void darAltaAlumno(Scanner sc) {
         String nombre;
         String apellido;
@@ -55,8 +52,6 @@ public class Poo {
         numAlumnos++;
        
     }
-
-
         public  void darBajaAlumno(Scanner sc) {
         //encontrar Alumno
         String nombre;
@@ -70,7 +65,6 @@ public class Poo {
         //reordenar array para no dejar huecos
         darbaja = encontrarAlumno(alumnos, nombre, apellido, numAlumnos);
         alumnos[darbaja] = null;
-        
         alumnos[darbaja] = alumnos[numAlumnos - 1];
         alumnos[numAlumnos - 1] = null;
         numAlumnos--;
@@ -92,7 +86,6 @@ public class Poo {
     // alumnos[i].getNombre().equals(nombre) && 
     // alumnos[i].getApellidos().equals(apellidos)
     //alumnos[i].equals(temp) sustituye a todo lo de arriba al colocarlo en una variable
-
     public  void matricularAlumno(Scanner sc) {
         //pedir alumno
         String nombre;
@@ -105,6 +98,16 @@ public class Poo {
         int matricular;
         matricular=encontrarAlumno(alumnos, nombre, apellido,numAlumnos);
         //encontrar actividad
+        
+        for (int i = 0; i < tipo.length; i++) {
+            System.out.println("Las actividades son");
+            System.out.println(tipo[i].getTipo());
+        }
+        Alumno alumnote = new Alumno(nombre, apellido);
+        
+            int actividad=sc.nextInt();
+                           sc.nextLine();
+            tipo[actividad].addAlumno(alumnote);
         //quitar plaza
         // aumentar el dinero del alumno
     }
