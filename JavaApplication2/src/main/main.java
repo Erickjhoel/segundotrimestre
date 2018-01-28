@@ -29,10 +29,7 @@ public class main {
                     + "2. Baja Alumno \n"
                     + "3. Matricular Alumno \n"
                     + "4. Recibo Alumno \n"
-                    + "5. Recibo Actividad \n"
-                    + "6. Imprimir Alumnos \n"
-                    + "7. Imprimir Actividades \n"
-                    + "8. Salir \n");
+                    + "5 Salir \n");
             int opcion = sc.nextInt();
             sc.nextLine();
             switch (opcion) {
@@ -46,9 +43,6 @@ public class main {
                     polideportivo.matricularAlumno(sc);
                     break;
                 case 4:
-                    polideportivo.matricularAlumno(sc);
-                    break;
-                case 5:
                     polideportivo.matricularAlumno(sc);
                     break;
                 case 6:

@@ -15,10 +15,12 @@ import java.util.Scanner;
  * @author daw
  */
 public class Poo {
-        private Horario [] horario=new Horario[4];
-        private Actividades[] tipo = new Actividades[11];
-        private Alumno[] alumnos = new Alumno[50];
-        int numAlumnos=0;
+
+    private Horario[] horario = new Horario[4];
+    private Actividades[] tipo = new Actividades[11];
+    private Alumno[] alumnos = new Alumno[50];
+    int numAlumnos = 0;
+
     public Poo() {
         tipo[0] = new Actividades("aerobic", 35, 47.60f, new Horario("L,X,V", 10, 11));//da valores
         tipo[1] = new Actividades("aerobic", 35, 47.60f, new Horario("L,X,V", 11, 12));
@@ -34,7 +36,8 @@ public class Poo {
         tipo[9] = new Actividades("natacion", 35, 47.60f, new Horario("L,X,V", 18, 19));
         tipo[10] = new Actividades("natacion", 35, 35.70f, new Horario("M,J", 17, 18));
         System.out.println("precio" + tipo[1].getTipo());//imprime el tipo
-    } 
+    }
+
     public void darAltaAlumno(Scanner sc) {
         String nombre;
         String apellido;
@@ -47,10 +50,11 @@ public class Poo {
         Alumno daralta = new Alumno(nombre, apellido);
         System.out.println("El alumno introducido es " + daralta.getNombre() + " - " + daralta.getApellido());
         //devolver alumno
-        alumnos[numAlumnos]=daralta;
-        numAlumnos++;       
+        alumnos[numAlumnos] = daralta;
+        numAlumnos++;
     }
-        public  void darBajaAlumno(Scanner sc) {
+
+    public void darBajaAlumno(Scanner sc) {
         //encontrar Alumno
         String nombre;
         String apellido;
@@ -67,11 +71,12 @@ public class Poo {
         alumnos[numAlumnos - 1] = null;
         numAlumnos--;
     }
-    private  int encontrarAlumno(Alumno[] alumnos, String nombre, String apellido, int numAlumnos) {
+
+    private int encontrarAlumno(Alumno[] alumnos, String nombre, String apellido, int numAlumnos) {
         int posicion = -1;
         Alumno temp = new Alumno(nombre, apellido);
         //recorrer array de alumno buscando nombre y apellidos
-        for (int i = 0; i < numAlumnos ||posicion==-1; i++) {
+        for (int i = 0; i < numAlumnos || posicion == -1; i++) {
             if (alumnos[i].equals(temp)) {
                 posicion = i;
             } else {
@@ -80,10 +85,11 @@ public class Poo {
         }
         return posicion;
     }
+
     // alumnos[i].getNombre().equals(nombre) && 
     // alumnos[i].getApellidos().equals(apellidos)
     //alumnos[i].equals(temp) sustituye a todo lo de arriba al colocarlo en una variable
-    public  void matricularAlumno(Scanner sc) {
+    public void matricularAlumno(Scanner sc) {
         //pedir alumno
         String nombre;
         String apellido;
@@ -93,26 +99,40 @@ public class Poo {
         apellido = sc.nextLine();
         //encontrarle en el array
         int matricular;
-        matricular=encontrarAlumno(alumnos, nombre, apellido,numAlumnos);
+        matricular = encontrarAlumno(alumnos, nombre, apellido, numAlumnos);
         //encontrar actividad
         int actividad;
-        if(matricular>-1){
-        System.out.println("Las actividades son");
-        for (int i = 0; i < tipo.length; i++) {
-            System.out.print(i+""+tipo[i].getTipo());
-            System.out.print(tipo[i].getPrecio());
-            System.out.println("");
-            
-        }
-        Alumno alumnote = new Alumno(nombre, apellido);
-             actividad=sc.nextInt();
-                         sc.nextLine();
+        if (matricular > -1) {
+            System.out.println("Las actividades son");
+            for (int i = 0; i < tipo.length; i++) {
+                System.out.print(i + "" + tipo[i].getTipo());
+                System.out.print("" + tipo[i].getPrecio());
+                System.out.println("");
+            }
+            Alumno alumnote = new Alumno(nombre, apellido);
+            System.out.println("Seleccione una actividad de 0-10");
+            actividad = sc.nextInt();
+            sc.nextLine();
             tipo[actividad].addAlumno(alumnote);
             
-            float preciamen=tipo[actividad].addprecio();
+            float preciamen = tipo[actividad].addprecio();
             alumnos[actividad].addprecioalum(preciamen);
         }
         // aumentar el dinero del alumno
-        
+
+    }
+    public void reciboalum(Scanner sc) {
+        String nombre;
+        String apellido;
+        System.out.println("Introduzca el nombre del alumno");
+        nombre = sc.nextLine();
+        System.out.println("Introduzca el apellido del alumno");
+        apellido = sc.nextLine();
+        //encontrarle en el array
+        int encontrar;
+        encontrar = encontrarAlumno(alumnos, nombre, apellido, numAlumnos);
+        if (encontrar > -1) {
+            
+        }
     }
 }
