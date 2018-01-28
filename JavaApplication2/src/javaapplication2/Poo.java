@@ -38,7 +38,6 @@ public class Poo {
     public void darAltaAlumno(Scanner sc) {
         String nombre;
         String apellido;
-        
         // pedir nombre y apellidos por teclado
         System.out.println("Introduzca el nombre del alumno");
         nombre = sc.nextLine();
@@ -49,8 +48,7 @@ public class Poo {
         System.out.println("El alumno introducido es " + daralta.getNombre() + " - " + daralta.getApellido());
         //devolver alumno
         alumnos[numAlumnos]=daralta;
-        numAlumnos++;
-       
+        numAlumnos++;       
     }
         public  void darBajaAlumno(Scanner sc) {
         //encontrar Alumno
@@ -69,7 +67,6 @@ public class Poo {
         alumnos[numAlumnos - 1] = null;
         numAlumnos--;
     }
-
     private  int encontrarAlumno(Alumno[] alumnos, String nombre, String apellido, int numAlumnos) {
         int posicion = -1;
         Alumno temp = new Alumno(nombre, apellido);
@@ -98,17 +95,24 @@ public class Poo {
         int matricular;
         matricular=encontrarAlumno(alumnos, nombre, apellido,numAlumnos);
         //encontrar actividad
-        
+        int actividad;
+        if(matricular>-1){
+        System.out.println("Las actividades son");
         for (int i = 0; i < tipo.length; i++) {
-            System.out.println("Las actividades son");
-            System.out.println(tipo[i].getTipo());
+            System.out.print(i+""+tipo[i].getTipo());
+            System.out.print(tipo[i].getPrecio());
+            System.out.println("");
+            
         }
         Alumno alumnote = new Alumno(nombre, apellido);
-        
-            int actividad=sc.nextInt();
-                           sc.nextLine();
+             actividad=sc.nextInt();
+                         sc.nextLine();
             tipo[actividad].addAlumno(alumnote);
-        //quitar plaza
+            
+            float preciamen=tipo[actividad].addprecio();
+            alumnos[actividad].addprecioalum(preciamen);
+        }
         // aumentar el dinero del alumno
+        
     }
 }

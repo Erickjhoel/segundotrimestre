@@ -25,7 +25,10 @@ public class Alumno {
         this.apellido = apellido;
         this.pagames=0;
     }
-    
+    public void addprecioalum(float precioact) {
+        this.pagames = this.pagames + precioact;
+
+    }
     public String getNombre() {
         return nombre;
     }

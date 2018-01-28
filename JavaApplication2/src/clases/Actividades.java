@@ -38,6 +38,14 @@ public class Actividades {
         return ok;
     }
 
+    public float addprecio() {
+        float precioact=0;
+
+        precioact = this.precio + precioact;
+
+        return precioact;
+    }
+
     public String getTipo() {
         return tipo;
     }
@@ -77,4 +85,5 @@ public class Actividades {
     public void setHorario(Horario horario) {
         this.horario = horario;
     }
+
 }
