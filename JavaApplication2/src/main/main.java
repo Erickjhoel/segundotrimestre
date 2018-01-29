@@ -24,12 +24,16 @@ public class main {
         Scanner sc = new Scanner(System.in);
         boolean salir = false;
         do {
-            System.out.println("Elije el numero de ejercicio del 1 al 17, los enunciados son:\n"
+            System.out.println("Elije una opcion:\n"
                     + "1. Dar Alta. \n"
                     + "2. Baja Alumno \n"
                     + "3. Matricular Alumno \n"
                     + "4. Recibo Alumno \n"
-                    + "5 Salir \n");
+                    + "5. Recibo Actividad \n"
+                    + "6. Imprimir horario \n"
+                    + "7. Imprimir actividades \n"
+                    + "8. Imprimir alumnos\n"
+                    + "9 Salir \n");
             int opcion = sc.nextInt();
             sc.nextLine();
             switch (opcion) {
@@ -43,13 +47,25 @@ public class main {
                     polideportivo.matricularAlumno(sc);
                     break;
                 case 4:
-                    polideportivo.matricularAlumno(sc);
+                    polideportivo.reciboalum(sc);
+                    break;
+                case 5:
+                    polideportivo.reciboactividades(sc);
                     break;
                 case 6:
+                    polideportivo.horario();
+                    break;
+                case 7:
+                    polideportivo.imprimiractividades();
+                    break;
+                case 8:
+                    polideportivo.imprimiralumnos();
+                    break;
+                case 9:
                     salir = true;
                     break;
                 default:
-                    System.out.println("opcion no valida");
+                    System.out.println("Opcion no valida");
             }
         } while (!salir);
 

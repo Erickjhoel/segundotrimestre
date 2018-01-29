@@ -43,7 +43,13 @@ public class Horario {
     public void setTarde(int tarde) {
         this.horafin = tarde;
     }
+
+    @Override
+    public String toString() {
+        return "Horario{" + "dias=" + dias + ", horainicio=" + horainicio + ", horafin=" + horafin + '}';
+    }
  
+    
   
  
  

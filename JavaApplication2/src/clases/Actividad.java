@@ -9,7 +9,7 @@ package clases;
  *
  * @author daw
  */
-public class Actividades {
+public class Actividad {
 
     private String tipo;
     private int plazas;
@@ -18,7 +18,7 @@ public class Actividades {
     private Horario horario;
     private Alumno[] alumnos;
 
-    public Actividades(String tipo, int plazas, float precio, Horario horario) {
+    public Actividad(String tipo, int plazas, float precio, Horario horario) {
         this.tipo = tipo;
         this.plazas = plazas;
         this.plazasdispo = this.plazas;//se iguala a plaza xque se inicia con el mismo valor

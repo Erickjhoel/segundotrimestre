@@ -5,7 +5,7 @@
  */
 package javaapplication2;
 
-import clases.Actividades;
+import clases.Actividad;
 import clases.Alumno;
 import clases.Horario;
 import java.util.Scanner;
@@ -16,26 +16,25 @@ import java.util.Scanner;
  */
 public class Poo {
 
-    private Horario[] horario = new Horario[4];
-    private Actividades[] tipo = new Actividades[11];
+    private Actividad[] tipo = new Actividad[11];
     private Alumno[] alumnos = new Alumno[50];
     int numAlumnos = 0;
 
     public Poo() {
-        tipo[0] = new Actividades("aerobic", 35, 47.60f, new Horario("L,X,V", 10, 11));//da valores
-        tipo[1] = new Actividades("aerobic", 35, 47.60f, new Horario("L,X,V", 11, 12));
-        tipo[2] = new Actividades("aerobic", 35, 47.60f, new Horario("L,X,V", 19, 20));
-        tipo[3] = new Actividades("aerobic", 35, 35.70f, new Horario("M,J", 9, 10));
-        tipo[4] = new Actividades("aerobic", 35, 35.70f, new Horario("M,J", 10, 11));
-        tipo[5] = new Actividades("aerobic", 35, 35.70f, new Horario("M,J", 18, 19));
+        tipo[0] = new Actividad("aerobic", 35, 47.60f, new Horario("L,X,V", 10, 11));//da valores
+        tipo[1] = new Actividad("aerobic", 35, 47.60f, new Horario("L,X,V", 11, 12));
+        tipo[2] = new Actividad("aerobic", 35, 47.60f, new Horario("L,X,V", 19, 20));
+        tipo[3] = new Actividad("aerobic", 35, 35.70f, new Horario("M,J", 9, 10));
+        tipo[4] = new Actividad("aerobic", 35, 35.70f, new Horario("M,J", 10, 11));
+        tipo[5] = new Actividad("aerobic", 35, 35.70f, new Horario("M,J", 18, 19));
         //Artes Marciales
-        tipo[6] = new Actividades("artes marciales", 15, 45.00f, new Horario("L,X,V", 19, 20));
-        tipo[7] = new Actividades("artes marciales", 15, 34.00f, new Horario("M,J", 18, 19));
-        tipo[8] = new Actividades("artes marciales", 15, 34.00f, new Horario("M,J", 19, 20));
+        tipo[6] = new Actividad("artes marciales", 15, 45.00f, new Horario("L,X,V", 19, 20));
+        tipo[7] = new Actividad("artes marciales", 15, 34.00f, new Horario("M,J", 18, 19));
+        tipo[8] = new Actividad("artes marciales", 15, 34.00f, new Horario("M,J", 19, 20));
         //Natacion
-        tipo[9] = new Actividades("natacion", 35, 47.60f, new Horario("L,X,V", 18, 19));
-        tipo[10] = new Actividades("natacion", 35, 35.70f, new Horario("M,J", 17, 18));
-        System.out.println("precio" + tipo[1].getTipo());//imprime el tipo
+        tipo[9] = new Actividad("natacion", 35, 47.60f, new Horario("L,X,V", 18, 19));
+        tipo[10] = new Actividad("natacion", 35, 35.70f, new Horario("M,J", 17, 18));
+        //System.out.println("precio" + tipo[1].getTipo());//imprime el tipo
     }
 
     public void darAltaAlumno(Scanner sc) {
@@ -98,29 +97,41 @@ public class Poo {
         System.out.println("Introduzca el apellido del alumno");
         apellido = sc.nextLine();
         //encontrarle en el array
-        int matricular;
-        matricular = encontrarAlumno(alumnos, nombre, apellido, numAlumnos);
+        int posicionalumno;
+        posicionalumno = encontrarAlumno(alumnos, nombre, apellido, numAlumnos);
         //encontrar actividad
         int actividad;
-        if (matricular > -1) {
-            System.out.println("Las actividades son");
-            for (int i = 0; i < tipo.length; i++) {
-                System.out.print(i + "" + tipo[i].getTipo());
-                System.out.print("" + tipo[i].getPrecio());
-                System.out.println("");
-            }
-            Alumno alumnote = new Alumno(nombre, apellido);
-            System.out.println("Seleccione una actividad de 0-10");
-            actividad = sc.nextInt();
-            sc.nextLine();
-            tipo[actividad].addAlumno(alumnote);
-            
-            float preciamen = tipo[actividad].addprecio();
-            alumnos[actividad].addprecioalum(preciamen);
-        }
-        // aumentar el dinero del alumno
-
+        if (posicionalumno > -1) {
+            imprimiractividades();
+        }//añadir el alumno a la actividad
+        Alumno alumnote = new Alumno(nombre, apellido);
+        System.out.println("Seleccione una actividad de 0-10");
+        actividad = sc.nextInt();
+        sc.nextLine();
+        tipo[actividad].addAlumno(alumnote);
+        //añadir el precio de la actividad en la que el alumno se matriculo
+        float preciamen = tipo[actividad].addprecio();
+        alumnos[posicionalumno].addprecioalum(preciamen);
     }
+
+    public void imprimiractividades() {
+        System.out.println("Las actividades son");
+        for (int i = 0; i < tipo.length; i++) {
+            System.out.print(i + " " + tipo[i].getTipo());
+            System.out.print(" " + tipo[i].getPrecio());
+            System.out.println("");
+        }
+    }
+
+    public void imprimiralumnos() {
+        System.out.println("Los alumnos son");
+        for (int i = 0; i < alumnos.length; i++) {
+            System.out.print(i + " " + alumnos[i].getNombre());
+            System.out.print(" " + alumnos[i].getApellido());
+            System.out.println("");
+        }
+    }
+
     public void reciboalum(Scanner sc) {
         String nombre;
         String apellido;
@@ -132,7 +143,24 @@ public class Poo {
         int encontrar;
         encontrar = encontrarAlumno(alumnos, nombre, apellido, numAlumnos);
         if (encontrar > -1) {
-            
+            System.out.println("El ");
+            System.out.println(alumnos[encontrar].getPagames());
         }
+    }
+
+    public void horario() {
+        System.out.println("Los horarios de las actividades son");
+        for (int i = 0; i < tipo.length; i++) {
+            System.out.println(tipo[i].getHorario());
+        }
+    }
+    
+    public void reciboactividades(Scanner sc) {
+        int seleccion;
+        imprimiractividades();
+        System.out.println("Seleccione la actividad de la que quiere saber el precio");
+        seleccion = sc.nextInt();
+        sc.nextLine();
+        System.out.println(tipo[seleccion].getPrecio());
     }
 }
