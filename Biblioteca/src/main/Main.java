@@ -29,29 +29,26 @@ public class Main {
                     + "4. Prestar un libro/revista \n"
                     + "5. Devolver un libro \n"
                     + "6. Listado de libros \n"
-                    + "7. Listado de revistas \n"
-                    + "8. Listado de usuarios \n"
-                    + "9. Salir \n");
+                    + "7. Listado de usuarios \n"
+                    + "8. Salir \n");
             int opcion = sc.nextInt();
             sc.nextLine();
             switch (opcion) {
-                case 1:
+                case 1: funcionalidad.darAltaLibro(sc);
                     break;
-                case 2:
+                case 2: funcionalidad.darAltaUsuario(sc);
                     break;
-                case 3:
+                case 3: funcionalidad.darBajaUsuario(sc);
                     break;
                 case 4:
                     break;
                 case 5:
                     break;
-                case 6:
+                case 6:funcionalidad.listadolibros();
                     break;
-                case 7:
+                case 7:funcionalidad.listadousuarios();
                     break;
                 case 8:
-                    break;
-                case 9:
                     salir = true;
                     break;
                 default:

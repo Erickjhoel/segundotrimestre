@@ -17,7 +17,9 @@ public class Usuario {
         this.nombre = nombre;
     }
     
-    
+    public void addlibro(Libro elegirlibro) {
+        
+    }
 
     public String getNombre() {
         return nombre;
@@ -27,9 +29,10 @@ public class Usuario {
         this.nombre = nombre;
     }
 
-    
-    
-    
-    
+    @Override
+    public String toString() {
+        return "Usuario{" + "nombre=" + nombre + '}';
+    }
+
     
 }

@@ -63,6 +63,14 @@ public class Libro {
     public void setPrestado(boolean prestado) {
         this.prestado = prestado;
     }
+
+    
+    //para poder imprimir devolviendo el string
+    @Override
+    public String toString() {
+        return "Libro{" + "isbn=" + isbn + ", titulo=" + titulo + ", autor=" + autor + ", numPaginas=" + numPaginas + ", prestado=" + prestado + '}';
+    }
+    
     
     
     
