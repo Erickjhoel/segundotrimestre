@@ -15,4 +15,49 @@ and open the template in the editor.
 }
 .grande{
     border:solid red;
+    display:flex;
+    flex-direction:column;
+}
+.barra{
+    border-bottom: solid;
+}
+.a{
+    width: 40%;
+}
+.a1{
+    width: 30%;
+}
+.a2{
+    width: 10%;
+}
+.b{
+    border:solid red;
+    width: 20%;
+}
+.c{
+    display:flex;
+    flex-direction: row;
+}
+.contenedor{
+    border:solid red;
+    display:flex;
+    flex-direction: row;
+}
+.pri{
+    border:solid aqua;
+    width: 60%;
+}
+.seg{
+    border:solid aqua;
+}
+.d{
+    border:solid red;
+    width: 40%;
+}
+.e{
+    display:flex;
+    flex-direction: row;
+}
+.f{
+    width: 20%;
 }
