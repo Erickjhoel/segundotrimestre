@@ -10,6 +10,7 @@ package clases;
  * @author daw
  */
 public class Libro {
+
     private String isbn;
     private String titulo;
     private String autor;
@@ -21,6 +22,16 @@ public class Libro {
         this.titulo = titulo;
         this.autor = autor;
         this.numPaginas = numPaginas;
+        this.prestado = false;
+    }
+
+    public boolean comprobarprestado() {
+        boolean prestado;
+        prestado = this.prestado;
+        return prestado;
+    }
+    public void yaprestado(){
+        prestado=true;
     }
 
     public String getAutor() {
@@ -30,7 +41,6 @@ public class Libro {
     public void setAutor(String autor) {
         this.autor = autor;
     }
-    
 
     public String getIsbn() {
         return isbn;
@@ -64,15 +74,10 @@ public class Libro {
         this.prestado = prestado;
     }
 
-    
     //para poder imprimir devolviendo el string
     @Override
     public String toString() {
         return "Libro{" + "isbn=" + isbn + ", titulo=" + titulo + ", autor=" + autor + ", numPaginas=" + numPaginas + ", prestado=" + prestado + '}';
     }
-    
-    
-    
-    
-    
+
 }

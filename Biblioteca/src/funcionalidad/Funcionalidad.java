@@ -17,9 +17,9 @@ import java.util.Scanner;
 public class Funcionalidad {
 
     private Biblioteca[] biblioteca;
-    private Libro[] libros = new Libro[10];
+    private Libro[] libros = new Libro[100];
     private Usuario[] usuarios = new Usuario[10];
-    private int numerodelibros = 0;
+    private int numerodelibros = 10;
     private int numerodeusuarios = 0;
 
     public Funcionalidad() {
@@ -33,6 +33,8 @@ public class Funcionalidad {
         libros[7] = new Libro("7ete", "El libron7", "Erick7", 300);
         libros[8] = new Libro("8ete", "El libron8", "Erick8", 300);
         libros[9] = new Libro("9ete", "El libron9", "Erick9", 300);
+        numerodelibros = 10;
+
     }
 
     public void darAltaLibro(Scanner sc) {
@@ -77,7 +79,7 @@ public class Funcionalidad {
         Usuario temp = new Usuario(nombre);
         //recorrer array de alumno buscando nombre y apellidos
         for (int i = 0; i < numerodeusuarios || posicion == -1; i++) {
-            if (usuario[i].equals(temp)) {
+            if (usuario[i].equals(temp)) {//añadir codigo equals en clase
                 posicion = i;
             } else {
                 System.out.println("No existe el usuario");
@@ -101,21 +103,54 @@ public class Funcionalidad {
         numerodeusuarios--;
         //FALTA DEVOLVER LOS LIBROA, HACE FALTA ENCONTRAR EL LIBRO, COMPROBAR SI TIENE LIBROS,PRESTAR LIBROS
     }
-    
+
     public void prestarLibro(Scanner sc) {
         String nombre;
         int posicionuser;
+        boolean prestado;
         System.out.println("Introduzca el nombre del alumno");
         nombre = sc.nextLine();
         posicionuser = encontrarUsuario(usuarios, nombre);
-        
         int elegirlibro;//se eligue la posicion
         System.out.println("seleccione el libro");
         listadolibros();
-        elegirlibro=sc.nextInt();
-                    sc.nextLine();
-        usuarios[posicionuser].addlibro(libros[elegirlibro]);//se pasa el array xque si paso solo eleguir libro se pasa la poscion
+        elegirlibro = sc.nextInt();
+        sc.nextLine();
+        prestado = libros[posicionuser].comprobarprestado();
+        if (prestado == false) {
+            usuarios[posicionuser].addlibro(libros[elegirlibro]);//se pasa el array xque si paso solo eleguir libro se pasa la poscion
+            libros[elegirlibro].yaprestado();
+        } else {
+            System.out.println("El libro ya esta prestado");
+        }
     }
+    
+    public void devolverLibro(Scanner sc) {
+        //encontrar Alumno
+        int elegirlibro;//se eligue la posicion
+        System.out.println("seleccione el libro");
+        for (int i = 0; i < 3; i++) {
+            System.out.print(i + " " + usuarios[i].);
+            System.out.println("");
+        }
+        elegirlibro = sc.nextInt();
+        sc.nextLine();
+         elegirlibro=
+        
+        
+        
+        //Dar de baja de las actividades, aumentar plaza//PROXIMAMENTE
+        //reordenar array para no dejar huecos
+        darbaja = encontrarAlumno(alumnos, nombre, apellido, numAlumnos);
+        alumnos[darbaja] = null;
+        alumnos[darbaja] = alumnos[numAlumnos - 1];
+        alumnos[numAlumnos - 1] = null;
+        numAlumnos--;
+    }
+
+    
+    
+    
     
     
     public void listadousuarios() {
@@ -129,8 +164,8 @@ public class Funcionalidad {
 
     public void listadolibros() {
         System.out.println("Los libros son");
-        for (int i = 0; i < numerodelibros; i++) {
-            System.out.print(i + " " +libros[i].toString());
+        for (int i = 0; i < numerodelibros - 1; i++) {
+            System.out.print(i + " " + libros[i].toString());
             System.out.println("");
         }
     }

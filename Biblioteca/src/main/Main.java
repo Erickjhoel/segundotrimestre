@@ -40,7 +40,7 @@ public class Main {
                     break;
                 case 3: funcionalidad.darBajaUsuario(sc);
                     break;
-                case 4:
+                case 4: funcionalidad.prestarLibro(sc);
                     break;
                 case 5:
                     break;
