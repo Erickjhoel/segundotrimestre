@@ -31,7 +31,26 @@ public class Usuario {
             System.out.println("ya tiene 3 libros prestados");
         return ok;
     }
-    
+    public boolean dellibro(int posicionlibro) {
+        boolean prestado = true;
+        if(prestado){
+        librpres[posicionlibro]=librpres[numerolibrosprestados-1];
+        librpres[numerolibrosprestados-1]=null;
+        numerolibrosprestados--;
+        prestado=false;
+        
+        }
+        
+        
+        return prestado;
+        
+        }
+        
+    public void quitarto(){
+        for (int i = 0; i < numerolibrosprestados; i++) {
+                librpres[i]=null;
+        }
+    }    
 
     public String getNombre() {
         return nombre;
@@ -47,8 +66,8 @@ public class Usuario {
     }
     
     public String librosprestados() {
-        for (int i = 0; i < 3; i++) {
-            librpres=""
+        for (int i = 0; i < numerolibrosprestados; i++) {
+            System.out.println(librpres[i]);
         }
         return "Usuario{" + "nombre=" + nombre + '}';
     }

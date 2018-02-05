@@ -26,12 +26,12 @@ public class Libro {
     }
 
     public boolean comprobarprestado() {
-        boolean prestado;
         prestado = this.prestado;
         return prestado;
     }
-    public void yaprestado(){
+    public boolean yaprestado(){
         prestado=true;
+        return prestado;
     }
 
     public String getAutor() {

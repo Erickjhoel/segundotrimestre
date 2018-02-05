@@ -42,7 +42,7 @@ public class Main {
                     break;
                 case 4: funcionalidad.prestarLibro(sc);
                     break;
-                case 5:
+                case 5: funcionalidad.devolverLibro(sc);
                     break;
                 case 6:funcionalidad.listadolibros();
                     break;

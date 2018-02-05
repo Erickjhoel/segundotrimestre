@@ -95,13 +95,13 @@ public class Funcionalidad {
         nombre = sc.nextLine();
         //reordenar array para no dejar huecos
         posicionuser = encontrarUsuario(usuarios, nombre);
-        //alumnos[darbaja] = null;//ya no hace falta ponerlo a null xque se machaca con usuario[numerodeusuarios-1]
-
+        //alumnos[darbaja] = null;//ya no hace falta ponerlo a null xque se machaca con usuario[numerodeusuarios-1]0
         usuarios[posicionuser] = null;
         usuarios[posicionuser] = usuarios[numerodeusuarios - 1];
         usuarios[numerodeusuarios - 1] = null;//se iguala a null para que no haya dos con el mismo dato
         numerodeusuarios--;
-        //FALTA DEVOLVER LOS LIBROA, HACE FALTA ENCONTRAR EL LIBRO, COMPROBAR SI TIENE LIBROS,PRESTAR LIBROS
+        
+        //FALTA DEVOLVER LOS LIBROA COMPROBAR SI TIENE LIBROS
     }
 
     public void prestarLibro(Scanner sc) {
@@ -127,25 +127,28 @@ public class Funcionalidad {
     
     public void devolverLibro(Scanner sc) {
         //encontrar Alumno
+        String nombre;
+        int posicionuser;
+        boolean prestado;
+        System.out.println("Introduzca el nombre del alumno");
+        nombre = sc.nextLine();
+        posicionuser = encontrarUsuario(usuarios, nombre);
         int elegirlibro;//se eligue la posicion
         System.out.println("seleccione el libro");
         for (int i = 0; i < 3; i++) {
-            System.out.print(i + " " + usuarios[i].);
+            System.out.print(i + " " + usuarios[i].librosprestados());
             System.out.println("");
         }
         elegirlibro = sc.nextInt();
         sc.nextLine();
-         elegirlibro=
+        prestado=libros[elegirlibro].yaprestado();
         
+        if(prestado==true){
+         usuarios[posicionuser].dellibro(elegirlibro);
+         
+         libros[elegirlibro].comprobarprestado();
+        }
         
-        
-        //Dar de baja de las actividades, aumentar plaza//PROXIMAMENTE
-        //reordenar array para no dejar huecos
-        darbaja = encontrarAlumno(alumnos, nombre, apellido, numAlumnos);
-        alumnos[darbaja] = null;
-        alumnos[darbaja] = alumnos[numAlumnos - 1];
-        alumnos[numAlumnos - 1] = null;
-        numAlumnos--;
     }
 
     
