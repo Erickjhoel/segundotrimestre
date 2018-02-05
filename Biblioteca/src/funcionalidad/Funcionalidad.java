@@ -91,19 +91,23 @@ public class Funcionalidad {
     public void darBajaUsuario(Scanner sc) {
         String nombre;
         int posicionuser;
+        int librosprestados;
+        boolean prestado;
         System.out.println("Introduzca el nombre del alumno");
         nombre = sc.nextLine();
         //reordenar array para no dejar huecos
         posicionuser = encontrarUsuario(usuarios, nombre);
         //alumnos[darbaja] = null;//ya no hace falta ponerlo a null xque se machaca con usuario[numerodeusuarios-1]0
+        //quitar todos los libros de el array
+        usuarios[posicionuser].quitarto();
+        
+        //eliminar al usuario
         usuarios[posicionuser] = null;
         usuarios[posicionuser] = usuarios[numerodeusuarios - 1];
         usuarios[numerodeusuarios - 1] = null;//se iguala a null para que no haya dos con el mismo dato
         numerodeusuarios--;
-        
-        //FALTA DEVOLVER LOS LIBROA COMPROBAR SI TIENE LIBROS
-    }
-
+        System.out.println("El usuario ha sido eliminado");
+        }//FALTA DEVOLVER LOS LIBROA COMPROBAR SI TIENE LIBROS
     public void prestarLibro(Scanner sc) {
         String nombre;
         int posicionuser;
@@ -135,12 +139,10 @@ public class Funcionalidad {
         posicionuser = encontrarUsuario(usuarios, nombre);
         int elegirlibro;//se eligue la posicion
         System.out.println("seleccione el libro");
-        for (int i = 0; i < 3; i++) {
-            System.out.print(i + " " + usuarios[i].librosprestados());
-            System.out.println("");
-        }
         elegirlibro = sc.nextInt();
         sc.nextLine();
+        //esta verga no funciona .-.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+        usuarios[elegirlibro].librosprestados();
         prestado=libros[elegirlibro].yaprestado();
         
         if(prestado==true){
@@ -150,11 +152,6 @@ public class Funcionalidad {
         }
         
     }
-
-    
-    
-    
-    
     
     public void listadousuarios() {
         System.out.println("Los usuarios son");

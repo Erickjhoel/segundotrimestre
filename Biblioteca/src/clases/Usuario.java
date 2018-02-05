@@ -15,7 +15,7 @@ public class Usuario {
     private String nombre;
     private Libro[] librpres;
     private int numerolibrosprestados;
-
+    
     public Usuario(String nombre) {
         this.nombre = nombre;
          librpres=new Libro[3];
@@ -38,12 +38,7 @@ public class Usuario {
         librpres[numerolibrosprestados-1]=null;
         numerolibrosprestados--;
         prestado=false;
-        
-        }
-        
-        
-        return prestado;
-        
+        }return prestado;
         }
         
     public void quitarto(){
