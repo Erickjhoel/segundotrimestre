@@ -11,6 +11,15 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="ccs/menu.css" rel="stylesheet" type="text/css"/>
         <link href="ccs/pag1.css" rel="stylesheet" type="text/css"/>
+        <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+
+        crossorigin="anonymous"></script>
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     </head>
     <body>
         <div class="navbar">
@@ -37,17 +46,24 @@ and open the template in the editor.
                 <div class="blanco">
                     <div class="advertencia">(Solo los campos resaltados en rojo son obligatorios)</div>
                     <div class="linea">Cuenta de acceso personal</div>
-                    <div class="e-mail">
-                        e-mail(Login):<input  type="text" name="Nombre" value="Nombre">
-                    </div>
+                    
+                    <div class="input-field col s4" >
+                    <i class="material-icons prefix">account_circle</i>
+                    <input list="names" placeholder="Placeholder" name="text" id="first_name" type="text" class="validate">
+                    <label for="first_name">First Name</label>
+                </div>
+                    
                     <div class="linea"> Datos personales</div>
-                    <div>
+                    
+                    <div class="input-field col s6">
                         Sr./Sra.:
-                        <select name="Sr/Sra" >
+                        <select>
+                             <option value="" disabled selected>Elige</option>
                             <option value="1">.....</option>
                             <option value="2">....2</option>
                             <option value="3">....3</option>
                         </select>
+                        <label>Materialize Select</label>
                     </div>
                     <div class="pridos">
                         <div>
