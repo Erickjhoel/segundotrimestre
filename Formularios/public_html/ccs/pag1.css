@@ -14,12 +14,12 @@ and open the template in the editor.
 .blanco{
     background-color: white;
     margin: 1%;
-    color:red;
     padding: 3%;
 }
 .advertencia{
     text-align: center;
     margin: 3%;
+    color: red;
 }
 .linea{
     border-bottom: solid 3px black;
@@ -27,41 +27,9 @@ and open the template in the editor.
     text-align: center;
     margin: 2%;
 }
-.e-mail{
-    text-align: left;
+.registro{
+    font-size: 200%;
 }
-.pridos{
-    display:inline-block;
-}
-.dosder{
-    display: inline-block;
-    float:right;
-}
-.ete1{
-    display:inline-block;
-}
-.ete{
-    display:inline-block;
-    width: 20%
-}
-.direccion{
-    width: 80%;
-}
-.pritres{
-    display:inline-block;
-    width: 48%;
-}
-.tresder{
-    display:inline-block;
-    float:right;
-    width: 48%;
-}
-.distrito{
-    width: 35%;
-}
-.res{
-    width: 25%;
-}
-.centro{
-    width: 70%;
+.rojo{
+    color:red;
 }

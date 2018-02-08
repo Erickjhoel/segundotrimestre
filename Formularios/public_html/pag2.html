@@ -11,90 +11,147 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="ccs/menu.css" rel="stylesheet" type="text/css"/>
         <link href="ccs/pag2.css" rel="stylesheet" type="text/css"/>
+
+        <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+
+        crossorigin="anonymous"></script>
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     </head>
     <body>
         <div class="navbar">
-            <div class="dropdown">
-                <button class="dropbtn">Ejercicios 
-                    <i class="fa fa-caret-down"></i>
-                </button>
-                <div class="dropdown-content">
-                    <a href="index.html">Ejercicio 1</a>
-                    <a href="pag2.html">Ejercicio 2</a>
-                    <a href="pag3.html">Ejercicio 3</a>
-                    <a href="pag4.html">Ejercicio 4</a>
-                    <a href="pag5.html">Ejercicio 5</a>
-                    <a href="pag6.html">Ejercicio 6</a>
-                    <a href="pag7.html">Ejercicio 7</a>
-                    <a href="pag8.html">Ejercicio 8</a>
-                    <a href="pag9.html">Ejercicio 9</a>
-                </div>
-            </div> 
+            <a href="index.html">Ejercicio 1</a>
+            <a href="pag2.html">Ejercicio 2</a>
+            <a href="pag3.html">Ejercicio 3</a>
+            <a href="pag4.html">Ejercicio 4</a>
         </div>
+
         <form action="/action_page.php">
             <div class="titulo">Travel Authorization Form</div>
             <div class="barra">Section A: Client information</div>
-            <div class="grande">
-                <div class="c">
-                    <div class="b">Title:</div><input class="a"  type="text" name="Title" value="">
-                </div>
-                <div class="c">
-                    <div class="b">First name:</div><input class="a1"  type="text" name="First name" value="">
-                </div>
-                <div class="c">
-                    <div class="b">Middle initial:</div><input class="a2"  type="text" name="First name" value="">
-                </div>
-                <div class="c">
-                    <div class="b">Last name:</div><input class="a" type="text" name="First name" value="">
-                </div>
-                <div class="c">
-                    <div class="b">E-msil address:</div><input  type="text" name="First name" value="">
-                </div>
-                <div class="c">
-                    <div class="b">Phone number:</div><input  type="text" name="First name" value="">
-                </div>
-            </div>
-            <div class="barra">Section B: Travel Information</div>
-            <div class="contenedor">
-                <div class="pri">
-                    <div class="e">
-                        <div class="d">Sr./Sra.:</div>
-                        <select name="Sr/Sra" >
-                            <option value="1">.....</option>
-                            <option value="2">....2</option>
-                            <option value="3">....3</option>
-                        </select>
-                    </div>
-                    <div class="e">
-                        <div class="d">Destination:</div><input type="text" name="First name" value="">
-                    </div>
-                    <div class="e">
-                        <div class="d">Leave date:</div><input type="date" name="First name" value="">
-                    </div>
-                    <div class="e">
-                        <div class="d">Return date:</div><input type="date" name="First name" value="">
-                    </div>
-                    <div class="e">
-                        <div class="d">Estimated cost:</div><input type="text" name="First name" value="">
-                    </div>
-                </div>
-                <div class="seg">
-                    <div>Additional estimated expenses:</div>
-                    <div class="e"> <div class="d">Car rental</div>
-                        <input class="f" type="text" name="First name" value="">
-                    </div>
-                    <div class="e"> <div class="d">Hotel</div> 
-                        <input class="f" type="text" name="First name" value="">
-                    </div>
-                    <div class="e"> <div class="d">Meals</div> 
-                        <input class="f" type="text" name="First name" value="">
-                    </div>
-                    <div class="e"> <div class="d">Total estimate </div>
-                        <input class="f" type="text" name="First name" value="">
-                    </div>
-                </div>
 
+            <div class="row">
+                <div class="input-field col s8">
+                    <i class="material-icons prefix">mood_bad</i>
+                    <input id="app" type="text" name="werweR" class="validate">
+                    <label for="app">Title</label>
+                </div>
             </div>
+
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">mood_bad</i>
+                    <input id="app" type="text" name="werweR" class="validate">
+                    <label for="app">First name</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s3">
+                    <i class="material-icons prefix">mood_bad</i>
+                    <input id="app" type="text" name="werweR" class="validate">
+                    <label for="app">Middle initial</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s8">
+                    <i class="material-icons prefix">mood_bad</i>
+                    <input id="app" type="text" name="werweR" class="validate">
+                    <label for="app">Last name</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s5">
+                    <i class="material-icons prefix">mood_bad</i>
+                    <input id="app" type="text" name="werweR" class="validate">
+                    <label for="app">E-mail address</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s5">
+                    <i class="material-icons prefix">mood_bad</i>
+                    <input id="app" type="text" name="werweR" class="validate">
+                    <label for="app">Phone number</label>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="barra">Section B: Travel Information</div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <div>Airline name</div>
+                    <select>
+                        <option value="0" disabled selected>Opciones</option>
+                        <option value="1">.....</option>
+                        <option value="2">....2</option>
+                        <option value="3">....3</option>
+                    </select>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">mood_bad</i>
+                    <input id="app" type="text" name="werweR" class="validate">
+                    <label for="app">Destination</label>
+                </div>
+                <div class="input-field col offset-s2 s3">
+                    <i class="material-icons prefix">mood_bad</i>
+                    <input id="app" type="text" name="werweR" class="validate">
+                    <label for="app">Destination</label>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col offset s6">
+                    <div class="rojo">
+                        <div>ETE</div>
+                        <i class="material-icons prefix">mood_bad</i>
+                        <input type="text" name="fecha" class="datepicker">
+                    </div>
+                </div>
+                <div class="input-field col offset-s2 s3">
+                    <i class="material-icons prefix">mood_bad</i>
+                    <input id="app" type="text" name="werweR" class="validate">
+                    <label for="app">Destination</label>
+                </div>
+                
+                
+            </div>
+
+
+
         </form>
+        
+        
+        <script>
+        $('.datepicker').pickadate({
+            format: 'dd-mm-yyyy',
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 15, // Creates a dropdown of 15 years to control year,
+            monthsFull: ['Enero', 'Febrero', 'Marzo', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+            weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mir', 'Jue', 'Vie', 'Sab'],
+            today: 'Hoy',
+            clear: 'Limpiar',
+            close: 'Kiko',
+            closeOnSelect: false // Close upon selecting a date,
+        });
+    </script>
+
+        <script> $(document).ready(function () {
+                $('select').material_select();
+            });</script>
+
     </body>
 </html>

@@ -9,8 +9,7 @@ and open the template in the editor.
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="ccs/menu.css" rel="stylesheet" type="text/css"/>
-        <link href="ccs/pag1.css" rel="stylesheet" type="text/css"/>
+        
         <script
             src="https://code.jquery.com/jquery-3.2.1.min.js"
 
@@ -20,115 +19,188 @@ and open the template in the editor.
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!-- Compiled and minified JavaScript -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+        <link href="ccs/menu.css" rel="stylesheet" type="text/css"/>
+        <link href="ccs/pag1.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <div class="navbar">
-            <div class="dropdown">
-                <button class="dropbtn">Ejercicios 
-                    <i class="fa fa-caret-down"></i>
-                </button>
-                <div class="dropdown-content">
                     <a href="index.html">Ejercicio 1</a>
                     <a href="pag2.html">Ejercicio 2</a>
                     <a href="pag3.html">Ejercicio 3</a>
                     <a href="pag4.html">Ejercicio 4</a>
-                    <a href="pag5.html">Ejercicio 5</a>
-                    <a href="pag6.html">Ejercicio 6</a>
-                    <a href="pag7.html">Ejercicio 7</a>
-                    <a href="pag8.html">Ejercicio 8</a>
-                    <a href="pag9.html">Ejercicio 9</a>
                 </div>
-            </div> 
-        </div>
         <form action="/action_page.php">
             <div class="Grande">
-                <div>Registro de usuarios</div>
+                <div class="registro">Registro de usuarios</div>
                 <div class="blanco">
                     <div class="advertencia">(Solo los campos resaltados en rojo son obligatorios)</div>
                     <div class="linea">Cuenta de acceso personal</div>
-                    
+
                     <div class="input-field col s4" >
-                    <i class="material-icons prefix">account_circle</i>
-                    <input list="names" placeholder="Placeholder" name="text" id="first_name" type="text" class="validate">
-                    <label for="first_name">First Name</label>
-                </div>
-                    
+                        <div class="rojo">
+                            <i class="material-icons prefix">account_circle</i>
+                            <input  list="names" placeholder="Placeholder" name="text" id="first_name" type="text" class="validate">
+                            <label  for="first_name">e-mail(Login)</label>
+                        </div>
+                    </div>
+
                     <div class="linea"> Datos personales</div>
-                    
-                    <div class="input-field col s6">
-                        Sr./Sra.:
-                        <select>
-                             <option value="" disabled selected>Elige</option>
-                            <option value="1">.....</option>
-                            <option value="2">....2</option>
-                            <option value="3">....3</option>
-                        </select>
-                        <label>Materialize Select</label>
-                    </div>
-                    <div class="pridos">
-                        <div>
-                            Nombre:<input  type="text" name="Nombre" value="Nombre">
-                        </div>
-                        <div>
-                            Sexo:<input  type="text" name="Nombre" value="Sexo">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <div class="rojo">
+                                <div>Sr./Sra.:</div>
+                                <select>
+                                    <option value="0" disabled selected>Opciones</option>
+                                    <option value="1">.....</option>
+                                    <option value="2">....2</option>
+                                    <option value="3">....3</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
-                    <div class="dosder">
-                        <div>
-                            Apellido:<input  type="text" name="Nombre" value="Apellido">
+                    <div class="row">
+                        <div class="input-field col s6" >
+                            <div class="rojo">
+                                <i class="material-icons prefix">account_circle</i>
+                                <input list="names" placeholder="Placeholder" name="text" id="first_name" type="text" class="validate">
+                                <label for="first_name">Nombres</label>
+                            </div>
                         </div>
-                        <div>
-                            Nacimiento:<input  type="date" name="Nombre" value="Nacimiento">
-                        </div>
-                    </div>
-                    <div class="ete1"  style="color:black">
-                        Identificacion:<input class="ete"  type="text" name="Nombre" value="Identificacion">(DNI/CE o similar)
-                    </div>
-                    <div  style="color:black">
-                        Direccion:<input class="direccion"  type="text" name="Nombre" value="Direccion">
-                    </div>
-                    
-                    
-                    <div class="pritres">
-                        <div  style="color:black">
-                            Distrito:<input class="distrito" type="text" name="Nombre" value="">
-                        </div>
-                        <div style="color:black">
-                            Ciudad:<input class="distrito"  type="text" name="Nombre" value="">
-                        </div>
-                        <div style="color:black">
-                            Telefono fijo:<input class="distrito"  type="text" name="Nombre" value="">
+                        <div class="input-field col s6" >
+                            <div class="rojo">
+                                <i class="material-icons prefix">account_circle</i>
+                                <input list="names" placeholder="Placeholder" name="text" id="first_name" type="text" class="validate">
+                                <label for="first_name">Apellidos</label>
+                            </div>
                         </div>
                     </div>
-                    <div class="tresder">
-                        <div  style="color:black">
-                            Codigo postal:<input class="res"  type="text" name="Nombre" value="Apellido">
+
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <div class="rojo">
+                                <div>Sexo</div>
+                                <select>
+                                    <option value="0" disabled selected>Opciones</option>
+                                    <option value="1">.....</option>
+                                    <option value="2">....2</option>
+                                    <option value="3">....3</option>
+                                </select>
+                            </div>
                         </div>
-                        <div>
-                            Pais de residencia:<input class="res" type="text" name="Nombre" value="Nacimiento">
+
+                        <div class="col offset s6">
+                            <div class="rojo">
+                                <div>Nacimiento</div>
+                                <input type="text" name="fecha" class="datepicker">
+                            </div>
                         </div>
-                        <div style="color:black">
-                           Celular :<input class="res" type="text" name="Nombre" value="Sexo">
+
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6" >
+                            <i class="material-icons prefix">account_circle</i>
+                            <input list="names" placeholder="Placeholder" name="text" id="first_name" type="text" class="validate">
+                            <label for="first_name">Identificación</label>
                         </div>
                     </div>
-                    <div style="color:black">
-                        FAX:<input class="distrito"  type="text" name="Nombre" value="Identificacion">
+                    <div class="row">
+                        <div class="input-field col s12" >
+                            <i class="material-icons prefix">account_circle</i>
+                            <input list="names" placeholder="Placeholder" name="text" id="first_name" type="text" class="validate">
+                            <label for="first_name">Dirección</label>
+                        </div>
                     </div>
-                    <div style="color:black">
-                        Centro de trabajo:<input class="centro"   type="text" name="Nombre" value="Identificacion">
+                    <div class="row">
+                        <div class="input-field col s6" >
+                            <i class="material-icons prefix">account_circle</i>
+                            <input list="names" placeholder="Placeholder" name="text" id="first_name" type="text" class="validate">
+                            <label for="first_name">Distrito</label>
+                        </div>
+                        <div class="input-field col s6" >
+                            <i class="material-icons prefix">account_circle</i>
+                            <input list="names" placeholder="Placeholder" name="text" id="first_name" type="text" class="validate">
+                            <label for="first_name">Codigo postal</label>
+                        </div>
                     </div>
-                    <div>
-                        Ocupacion
-                        <select name="Sr/Sra" >
-                            <option value="1">.....</option>
-                            <option value="2">....2</option>
-                            <option value="3">....3</option>
-                        </select>
+
+                    <div class="row">
+                        <div class="input-field col s6" >
+                            <i class="material-icons prefix">account_circle</i>
+                            <input list="names" placeholder="Placeholder" name="text" id="first_name" type="text" class="validate">
+                            <label for="first_name">Ciudad</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <div class="rojo">
+                                <div>Pais de redsidencia:</div>
+                                <select>
+                                    <option value="0" disabled selected>Opciones</option>
+                                    <option value="1">.....</option>
+                                    <option value="2">....2</option>
+                                    <option value="3">....3</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
+                    <div class="row">
+                        <div class="input-field col s6" >
+                            <i class="material-icons prefix">account_circle</i>
+                            <input list="names" placeholder="Placeholder" name="text" id="first_name" type="text" class="validate">
+                            <label for="first_name">Telefono fijo</label>
+                        </div>
+                        <div class="input-field col s6" >
+                            <i class="material-icons prefix">account_circle</i>
+                            <input list="names" placeholder="Placeholder" name="text" id="first_name" type="text" class="validate">
+                            <label for="first_name">Celular</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6" >
+                            <i class="material-icons prefix">account_circle</i>
+                            <input list="names" placeholder="Placeholder" name="text" id="first_name" type="text" class="validate">
+                            <label for="first_name">Fax</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12" >
+                            <i class="material-icons prefix">account_circle</i>
+                            <input list="names" placeholder="Placeholder" name="text" id="first_name" type="text" class="validate">
+                            <label for="first_name">Centro de trabajo</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s8">
+                            <div class="rojo">
+                                <div>Ocupacion</div>
+                                <select>
+                                    <option value="0" disabled selected>Opciones</option>
+                                    <option value="1">.....</option>
+                                    <option value="2">....2</option>
+                                    <option value="3">....3</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
+
             </div>
-
-
-        </form>
-    </body>
+    </form>
+    <script>
+        $('.datepicker').pickadate({
+            format: 'dd-mm-yyyy',
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 15, // Creates a dropdown of 15 years to control year,
+            monthsFull: ['Enero', 'Febrero', 'Marzo', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+            weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mir', 'Jue', 'Vie', 'Sab'],
+            today: 'Hoy',
+            clear: 'Limpiar',
+            close: 'Kiko',
+            closeOnSelect: false // Close upon selecting a date,
+        });
+    </script>
+    
+    <script> $(document).ready(function () {
+            $('select').material_select();
+        });</script>
+</body>
 </html>
