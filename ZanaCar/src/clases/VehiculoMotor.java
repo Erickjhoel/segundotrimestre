@@ -12,4 +12,10 @@ package clases;
 public class VehiculoMotor extends Vehiculo{
     protected String matricula;
     protected int kilometros;
+
+    public VehiculoMotor(String matricula, int kilometros, String color, String marca, double preciocompra) {
+        super(color, marca, preciocompra);
+    this.matricula=matricula;
+    this.kilometros=kilometros;
+    }
 }

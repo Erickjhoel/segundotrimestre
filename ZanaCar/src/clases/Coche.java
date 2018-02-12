@@ -13,15 +13,11 @@ import java.util.ArrayList;
  */
 public class Coche extends VehiculoMotor{
 
-    public Coche() {
-        
-        
+    public Coche(String matricula, int kilometros, String color, String marca, double preciocompra) {
+        super(matricula, kilometros, color, marca, preciocompra);
     }
 
-    
-
-    
-
+   
     public String getMatricula() {
         return matricula;
     }

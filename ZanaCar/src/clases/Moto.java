@@ -11,6 +11,10 @@ package clases;
  */
 public class Moto extends VehiculoMotor{
 
+    public Moto(String matricula, int kilometros, String color, String marca, double preciocompra) {
+        super(matricula, kilometros, color, marca, preciocompra);
+    }
+
     public String getMatricula() {
         return matricula;
     }

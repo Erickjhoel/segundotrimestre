@@ -15,11 +15,13 @@ public class Vehiculo {
     protected double preciocompra;
     protected double precioventa;
 
-    
-    
-    
-    
-    
+    public Vehiculo(String color, String marca, double preciocompra) {
+        this.color = color;
+        this.marca = marca;
+        this.preciocompra = preciocompra;
+        this.precioventa = (preciocompra*1.25);
+    }
+
     
     
     public String getColor() {

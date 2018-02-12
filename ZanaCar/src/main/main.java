@@ -6,7 +6,7 @@
 package main;
 
 import java.util.Scanner;
-
+import funcionalidad.Funcionalidad;
 /**
  *
  * @author daw
@@ -18,11 +18,12 @@ public class main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Funcionalidad funcionalidad= new Funcionalidad();
     boolean salir = false;
         do {
             Scanner sc = new Scanner(System.in);
             System.out.println("Seleccione:\n"
-                    + "1. Dar Alta libros. \n"
+                    + "1. Comprobar vehiculo \n"
                     + "2. Dar de alta usuarios \n"
                     + "3. Dar de baja usuarios \n"
                     + "4. Prestar un libro/revista \n"
@@ -30,7 +31,7 @@ public class main {
             int opcion = sc.nextInt();
             sc.nextLine();
             switch (opcion) {
-                case 1: 
+                case 1: funcionalidad.comprar();
                     break;
                 case 2: 
                     break;

@@ -14,6 +14,13 @@ public class Bici extends Vehiculo{
     private int nummarchas;
     private int tipodecambio;
 
+    public Bici(int tamañorueda, int nummarchas, int tipodecambio,String color, String marca, double preciocompra) {
+        super(color, marca, preciocompra);
+        this.tamañorueda=tamañorueda;
+        this.nummarchas=nummarchas;
+        this.tipodecambio=tipodecambio;
+    }
+
     public int getTamañorueda() {
         return tamañorueda;
     }
