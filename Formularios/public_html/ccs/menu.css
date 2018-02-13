@@ -7,7 +7,7 @@ and open the template in the editor.
     Created on : 24-ene-2018, 11:59:52
     Author     : daw
 */
-.navbar {
+.menu {
     overflow: hidden;
     background-color: #333;
     font-family: Arial;
@@ -15,7 +15,7 @@ and open the template in the editor.
 }
 
 /* Links inside the navbar */
-.navbar a {
+.menu a {
     float: left;
     font-size: 16px;
     color: white;
@@ -41,7 +41,7 @@ and open the template in the editor.
 }
 
 /* Add a red background color to navbar links on hover */
-.navbar a:hover, .dropdown:hover .dropbtn {
+.menu a:hover, .dropdown:hover .dropbtn {
     background-color: darkred;
 }
 
