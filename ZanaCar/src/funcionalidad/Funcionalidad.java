@@ -133,4 +133,79 @@ public class Funcionalidad {
         Bici comprabici = new Bici(tamañorueda, nummarchas, tipodecambio, color, marca, preciocompra);
         stock.add(comprabici);
     }
+
+    public void vender() {
+        System.out.println("Seleccione que vehiculo quiere comprar:\n"
+                + "1. Coche \n"
+                + "2. Moto \n"
+                + "3. Quad \n"
+                + "4. Bicicleta \n");
+        int opcion = sc.nextInt();
+        sc.nextLine();
+        switch (opcion) {
+            case 1:
+                vendercoche();
+                System.out.println("Vehiculo vendido");
+                break;
+            case 2:
+                comprabicicleta();
+                System.out.println("Bicicleta comprada");
+                break;
+            default:
+                System.out.println("Opcion no valida");
+        }
+
+    }
+
+    public void vendercoche() {
+
+        for (Vehiculo vehiculo : stock) {
+            if (vehiculo instanceof Coche) {
+                System.out.println();
+            }
+        }
+        System.out.println("Seleccion por que quiere comprar:\n"
+                + "1. Matricula \n"
+                + "2. Kilometros  \n"
+                + "3. Color \n"
+                + "4. Marca \n");
+        int opcion = sc.nextInt();
+        sc.nextLine();
+        switch (opcion) {
+            case 1:
+                for (Vehiculo vehiculo : stock) {
+                    if (vehiculo instanceof Coche) {
+                        System.out.println(((Coche) vehiculo).getMatricula());
+                    }
+                }
+                break;
+            case 2:
+                for (Vehiculo vehiculo : stock) {
+                    if (vehiculo instanceof Coche) {
+                        System.out.println(((Coche) vehiculo).getKilometros());
+                    }
+                }
+
+                break;
+            case 3:
+                for (Vehiculo vehiculo : stock) {
+                    if (vehiculo instanceof Coche) {
+                        System.out.println(((Coche) vehiculo).getColor());
+                    }
+                }
+                break;
+
+            case 4:
+                for (Vehiculo vehiculo : stock) {
+                    if (vehiculo instanceof Coche) {
+                        System.out.println(vehiculo.getMarca());
+                    }
+                }
+                break;
+            default:
+                System.out.println("Opcion no valida");
+        }
+
+    }
+
 }

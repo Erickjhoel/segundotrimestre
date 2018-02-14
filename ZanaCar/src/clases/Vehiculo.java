@@ -23,9 +23,11 @@ public class Vehiculo {
     }
 
     
-    
-    public String getColor() {
-        return color;
+
+
+    @Override
+    public String toString() {
+        return "Vehiculo{" + "color=" + color + ", marca=" + marca + ", preciocompra=" + preciocompra + ", precioventa=" + precioventa + '}';
     }
 
     public void setColor(String color) {
