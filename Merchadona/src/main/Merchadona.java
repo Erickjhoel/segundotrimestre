@@ -18,27 +18,32 @@ public class Merchadona {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-    boolean salir = false;
+        boolean salir = false;
         do {
             Scanner sc = new Scanner(System.in);
             System.out.println("Seleccione:\n"
-                    + "1. Comprobar vehiculo \n"
-                    + "2. Dar de alta usuarios \n"
-                    + "3. Dar de baja usuarios \n"
-                    + "4. Prestar un libro/revista \n"
-                    + "5. Devolver un libro \n");
+                    + "1. Introducir usuario \n"
+                    + "2. Salir \n");
             int opcion = sc.nextInt();
             sc.nextLine();
             switch (opcion) {
-                case 1: 
+                case 1:
+                    System.out.println("Seleccione:\n"
+                            + "1. Cajero \n"
+                            + "2. Reponedor \n");
+                    int opcion2 = sc.nextInt();
+                    sc.nextLine();
+                    switch (opcion) {
+                        case 1:
+                            break;
+                        case 2:
+                            salir = true;
+                            break;
+                        default:
+                            System.out.println("Opcion no valida");
+                    }
                     break;
-                case 2: 
-                    break;
-                case 3: 
-                    break;
-                case 4: 
-                    break;
-                case 5:
+                case 2:
                     salir = true;
                     break;
                 default:

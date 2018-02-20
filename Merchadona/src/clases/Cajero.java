@@ -9,6 +9,6 @@ package clases;
  *
  * @author daw
  */
-public class Cajero {
+public class Cajero extends Empleado{
     private double preciototal;
 }

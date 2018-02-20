@@ -11,6 +11,6 @@ import java.time.LocalTime;
  *
  * @author daw
  */
-public class Perecedero {
-    private LocalTime fecha;
+public class Perecedero extends Producto{
+    private LocalTime fechareposicion;
 }
