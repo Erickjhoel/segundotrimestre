@@ -10,6 +10,7 @@ package clases;
  * @author daw
  */
 public class Vehiculo {
+
     protected String color;
     protected String marca;
     protected double preciocompra;
@@ -19,15 +20,18 @@ public class Vehiculo {
         this.color = color;
         this.marca = marca;
         this.preciocompra = preciocompra;
-        this.precioventa = (preciocompra*1.25);
+        this.precioventa = (preciocompra * 1.25);
     }
 
-    
-
+    public double gananciatotal(){
+    double gananciatotal = 0;
+    gananciatotal=precioventa+gananciatotal;
+    return gananciatotal;
+    }
 
     @Override
     public String toString() {
-        return "Vehiculo{" + "color=" + color + ", marca=" + marca + ", preciocompra=" + preciocompra + ", precioventa=" + precioventa + '}';
+        return "color=" + color + ", marca=" + marca + ", preciocompra=" + preciocompra + ", precioventa=" + precioventa + '}';
     }
 
     public void setColor(String color) {
@@ -57,12 +61,5 @@ public class Vehiculo {
     public void setPrecioventa(double precioventa) {
         this.precioventa = precioventa;
     }
-    
-    
-    
-    
-    
-    
-    
-    
+
 }

@@ -9,10 +9,15 @@ package clases;
  *
  * @author daw
  */
-public class Quad extends VehiculoMotor{
+public class Quad extends VehiculoMotor implements interfaz {
 
     public Quad(String matricula, int kilometros, String color, String marca, double preciocompra) {
         super(matricula, kilometros, color, marca, preciocompra);
+    }
+
+    @Override
+    public void añadirkilometros(int maskilometros) {
+        kilometros = maskilometros + kilometros;
     }
 
     public String getMatricula() {
@@ -62,8 +67,5 @@ public class Quad extends VehiculoMotor{
     public void setPrecioventa(double precioventa) {
         this.precioventa = precioventa;
     }
-    
-    
-    
-    
+
 }

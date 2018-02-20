@@ -7,6 +7,7 @@ package main;
 
 import java.util.Scanner;
 import funcionalidad.Funcionalidad;
+
 /**
  *
  * @author daw
@@ -18,26 +19,29 @@ public class main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Funcionalidad funcionalidad= new Funcionalidad();
-    boolean salir = false;
+        Funcionalidad funcionalidad = new Funcionalidad();
+        boolean salir = false;
         do {
             Scanner sc = new Scanner(System.in);
             System.out.println("Seleccione:\n"
                     + "1. Comprobar vehiculo \n"
-                    + "2. Dar de alta usuarios \n"
-                    + "3. Dar de baja usuarios \n"
-                    + "4. Prestar un libro/revista \n"
-                    + "5. Devolver un libro \n");
+                    + "2. Vender Vehiculo \n"
+                    + "3. Facturacion de la empresa \n"
+                    + "4. Probar vehiculo \n"
+                    + "5.Salir");
             int opcion = sc.nextInt();
             sc.nextLine();
             switch (opcion) {
-                case 1: funcionalidad.comprar();
+                case 1:
+                    funcionalidad.comprar();
                     break;
-                case 2: 
+                case 2:
+                    funcionalidad.vender();
                     break;
-                case 3: 
+                case 3:
+                    funcionalidad.facturacion();
                     break;
-                case 4: 
+                case 4:funcionalidad.probar();
                     break;
                 case 5:
                     salir = true;
