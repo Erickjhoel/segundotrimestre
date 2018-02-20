@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+
+        crossorigin="anonymous"></script>
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+        <link href="ccs/PAG2.css" rel="stylesheet" type="text/css"/>
+        <link href="ccs/menu.css" rel="stylesheet" type="text/css"/>
+
+    </head>
+    <body>
+        <div class="menu">
+            <a href="index.html">ZanaCar</a>
+            <a href="pag2.html">Merchadona</a>
+        </div>
+
+        <h3>Datos personales</h3>
+        <div class="grande">
+            <div  class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">assignment_ind</i>
+                    <input id="app" type="text" name="werweR" class="validate">
+                    <label for="app">Nombre</label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">assignment_ind</i>
+                    <input id="app" type="text" name="werweR" class="validate">
+                    <label for="app">Apellido</label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">assignment_ind</i>
+                    <input id="app" type="text" name="werweR" class="validate">
+                    <label for="app">DNI</label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">assignment_ind</i>
+                    <input id="app" type="text" name="werweR" class="validate">
+                    <label for="app">Direccion</label>
+                </div> 
+            </div>
+        </div>
+
+        <h3>caracteristicas</h3>
+        <div class="grande2">
+            <div class="row">
+                <div class="input-field col s4">
+                    <div>
+                        <i class="material-icons prefix">wc</i>
+                        <select>
+                            <option value="0" disabled selected>Seleccione su sexo</option>
+                            <option value="1">Hombre</option>
+                            <option value="2">Mujer</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="input-field col s4">
+                    <i class="material-icons prefix">access_time</i>
+                    <input type="text" class="datepicker">
+                    <label> Fecha de nacimiento</label>
+                </div>
+                <div class="input-field col s4">
+                    <div>
+                        <i class="material-icons prefix">brightness_3</i>
+                        <select>
+                            <option value="0" disabled selected>Seleccione su turno</option>
+                            <option value="1">Mañana</option>
+                            <option value="2">Tarde</option>
+                            <option value="3">Nocche</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="input-field col s4">
+                    <div>
+                        <i class="material-icons prefix">supervisor_account</i>
+                        <select>
+                            <option value="0" disabled selected>Puesto al que opta</option>
+                            <option value="1">Reponedor</option>
+                            <option value="2">Cajera</option>
+                            <option value="2">Jefe</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="input-field col s4">
+                    <div>
+                        <i class="material-icons prefix">filter_b_and_w</i>
+                        <select>
+                            <option value="0" disabled selected>Color favorito para el uniforme</option>
+                            <option value="1">Rojo</option>
+                            <option value="2">Azul</option>
+                            <option value="3">Negro</option>
+                            <option value="3">Multicolor</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="input-field col s4">
+                    <i class="material-icons prefix">attach_money</i>
+                    <p class="range-field">
+                        <input type="range" id="test5" min="0" max="1000" />
+                    </p>
+                    <label> Sueldo</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s4">
+                <p>
+                    <input  class="with-gap" name="group1" type="radio" id="test1" />
+                    <label for="test5">Acepta las politicas de la empresa</label>
+                </p>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+        <script>
+
+            $(document).ready(function () {
+                $(".button-collapse").sideNav();
+                $('.datepicker').pickadate({
+                    selectMonths: true, // Creates a dropdown to control month
+                    selectYears: 15, // Creates a dropdown of 15 years to control year,
+                    today: 'Today',
+                    clear: 'Clear',
+                    close: 'Ok',
+                    closeOnSelect: false // Close upon selecting a date,
+                });
+                $(document).ready(function () {
+                    $('select').material_select();
+                });
+            });
+        </script>
+        <script>
+            var slider = document.getElementById('test-slider');
+            noUiSlider.create(slider, {
+                start: [20, 80],
+                connect: true,
+                step: 1,
+                orientation: 'horizontal', // 'horizontal' or 'vertical'
+                range: {
+                    'min': 0,
+                    'max': 100
+                },
+                format: wNumb({
+                    decimals: 0
+                })
+            });
+        </script>
+    </body>
+</html>
