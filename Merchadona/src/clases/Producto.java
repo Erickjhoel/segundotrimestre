@@ -12,5 +12,44 @@ package clases;
 public class Producto {
     private String nombre;
     private double precioBase;
-    private int cantidad;
+    private int cantidadStock;
+
+    public Producto(String nombre, double precioBase, int cantidadStock) {
+        this.nombre = nombre;
+        this.precioBase = precioBase;
+        this.cantidadStock = cantidadStock;
+    }
+
+    
+    
+    
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public double getPrecioBase() {
+        return precioBase;
+    }
+
+    public void setPrecioBase(double precioBase) {
+        this.precioBase = precioBase;
+    }
+
+    public int getCantidadStock() {
+        return cantidadStock;
+    }
+
+    public void setCantidadStock(int cantidadStock) {
+        this.cantidadStock = cantidadStock;
+    }
+    
+    
+    
+    
+    
+    
 }

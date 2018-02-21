@@ -36,11 +36,9 @@ public class Main {
             int opcionAdmin = sc.nextInt();
             sc.nextLine();
             switch (opcionAdmin) {
-                case 1:
-
+                case 1:funcionalidad.daraltaempleado();
                     break;
-                case 2:
-
+                case 2:funcionalidad.daraltaproducto();
                     break;
                 default:
                     System.out.println("Opcion no valida");

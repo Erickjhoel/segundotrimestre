@@ -13,4 +13,18 @@ import java.time.LocalTime;
  */
 public class Perecedero extends Producto{
     private LocalTime fechareposicion;
+
+    public Perecedero(String nombre, double precioBase, int cantidadStock) {
+        super(nombre, precioBase, cantidadStock);
+    }
+
+    public LocalTime getFechareposicion() {
+        return fechareposicion;
+    }
+
+    public void setFechareposicion(LocalTime fechareposicion) {
+        this.fechareposicion = fechareposicion;
+    }
+    
+    
 }
