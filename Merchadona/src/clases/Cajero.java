@@ -9,6 +9,21 @@ package clases;
  *
  * @author daw
  */
-public class Cajero extends Empleado{
+public class Cajero extends Empleado {
+
     private double preciototal;
+
+    public Cajero(String nombre,Integer ID) {
+        super(nombre,ID);
+
+    }
+
+    public double getPreciototal() {
+        return preciototal;
+    }
+
+    public void setPreciototal(double preciototal) {
+        this.preciototal = preciototal;
+    }
+
 }

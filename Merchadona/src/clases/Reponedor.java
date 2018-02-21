@@ -11,4 +11,18 @@ package clases;
  */
 public class Reponedor extends Empleado{
     private int totalrepuestos;
+
+    public Reponedor(String nombre, Integer ID) {
+        super(nombre, ID);
+    }
+
+    public int getTotalrepuestos() {
+        return totalrepuestos;
+    }
+
+    public void setTotalrepuestos(int totalrepuestos) {
+        this.totalrepuestos = totalrepuestos;
+    }
+    
+    
 }

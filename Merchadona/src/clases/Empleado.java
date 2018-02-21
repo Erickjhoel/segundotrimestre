@@ -10,6 +10,37 @@ package clases;
  * @author daw
  */
 public abstract class Empleado {
-    private String nombre;
-    private int ID;
+    String nombre;
+    private Integer ID;//comprobar que esto no de fallo
+
+    public Empleado(String nombre, Integer ID) {
+        this.nombre = nombre;
+        this.ID = ID;
+    }
+    
+    
+    
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+    
+    
+    
+    
+    
+    
+    
 }
