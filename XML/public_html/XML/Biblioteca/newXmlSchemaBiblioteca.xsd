@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<xs:schema version="1.0"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+    
+    <xs:element name="Biblioteca">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Libros">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Libro" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="ISBN" type="xs:string" />
+                                        <xs:element name="Titulo" type="xs:string" />
+                                        <xs:element name="Autor" type="xs:string" />
+                                        <xs:element name="NumeroPaginas" type="xs:integer" />
+                                        <xs:element name="Prestados" type="xs:booleand" />
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+    
+                <xs:element name="Usuarios">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Usuario" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Nombre" type="xs:string"/>
+                                        <xs:element name="NumeroLibrosPrestados" type="xs:integer"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    
+    
+</xs:schema>

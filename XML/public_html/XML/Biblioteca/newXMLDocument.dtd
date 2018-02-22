@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!--
+    TODO define vocabulary identification
+    PUBLIC ID: -//vendor//vocabulary//EN
+    SYSTEM ID: http://server/path/newXMLDocument.dtd
+
+-->
+
+<!--
+    An example how to use this DTD from your XML document:
+
+    <?xml version="1.0"?>
+
+    <!DOCTYPE Biblioteca SYSTEM "newXMLDocument.dtd">
+
+    <Biblioteca>
+    ...
+    </Biblioteca>
+-->
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT Biblioteca (Libros|Usuarios)*>
+<!ATTLIST Biblioteca
+    xsi:noNamespaceSchemaLocation CDATA #IMPLIED
+    xmlns:xsi CDATA #IMPLIED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT Libros (Libro)*>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT Libro (ISBN,Titulo,Autor,NumeroPaginas,Prestados)*>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT ISBN EMPTY>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT Titulo EMPTY>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT Autor EMPTY>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT NumeroPaginas EMPTY>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT Prestados EMPTY>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT Usuarios (Usuario)*>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT Usuario (Nombre,NumeroLibrosPrestados)*>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT Nombre EMPTY>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT NumeroLibrosPrestados EMPTY>

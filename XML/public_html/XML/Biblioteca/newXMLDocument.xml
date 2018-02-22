@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<Biblioteca
+    xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+    xsi:noNamespaceSchemaLocation='file:/home/daw/NetBeansProjects/segundotrimestre/XML/public_html/XML/Biblioteca/newXmlSchemaBiblioteca.xsd'>
+    <Libros>
+        <Libro>
+            <ISBN></ISBN>
+            <Titulo></Titulo>
+            <Autor></Autor>
+            <NumeroPaginas></NumeroPaginas>
+            <Prestados></Prestados>
+        </Libro>
+        <Libro>
+            <ISBN></ISBN>
+            <Titulo></Titulo>
+            <Autor></Autor>
+            <NumeroPaginas></NumeroPaginas>
+            <Prestados></Prestados>
+        </Libro>
+        <Libro>
+            <ISBN></ISBN>
+            <Titulo></Titulo>
+            <Autor></Autor>
+            <NumeroPaginas></NumeroPaginas>
+            <Prestados></Prestados>
+        </Libro>
+    </Libros>
+    <Usuarios>
+        <Usuario>
+            <Nombre></Nombre>
+            <NumeroLibrosPrestados></NumeroLibrosPrestados>
+        </Usuario>
+        <Usuario>
+            <Nombre></Nombre>
+            <NumeroLibrosPrestados></NumeroLibrosPrestados>
+        </Usuario>
+        <Usuario>
+            <Nombre></Nombre>
+            <NumeroLibrosPrestados></NumeroLibrosPrestados>
+        </Usuario>
+    </Usuarios>
+
+</Biblioteca>
