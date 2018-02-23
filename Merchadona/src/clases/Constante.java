@@ -15,4 +15,6 @@ public class Constante {
     public static final int NUM_SEGUNDOS_CADUCA = 60;
     public static final int NUM_SEGUNDOS_BAJA_PRECIO = 10;
     public static final double FACTOR_BAJA_PRECIO = 0.10;
+
+   
 }

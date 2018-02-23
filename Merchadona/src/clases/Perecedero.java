@@ -19,6 +19,11 @@ public class Perecedero extends Producto{
         this.fechareposicion = fechareposicion;
     }
 
+    @Override
+    public String toString() {
+        return "Perecedero{" + "fechareposicion=" + fechareposicion +super.toString()+ '}';
+    }
+
     public LocalTime getFechareposicion() {
         return fechareposicion;
     }

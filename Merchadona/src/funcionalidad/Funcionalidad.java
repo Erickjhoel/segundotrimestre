@@ -10,6 +10,8 @@ import clases.Empleado;
 import clases.Perecedero;
 import clases.Producto;
 import clases.Reponedor;
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -47,7 +49,6 @@ public class Funcionalidad {
                 String nombre;
                 System.out.println("Introduce el nombre del nuevo empleado");
                 nombre = sc.nextLine();
-                sc.nextInt();
                 Integer ID;
                 System.out.println("Introduce el ID del nuevo empleado");
                 ID = sc.nextInt();
@@ -68,6 +69,14 @@ public class Funcionalidad {
             default:
                 System.out.println("Opcion no valida");
         }
+    }
+
+    public void darbajaempleado() {
+        Integer ID;
+        System.out.println("Introduce el ID delempleado");
+        ID = sc.nextInt();
+        //Aunque no lo parezca esta pendejada funciona
+        empleados.remove(ID);
     }
 
     public void daraltaproducto() {
@@ -95,10 +104,23 @@ public class Funcionalidad {
         }
     }
 
+    public void darbajaproducto() {
+
+        for (Producto vender : productos) {
+            System.out.println(productos.toString() + "--" + productos.indexOf(vender));
+        }
+        int posicion;
+        System.out.println("elija el vehiculo que quiere vender");
+        posicion = sc.nextInt();
+        sc.nextLine();
+        productos.remove(productos.get(posicion));
+
+    }
+
     public void reponedorocajero(int ID) {
         Empleado a = empleados.get(ID);
         if (a instanceof Cajero) {
-
+            System.out.println("El ID del usuario corresponde a un cajero");
             for (Producto vender : productos) {
                 System.out.println(productos.indexOf(vender));
             }
@@ -111,25 +133,44 @@ public class Funcionalidad {
             System.out.println("cuantas cantidades del producto quierer vender");
             cantidad = sc.nextInt();
 
-            if (cantidad < productos.get(elegir).getCantidadStock()) {//si la cantidad es menor que el la cantidad en stock del producto
+            for (Producto vender : productos) {
+                if (productos.get(elegir)instanceof Perecedero) {
+                    LocalDateTime cajero = LocalDateTime.now();
+                    Duration d = Duration.between(reponedor, cajero);
+                    
+                    if (cantidad < productos.get(elegir).getCantidadStock()) {//si la cantidad es menor que el la cantidad en stock del producto
+                        precioproducto = precioproducto * cantidad;
+                        Cajero c = (Cajero) a;
+                        c.setPreciototal(c.getPreciototal() + precioproducto);//el precio total del cajero + el precio  del producto
+                        //conel set se mete directamente en la clase
+                    }
+
+                }else if  
+                        
+                (cantidad < productos.get(elegir).getCantidadStock()) {//si la cantidad es menor que el la cantidad en stock del producto
                 precioproducto = precioproducto * cantidad;
                 Cajero c = (Cajero) a;
                 c.setPreciototal(c.getPreciototal() + precioproducto);//el precio total del cajero + el precio  del producto
                 //conel set se mete directamente en la clase
+
             }
+            }
+            
         } else {
             reponedor();
         }
 
     }
-
+    
     public void reponedor() {
+        System.out.println("El ID del usuario corresponde a un reponedor");
         System.out.println("Seleccione:\n"
                 + "1. Reponer productos\n"
                 + "3. Ver lista de los que quedan en stock\n");
         int opcionAdmin = sc.nextInt();
         sc.nextLine();
         switch (opcionAdmin) {
+
             case 1:
                 for (Producto vender : productos) {
                     System.out.println(productos.indexOf(vender));
@@ -140,16 +181,17 @@ public class Funcionalidad {
                 cantidadStock = sc.nextInt();
                 System.out.println("Elija el producto que quiere reponer");
                 elegir = sc.nextInt();
-                
-                 Producto a = productos.get(elegir);//se elige el producto
+                Producto a = productos.get(elegir);//se elige el producto
                 for (Producto comprobar : productos) { //rrecorre el array de productos
                     if (a instanceof Perecedero) {// comprueba si el producto elegido es perecedero
                         Perecedero c = (Perecedero) a;// para poder llegar a los campos de perecedero
                         c.setFechareposicion(LocalTime.now());
                         c.setCantidadStock(cantidadStock + c.getCantidadStock());
+                        LocalDateTime reponedorperecedero = LocalDateTime.now();
                     } else {
                         Producto c = (Producto) a;
                         c.setCantidadStock(cantidadStock + c.getCantidadStock());
+                        LocalDateTime reponedor = LocalDateTime.now();
                     }
                 }
                 break;
@@ -159,6 +201,5 @@ public class Funcionalidad {
                 System.out.println("Opcion no valida");
         }
     }
-
 
 }

@@ -23,30 +23,47 @@ public class Main {
         // TODO code application logic here
         Funcionalidad funcionalidad = new Funcionalidad();
         boolean salir = false;
-
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Seleccione:\n"
-                + "1. ID del empleado \n");
-        int ID = sc.nextInt();
-        sc.nextLine();
-        if (ID == Constante.ADMIN_ID) {
+        do {
+            Scanner sc = new Scanner(System.in);
             System.out.println("Seleccione:\n"
-                    + "1. Dar alta empleado\n"
-                    + "3. Dar alta productos\n");
-            int opcionAdmin = sc.nextInt();
+                    + "1. ID del empleado \n"
+                    + "2 SALIR");
+            int ID = sc.nextInt();
             sc.nextLine();
-            switch (opcionAdmin) {
-                case 1:funcionalidad.daraltaempleado();
-                    break;
-                case 2:funcionalidad.daraltaproducto();
-                    break;
-                default:
-                    System.out.println("Opcion no valida");
+
+            if (ID == Constante.ADMIN_ID) {
+                System.out.println("Seleccione:\n"
+                        + "1. Dar alta empleado\n"
+                        + "2. Dar alta productos\n"
+                        + "3. Dar baja empleado\n"
+                        + "4. Dar baja productos\n");
+                int opcionAdmin = sc.nextInt();
+                sc.nextLine();
+                switch (opcionAdmin) {
+                    case 1:
+                        funcionalidad.daraltaempleado();
+                        break;
+                    case 2:
+                        funcionalidad.daraltaproducto();
+                        break;
+                    case 3:
+                        funcionalidad.darbajaempleado();
+                        break;
+                    case 4:
+                        funcionalidad.darbajaproducto();
+                        break;
+                    default:
+                        System.out.println("Opcion no valida");
+                }
+            } else if (ID == 2) {
+                salir = true;
+            } else {
+                funcionalidad.reponedorocajero(ID);
             }
-        } else {
-            funcionalidad.reponedorocajero(ID);
-        }
+        } while (!salir);
 
     }
 
 }
+
+
