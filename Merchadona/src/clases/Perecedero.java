@@ -5,6 +5,7 @@
  */
 package clases;
 
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 /**
@@ -12,9 +13,9 @@ import java.time.LocalTime;
  * @author daw
  */
 public class Perecedero extends Producto{
-    private LocalTime fechareposicion;
+    private LocalDateTime fechareposicion;
 
-    public Perecedero(LocalTime fechareposicion, String nombre, double precioBase, int cantidadStock) {
+    public Perecedero(LocalDateTime fechareposicion, String nombre, double precioBase, int cantidadStock) {
         super(nombre, precioBase, cantidadStock);
         this.fechareposicion = fechareposicion;
     }
@@ -24,13 +25,14 @@ public class Perecedero extends Producto{
         return "Perecedero{" + "fechareposicion=" + fechareposicion +super.toString()+ '}';
     }
 
-    public LocalTime getFechareposicion() {
+    public LocalDateTime getFechareposicion() {
         return fechareposicion;
     }
 
-    public void setFechareposicion(LocalTime fechareposicion) {
+    public void setFechareposicion(LocalDateTime fechareposicion) {
         this.fechareposicion = fechareposicion;
     }
+
     
     
 }

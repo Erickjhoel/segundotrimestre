@@ -25,13 +25,12 @@ public class Main {
         boolean salir = false;
         do {
             Scanner sc = new Scanner(System.in);
-            System.out.println("Seleccione:\n"
-                    + "1. ID del empleado \n"
-                    + "2 SALIR");
+            System.out.println("Introduzca una ID");
             int ID = sc.nextInt();
             sc.nextLine();
 
             if (ID == Constante.ADMIN_ID) {
+                System.out.println("ADMINISTRADOR");
                 System.out.println("Seleccione:\n"
                         + "1. Dar alta empleado\n"
                         + "2. Dar alta productos\n"
@@ -55,8 +54,7 @@ public class Main {
                     default:
                         System.out.println("Opcion no valida");
                 }
-            } else if (ID == 2) {
-                salir = true;
+
             } else {
                 funcionalidad.reponedorocajero(ID);
             }
@@ -65,5 +63,3 @@ public class Main {
     }
 
 }
-
-
