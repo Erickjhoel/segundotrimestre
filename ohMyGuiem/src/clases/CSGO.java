@@ -21,6 +21,13 @@ public class CSGO extends Ratas{
         this.mapafavorito = mapafavorito;
     }
 
+    @Override
+    public String toString() {
+        return "CSGO{"+ "equipo=" + equipo + ", numKills=" + numKills + ", mapafavorito=" + mapafavorito + "---"+super.toString()+'}';
+    }
+
+    
+
     
 
     public String getEquipo() {

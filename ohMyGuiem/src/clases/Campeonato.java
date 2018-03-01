@@ -26,17 +26,17 @@ public class Campeonato {
         this.premio = premio;
     }
 
-    public boolean addrata(PosicionRatas a) {
-        posicion= new ArrayList<>();
-        boolean repetido= false;
+    public void addrata(PosicionRatas a) {
+        posicion = new ArrayList<>();
+        boolean repetido = false;
         for (PosicionRatas posicionrepetido : posicion) {
             if (posicionrepetido.equals(a)) {
-                repetido=true;
+                repetido = true;
                 System.out.println("El jugador ya esta dentro del campeonato");
+            } else {
+                this.posicion.add(a);
             }
         }
-        this.posicion.add(a);
-        return repetido;
     }
 
 }

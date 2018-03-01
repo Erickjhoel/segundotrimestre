@@ -25,6 +25,13 @@ public abstract class Ratas {
         this.trofeos = new ArrayList<>();
     }
 
+    @Override
+    public String toString() {
+        return "Ratas{" + "ranking=" + ranking + ", nombre=" + nombre + ", numTorneoParticipado=" + numTorneoParticipado + ", trofeos=" + trofeos + '}';
+    }
+
+    
+
     
 
     

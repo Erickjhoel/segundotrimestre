@@ -12,5 +12,18 @@ package clases;
 public class LOL extends Ratas{
     private String linea;
     private String especialidad;
+
+    public LOL(String linea, String especialidad, int ranking, String nombre, int numTorneoParticipado, String trofeos) {
+        super(ranking, nombre, numTorneoParticipado, trofeos);
+        this.linea = linea;
+        this.especialidad = especialidad;
+    }
+
+    
+
+    @Override
+    public String toString() {
+        return "LOL{" + "linea=" + linea + ", especialidad=" + especialidad + super.toString()+'}';
+    }
     
 }

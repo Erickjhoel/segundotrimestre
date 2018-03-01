@@ -12,6 +12,15 @@ package clases;
  */
 public class ClassRoyal extends Ratas{
 //    private ArrayList<ClassRoyal> cartasMazo = new ArrayList<>();
-    private String nombre;
+    private String nombreCR;
     private int nivel;
+
+    public ClassRoyal(String nombreCR, int nivel, int ranking, String nombre, int numTorneoParticipado, String trofeos) {
+        super(ranking, nombre, numTorneoParticipado, trofeos);
+        this.nombreCR = nombreCR;
+        this.nivel = nivel;
+    }
+
+    
+    
 }
