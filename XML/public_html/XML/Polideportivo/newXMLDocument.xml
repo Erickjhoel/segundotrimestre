@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<Polideportivo
+    xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+    xsi:noNamespaceSchemaLocation='file:/home/daw/NetBeansProjects/segundotrimestre/XML/public_html/XML/Polideportivo/newXmlSchemaPolideportivo.xsd'>
+    <Alumnos>
+        <Alumno>
+            <Nombre></Nombre>
+            <Apellido></Apellido>
+        </Alumno>
+    </Alumnos>
+    <Actividades>
+        <Actividad>
+            <Aerobic>
+                <NumeroDePlazas>3</NumeroDePlazas>
+                <PrecioActividad>3</PrecioActividad>
+                <Horario></Horario>
+            </Aerobic>
+            <ArtesMarciales>
+                <NumeroDePlazas>6</NumeroDePlazas>
+                <PrecioActividad>6</PrecioActividad>
+                <Horario></Horario>
+            </ArtesMarciales>
+            <Natacion>
+                <NumeroDePlazas>6</NumeroDePlazas>
+                <PrecioActividad>6</PrecioActividad>
+                <Horario></Horario>
+            </Natacion>
+        </Actividad>
+    </Actividades>
+
+</Polideportivo>

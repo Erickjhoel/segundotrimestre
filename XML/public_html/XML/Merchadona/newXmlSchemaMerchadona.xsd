@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<xs:schema version="1.0"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+
+    <xs:element name="Merchadona">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Empleados">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Cajero" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Nombre" type="xs:string" />
+                                        <xs:element name="ID" type="xs:integer" />
+                                        <xs:element name="NumeroProductosVendidos" type="xs:integer" />
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Reponedor" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Nombre" type="xs:string" />
+                                        <xs:element name="ID" type="xs:integer" />
+                                        <xs:element name="NumeroProductosRepuestos" type="xs:integer" />
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                
+                <xs:element name="Productos">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Perecedero" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="FechaDeReposicion" type="xs:string" />
+                                        <xs:element name="PrecioProducto" type="xs:integer" />
+                                        <xs:element name="NombreProducto" type="xs:string" />
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="NoPerecedero" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="NombreProducto" type="xs:string" />
+                                        <xs:element name="PrecioProducto" type="xs:integer" />
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                
+                
+                
+                
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    
+    
+    
+    
+    
+</xs:schema>

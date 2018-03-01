@@ -12,49 +12,55 @@
 
     <?xml version="1.0"?>
 
-    <!DOCTYPE Biblioteca SYSTEM "newXMLDocument.dtd">
+    <!DOCTYPE ZanalCar SYSTEM "newXMLDocument.dtd">
 
-    <Biblioteca>
+    <ZanalCar>
     ...
-    </Biblioteca>
+    </ZanalCar>
 -->
 
 <!--- Put your DTDDoc comment here. -->
-<!ELEMENT Biblioteca (Libros|Usuarios)*>
-<!ATTLIST Biblioteca
+<!ELEMENT ZanalCar (Vehiculos)*>
+<!ATTLIST ZanalCar
     xsi:noNamespaceSchemaLocation CDATA #IMPLIED
     xmlns:xsi CDATA #IMPLIED
   >
 
 <!--- Put your DTDDoc comment here. -->
-<!ELEMENT Libros (Libro)*>
+<!ELEMENT Vehiculos (Coche|Moto|Bici|Quad)*>
 
 <!--- Put your DTDDoc comment here. -->
-<!ELEMENT Libro (ISBN|Titulo|Autor|NumeroPaginas|Prestados)*>
+<!ELEMENT Coche (Color|Marca|PrecioCompra|PrecioVenta|Matricula|KilometrosUso)*>
 
 <!--- Put your DTDDoc comment here. -->
-<!ELEMENT ISBN EMPTY>
+<!ELEMENT Color EMPTY>
 
 <!--- Put your DTDDoc comment here. -->
-<!ELEMENT Titulo EMPTY>
+<!ELEMENT Marca EMPTY>
 
 <!--- Put your DTDDoc comment here. -->
-<!ELEMENT Autor EMPTY>
+<!ELEMENT PrecioCompra (#PCDATA)>
 
 <!--- Put your DTDDoc comment here. -->
-<!ELEMENT NumeroPaginas (#PCDATA)>
+<!ELEMENT PrecioVenta (#PCDATA)>
 
 <!--- Put your DTDDoc comment here. -->
-<!ELEMENT Prestados (#PCDATA)>
+<!ELEMENT Matricula EMPTY>
 
 <!--- Put your DTDDoc comment here. -->
-<!ELEMENT Usuarios (Usuario)*>
+<!ELEMENT KilometrosUso (#PCDATA)>
 
 <!--- Put your DTDDoc comment here. -->
-<!ELEMENT Usuario (Nombre|NumeroLibrosPrestados)*>
+<!ELEMENT Moto (Color|Marca|PrecioCompra|PrecioVenta|Matricula|KilometrosUso)*>
 
 <!--- Put your DTDDoc comment here. -->
-<!ELEMENT Nombre EMPTY>
+<!ELEMENT Bici (Color|Marca|PrecioCompra|PrecioVenta|TamañoRueda|NumeroCambios)*>
 
 <!--- Put your DTDDoc comment here. -->
-<!ELEMENT NumeroLibrosPrestados (#PCDATA)>
+<!ELEMENT TamañoRueda (#PCDATA)>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT NumeroCambios (#PCDATA)>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT Quad (Color|Marca|PrecioCompra|PrecioVenta|Matricula|KilometrosUso)*>

@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<xs:schema version="1.0"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+
+    
+    <xs:element name="ZanalCar">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Vehiculos">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Coche" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Color" type="xs:string" />
+                                        <xs:element name="Marca" type="xs:string" />
+                                        <xs:element name="PrecioCompra" type="xs:integer" />
+                                        <xs:element name="PrecioVenta" type="xs:integer" />
+                                        <xs:element name="Matricula" type="xs:string" />
+                                        <xs:element name="KilometrosUso" type="xs:integer" />
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Moto" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Color" type="xs:string" />
+                                        <xs:element name="Marca" type="xs:string" />
+                                        <xs:element name="PrecioCompra" type="xs:integer" />
+                                        <xs:element name="PrecioVenta" type="xs:integer" />
+                                        <xs:element name="Matricula" type="xs:string" />
+                                        <xs:element name="KilometrosUso" type="xs:integer" />
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Bici" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Color" type="xs:string" />
+                                        <xs:element name="Marca" type="xs:string" />
+                                        <xs:element name="PrecioCompra" type="xs:integer" />
+                                        <xs:element name="PrecioVenta" type="xs:integer" />
+                                        <xs:element name="TamañoRueda" type="xs:integer" />
+                                        <xs:element name="NumeroCambios" type="xs:integer" />
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Quad" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Color" type="xs:string" />
+                                        <xs:element name="Marca" type="xs:string" />
+                                        <xs:element name="PrecioCompra" type="xs:integer" />
+                                        <xs:element name="PrecioVenta" type="xs:integer" />
+                                        <xs:element name="Matricula" type="xs:string" />
+                                        <xs:element name="KilometrosUso" type="xs:integer" />
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+</xs:schema>

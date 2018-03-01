@@ -14,36 +14,36 @@ and open the template in the editor.
             <ISBN></ISBN>
             <Titulo></Titulo>
             <Autor></Autor>
-            <NumeroPaginas></NumeroPaginas>
-            <Prestados></Prestados>
+            <NumeroPaginas>18</NumeroPaginas>
+            <Prestados>false</Prestados>
         </Libro>
         <Libro>
             <ISBN></ISBN>
             <Titulo></Titulo>
             <Autor></Autor>
-            <NumeroPaginas></NumeroPaginas>
-            <Prestados></Prestados>
+            <NumeroPaginas>24</NumeroPaginas>
+            <Prestados>false</Prestados>
         </Libro>
         <Libro>
             <ISBN></ISBN>
             <Titulo></Titulo>
             <Autor></Autor>
-            <NumeroPaginas></NumeroPaginas>
-            <Prestados></Prestados>
+            <NumeroPaginas>31</NumeroPaginas>
+            <Prestados>false</Prestados>
         </Libro>
     </Libros>
     <Usuarios>
         <Usuario>
             <Nombre></Nombre>
-            <NumeroLibrosPrestados></NumeroLibrosPrestados>
+            <NumeroLibrosPrestados>45</NumeroLibrosPrestados>
         </Usuario>
         <Usuario>
             <Nombre></Nombre>
-            <NumeroLibrosPrestados></NumeroLibrosPrestados>
+            <NumeroLibrosPrestados>80</NumeroLibrosPrestados>
         </Usuario>
         <Usuario>
             <Nombre></Nombre>
-            <NumeroLibrosPrestados></NumeroLibrosPrestados>
+            <NumeroLibrosPrestados>90</NumeroLibrosPrestados>
         </Usuario>
     </Usuarios>
 

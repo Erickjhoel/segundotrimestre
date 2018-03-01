@@ -12,49 +12,55 @@
 
     <?xml version="1.0"?>
 
-    <!DOCTYPE Biblioteca SYSTEM "newXMLDocument.dtd">
+    <!DOCTYPE Merchadona SYSTEM "newXMLDocument.dtd">
 
-    <Biblioteca>
+    <Merchadona>
     ...
-    </Biblioteca>
+    </Merchadona>
 -->
 
 <!--- Put your DTDDoc comment here. -->
-<!ELEMENT Biblioteca (Libros|Usuarios)*>
-<!ATTLIST Biblioteca
+<!ELEMENT Merchadona (Empleados|Productos)*>
+<!ATTLIST Merchadona
     xsi:noNamespaceSchemaLocation CDATA #IMPLIED
     xmlns:xsi CDATA #IMPLIED
   >
 
 <!--- Put your DTDDoc comment here. -->
-<!ELEMENT Libros (Libro)*>
+<!ELEMENT Empleados (Cajero|Reponedor)*>
 
 <!--- Put your DTDDoc comment here. -->
-<!ELEMENT Libro (ISBN|Titulo|Autor|NumeroPaginas|Prestados)*>
-
-<!--- Put your DTDDoc comment here. -->
-<!ELEMENT ISBN EMPTY>
-
-<!--- Put your DTDDoc comment here. -->
-<!ELEMENT Titulo EMPTY>
-
-<!--- Put your DTDDoc comment here. -->
-<!ELEMENT Autor EMPTY>
-
-<!--- Put your DTDDoc comment here. -->
-<!ELEMENT NumeroPaginas (#PCDATA)>
-
-<!--- Put your DTDDoc comment here. -->
-<!ELEMENT Prestados (#PCDATA)>
-
-<!--- Put your DTDDoc comment here. -->
-<!ELEMENT Usuarios (Usuario)*>
-
-<!--- Put your DTDDoc comment here. -->
-<!ELEMENT Usuario (Nombre|NumeroLibrosPrestados)*>
+<!ELEMENT Cajero (Nombre|ID|NumeroProductosVendidos)*>
 
 <!--- Put your DTDDoc comment here. -->
 <!ELEMENT Nombre EMPTY>
 
 <!--- Put your DTDDoc comment here. -->
-<!ELEMENT NumeroLibrosPrestados (#PCDATA)>
+<!ELEMENT ID (#PCDATA)>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT NumeroProductosVendidos (#PCDATA)>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT Reponedor (Nombre|ID|NumeroProductosRepuestos)*>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT NumeroProductosRepuestos (#PCDATA)>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT Productos (Perecedero|NoPerecedero)*>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT Perecedero (FechaDeReposicion|PrecioProducto|NombreProducto)*>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT FechaDeReposicion EMPTY>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT PrecioProducto (#PCDATA)>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT NombreProducto EMPTY>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT NoPerecedero (NombreProducto|PrecioProducto)*>

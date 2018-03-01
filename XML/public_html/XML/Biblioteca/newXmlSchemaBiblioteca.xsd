@@ -22,7 +22,7 @@ and open the template in the editor.
                                         <xs:element name="Titulo" type="xs:string" />
                                         <xs:element name="Autor" type="xs:string" />
                                         <xs:element name="NumeroPaginas" type="xs:integer" />
-                                        <xs:element name="Prestados" type="xs:booleand" />
+                                        <xs:element name="Prestados" type="xs:boolean" />
                                     </xs:sequence>
                                 </xs:complexType>
                             </xs:element>

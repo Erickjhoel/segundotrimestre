@@ -12,49 +12,52 @@
 
     <?xml version="1.0"?>
 
-    <!DOCTYPE Biblioteca SYSTEM "newXMLDocument.dtd">
+    <!DOCTYPE Polideportivo SYSTEM "newXMLDocument.dtd">
 
-    <Biblioteca>
+    <Polideportivo>
     ...
-    </Biblioteca>
+    </Polideportivo>
 -->
 
 <!--- Put your DTDDoc comment here. -->
-<!ELEMENT Biblioteca (Libros|Usuarios)*>
-<!ATTLIST Biblioteca
+<!ELEMENT Polideportivo (Alumnos|Actividades)*>
+<!ATTLIST Polideportivo
     xsi:noNamespaceSchemaLocation CDATA #IMPLIED
     xmlns:xsi CDATA #IMPLIED
   >
 
 <!--- Put your DTDDoc comment here. -->
-<!ELEMENT Libros (Libro)*>
+<!ELEMENT Alumnos (Alumno)*>
 
 <!--- Put your DTDDoc comment here. -->
-<!ELEMENT Libro (ISBN|Titulo|Autor|NumeroPaginas|Prestados)*>
-
-<!--- Put your DTDDoc comment here. -->
-<!ELEMENT ISBN EMPTY>
-
-<!--- Put your DTDDoc comment here. -->
-<!ELEMENT Titulo EMPTY>
-
-<!--- Put your DTDDoc comment here. -->
-<!ELEMENT Autor EMPTY>
-
-<!--- Put your DTDDoc comment here. -->
-<!ELEMENT NumeroPaginas (#PCDATA)>
-
-<!--- Put your DTDDoc comment here. -->
-<!ELEMENT Prestados (#PCDATA)>
-
-<!--- Put your DTDDoc comment here. -->
-<!ELEMENT Usuarios (Usuario)*>
-
-<!--- Put your DTDDoc comment here. -->
-<!ELEMENT Usuario (Nombre|NumeroLibrosPrestados)*>
+<!ELEMENT Alumno (Nombre|Apellido)*>
 
 <!--- Put your DTDDoc comment here. -->
 <!ELEMENT Nombre EMPTY>
 
 <!--- Put your DTDDoc comment here. -->
-<!ELEMENT NumeroLibrosPrestados (#PCDATA)>
+<!ELEMENT Apellido EMPTY>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT Actividades (Actividad)*>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT Actividad (Aerobic|ArtesMarciales|Natacion)*>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT Aerobic (NumeroDePlazas|PrecioActividad|Horario)*>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT NumeroDePlazas (#PCDATA)>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT PrecioActividad (#PCDATA)>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT Horario EMPTY>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT ArtesMarciales (NumeroDePlazas|PrecioActividad|Horario)*>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT Natacion (NumeroDePlazas|PrecioActividad|Horario)*>
