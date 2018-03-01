@@ -11,14 +11,17 @@ import java.util.ArrayList;
  *
  * @author daw
  */
-public class PosicionRatas extends Ratas{
-    private ArrayList<String> ratas;
+public class PosicionRatas{
+    private ArrayList<Ratas> ratas;
     private int posicion;
 
-    public PosicionRatas(int posicion, int ranking, String nombre, int numTorneoParticipado, String trofeos) {
-        super(ranking, nombre, numTorneoParticipado, trofeos);
+    public PosicionRatas(Ratas a, int posicion) {
+        ratas = new ArrayList<>();
         this.posicion = posicion;
+        this.ratas.add(a);
     }
+
+   
 
     
 

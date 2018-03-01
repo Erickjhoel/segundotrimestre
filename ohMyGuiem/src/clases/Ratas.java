@@ -26,6 +26,8 @@ public abstract class Ratas {
     }
 
     
+
+    
     public int getRanking() {
         return ranking;
     }
