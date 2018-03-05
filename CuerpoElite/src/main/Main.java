@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cuerpoelite;
+package main;
 
 /**
  *
  * @author A
  */
-public class CuerpoElite {
+public class Main {
 
     /**
      * @param args the command line arguments
