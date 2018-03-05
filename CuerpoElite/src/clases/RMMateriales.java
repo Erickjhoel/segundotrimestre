@@ -12,6 +12,5 @@ import java.util.ArrayList;
 public class RMMateriales {
     private int nivelHabilidadMinimo;
     private int rangoDeDaño;
-    private ArrayList<Vehiculo>vehiculos;
     
 }

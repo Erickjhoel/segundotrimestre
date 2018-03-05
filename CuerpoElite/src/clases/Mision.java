@@ -17,5 +17,6 @@ public class Mision {
     private int nivelExperienciaGanada;
     private boolean exito;
     private ArrayList<RecursosMilitares> recursos;
+    private String tipo;
     
 }
