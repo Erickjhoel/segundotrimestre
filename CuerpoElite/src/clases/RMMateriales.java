@@ -9,8 +9,15 @@ import java.util.ArrayList;
  *
  * @author daw
  */
-public class RMMateriales {
+public abstract class RMMateriales extends RecursosMilitares{
     private int nivelHabilidadMinimo;
     private int rangoDeDaño;
+
+    public RMMateriales(int nivelHabilidadMinimo, int rangoDeDaño, int potenciaMuerte, String nombre) {
+        super(potenciaMuerte, nombre);
+        this.nivelHabilidadMinimo = nivelHabilidadMinimo;
+        this.rangoDeDaño = rangoDeDaño;
+    }
+
     
 }

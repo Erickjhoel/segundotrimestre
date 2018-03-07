@@ -5,10 +5,19 @@
  */
 package clases;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author A
  */
-public class RecursosMilitaresEquipos {
+public class RecursosMilitaresEquipos extends RMMateriales{
     private int nivelMinimo;
+
+    public RecursosMilitaresEquipos(int nivelMinimo, int nivelHabilidadMinimo, int rangoDeDaño, int potenciaMuerte, String nombre) {
+        super(nivelHabilidadMinimo, rangoDeDaño, potenciaMuerte, nombre);
+        this.nivelMinimo = nivelMinimo;
+    }
+
+    
 }

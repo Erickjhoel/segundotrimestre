@@ -9,8 +9,17 @@ import java.util.ArrayList;
  *
  * @author daw
  */
-public class RecursosMilitares {
+public abstract class RecursosMilitares {
     private int potenciaMuerte;
     private String nombre;
     private ArrayList<Mision> misionparticipada;
+
+    public RecursosMilitares(int potenciaMuerte, String nombre) {
+        this.potenciaMuerte = potenciaMuerte;
+        this.nombre = nombre;
+        this.misionparticipada = new ArrayList<>();
+    }
+    
+    
+    
 }

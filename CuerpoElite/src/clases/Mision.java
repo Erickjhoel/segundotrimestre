@@ -18,5 +18,14 @@ public class Mision {
     private boolean exito;
     private ArrayList<RecursosMilitares> recursos;
     private String tipo;
+
+    public Mision(LocalDate fecha, String lugar, int nivelExperienciaGanada, boolean exito, ArrayList<RecursosMilitares> recursos, String tipo) {
+        this.fecha = fecha;
+        this.lugar = lugar;
+        this.nivelExperienciaGanada = nivelExperienciaGanada;
+        this.exito = exito;
+        this.recursos = new ArrayList<>();
+        this.tipo = tipo;
+    }
     
 }

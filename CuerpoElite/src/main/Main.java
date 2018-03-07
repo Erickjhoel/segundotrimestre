@@ -24,14 +24,14 @@ public class Main {
         do {
             Scanner sc = new Scanner(System.in);
             System.out.println("Seleccione:\n"
-                    + "1. Realizar mision \n"
+                    + "1. Crear mision \n"
                     + "2. Descanzo de recursos \n"
                     + "3.Salir");
             int opcion = sc.nextInt();
             sc.nextLine();
             switch (opcion) {
                 case 1:
-                    
+                    funcionalidad.crearmision();
                     break;
                 case 2:
                     

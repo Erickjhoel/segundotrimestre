@@ -5,10 +5,17 @@
  */
 package clases;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+
 /**
  *
  * @author A
  */
-public class MisionCombate {
+public class MisionCombate  extends Mision{
     private int nivelMinimoPotenciaMuerte;
+
+    public MisionCombate(LocalDate fecha, String lugar, int nivelExperienciaGanada, boolean exito, ArrayList<RecursosMilitares> recursos, String tipo) {
+        super(fecha, lugar, nivelExperienciaGanada, exito, recursos, tipo);
+    }
 }
