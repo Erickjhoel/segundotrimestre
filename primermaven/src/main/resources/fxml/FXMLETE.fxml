@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/fxmlete.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FXMLETEController">
+   <children>
+      <Button fx:id="fxBotonHola" layoutX="191.0" layoutY="232.0" mnemonicParsing="false" onAction="#handleCapturarunEvento" prefHeight="26.0" prefWidth="171.0" styleClass="jajio" stylesheets="@../css/fxmlete.css" text="nuevo" />
+      <TextField fx:id="fxcajatexto" layoutX="193.0" layoutY="104.0" onAction="#handleCapturarunEvento" />
+      <TextField fx:id="fxcajatextoedad" layoutX="193.0" layoutY="145.0" onAction="#handleCapturarunEvento" />
+      <Button fx:id="fxBotonIzquierda" layoutX="62.0" layoutY="232.0" mnemonicParsing="false" onAction="#handleCapturarunEventoIzquierda" text="Button" />
+      <Button fx:id="fxBotonDerecha" layoutX="458.0" layoutY="232.0" mnemonicParsing="false" onAction="#handleCapturarunEventoDerecha" text="Button" />
+   </children>
+</AnchorPane>
