@@ -9,7 +9,8 @@
       <Button fx:id="fxBotonHola" layoutX="191.0" layoutY="232.0" mnemonicParsing="false" onAction="#handleCapturarunEvento" prefHeight="26.0" prefWidth="171.0" styleClass="jajio" stylesheets="@../css/fxmlete.css" text="nuevo" />
       <TextField fx:id="fxcajatexto" layoutX="193.0" layoutY="104.0" onAction="#handleCapturarunEvento" />
       <TextField fx:id="fxcajatextoedad" layoutX="193.0" layoutY="145.0" onAction="#handleCapturarunEvento" />
-      <Button fx:id="fxBotonIzquierda" layoutX="62.0" layoutY="232.0" mnemonicParsing="false" onAction="#handleCapturarunEventoIzquierda" text="Button" />
-      <Button fx:id="fxBotonDerecha" layoutX="458.0" layoutY="232.0" mnemonicParsing="false" onAction="#handleCapturarunEventoDerecha" text="Button" />
+      <Button fx:id="fxBotonIzquierda" layoutX="62.0" layoutY="232.0" mnemonicParsing="false" onAction="#handleCapturarunEventoIzquierda" text="izquierda" />
+      <Button fx:id="fxBotonDerecha" layoutX="458.0" layoutY="232.0" mnemonicParsing="false" onAction="#handleCapturarunEventoDerecha" text="derecha" />
+      <Button fx:id="fxExterminar" layoutX="234.0" layoutY="291.0" mnemonicParsing="false" onAction="#handleExterminarEvento" styleClass="exterminar" stylesheets="@../css/fxmlete.css" text="Exterminar" />
    </children>
 </AnchorPane>

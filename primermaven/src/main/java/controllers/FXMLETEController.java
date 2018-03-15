@@ -27,9 +27,10 @@ import modelo.Cliente;
  * @author daw
  */
 public class FXMLETEController implements Initializable {
+
     List<Cliente> clientes;
-    private int indice=0;
-    
+    private int indice = 0;
+
     @FXML
     private TextField fxcajatexto;
     @FXML
@@ -37,42 +38,78 @@ public class FXMLETEController implements Initializable {
 
     @FXML
     private Button fxBotonHola;
+    @FXML
+    private Button fxExterminar;
+    @FXML
     private Button fxBotonIzquierda;
+    @FXML
     private Button fxBotonDerecha;
-    private String texto = "OLIS";
+
+    private String nombre;
     private int edad;
 
     @FXML
     public void handleCapturarunEvento(ActionEvent event) throws IOException {
-        indice++;
-        fxcajatexto.setText(texto);
+
+        nombre = fxcajatexto.getText();
+        edad = Integer.parseInt(fxcajatextoedad.getText());
+        Cliente ete = new Cliente(nombre, edad);
+        clientes.add(ete);
 //        fxcajatextoedad.setText(edad);
 //        Alert a= new Alert(Alert.AlertType.INFORMATION,texto, ButtonType.CLOSE);
 //        a.showAndWait();
     }
+
+    @FXML
+    public void handleExterminarEvento(ActionEvent event) throws IOException {
+        if(indice==clientes.size()){
+            indice=clientes.size()-1;
+            clientes.remove(indice);
+        }
+         clientes.remove(indice);
+    }
+
     @FXML
     public void handleCapturarunEventoIzquierda(ActionEvent event) throws IOException {
-    indice--;
-    fxcajatexto.setText(clientes.get(indice).getNombre());
-    fxcajatextoedad.setText(""+clientes.get(indice).getEdad());
+        indice--;
+        if (indice >=0) {
+            fxcajatexto.setText(clientes.get(indice).getNombre());
+            fxcajatextoedad.setText("" + clientes.get(indice).getEdad());
+            fxBotonDerecha.setDisable(false);
+        } else {
+            fxBotonIzquierda.setDisable(true);
+        }
     }
+
     @FXML
     public void handleCapturarunEventoDerecha(ActionEvent event) throws IOException {
         indice++;
-    fxcajatexto.setText(clientes.get(indice).getNombre());
-    fxcajatextoedad.setText(""+clientes.get(indice).getEdad());
+        if (indice < clientes.size()) {
+            fxcajatexto.setText(clientes.get(indice).getNombre());
+            fxcajatextoedad.setText("" + clientes.get(indice).getEdad());
+            fxBotonIzquierda.setDisable(false);
+        } else {
+            fxBotonDerecha.setDisable(true);
+        }
     }
 
     /**
      * Initializes the controller class.
+     *
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        clientes= new LinkedList<>();
+        clientes = new LinkedList<>();
         clientes.add(new Cliente("pepe", 5));
         clientes.add(new Cliente("javier", 50));
         clientes.add(new Cliente("juan", 100));
+        clientes.add(new Cliente("jacinto", 500));
+        clientes.add(new Cliente("aurelio", 250));
+        clientes.add(new Cliente("amador", 2));
+        clientes.add(new Cliente("teodoro", 3));
     }
 
 }
