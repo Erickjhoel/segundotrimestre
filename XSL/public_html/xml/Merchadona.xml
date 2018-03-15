@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<Merchadona
+    xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+    xsi:noNamespaceSchemaLocation='file:/home/daw/NetBeansProjects/segundotrimestre/XML/public_html/XML/Merchadona/newXmlSchemaMerchadona.xsd'>
+    <Empleados>
+        <Cajero>
+            <Nombre></Nombre>
+            <ID>3</ID>
+            <NumeroProductosVendidos>8</NumeroProductosVendidos>
+        </Cajero>
+        <Reponedor>
+            <Nombre></Nombre>
+            <ID>3</ID>
+            <NumeroProductosRepuestos>3</NumeroProductosRepuestos>
+        </Reponedor>
+    </Empleados>
+    <Productos>
+        <Perecedero>
+            <FechaDeReposicion></FechaDeReposicion>
+            <PrecioProducto>9</PrecioProducto>
+            <NombreProducto></NombreProducto>
+        </Perecedero>
+        <NoPerecedero>
+            <NombreProducto></NombreProducto>
+            <PrecioProducto>3</PrecioProducto>
+        </NoPerecedero>
+    </Productos>
+
+</Merchadona>
