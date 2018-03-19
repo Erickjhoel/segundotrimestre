@@ -44,7 +44,6 @@ public class Funcionalidad {
         if (empleados.get(ID) == null) {
             switch (puesto) {
                 case 1:
-
                     Cajero nuevocajero = new Cajero(nombre, ID);
                     empleados.put(nuevocajero.getID(), nuevocajero);
                     break;
@@ -59,13 +58,14 @@ public class Funcionalidad {
         return altaOK;
     }
 
-    public void darbajaempleado() {
-        Integer ID;
-        System.out.println("Introduce el ID delempleado");
-        ID = sc.nextInt();
-        sc.nextLine();
-        //Aunque no lo parezca esta pendejada funciona
+    public boolean darbajaempleado(Integer ID) {
+        boolean darbaja=false;
+        if (empleados.get(ID)!= null){
         empleados.remove(ID);
+        darbaja=true;
+        }
+        
+        return darbaja;
     }
 
     public void daraltaproducto() {
