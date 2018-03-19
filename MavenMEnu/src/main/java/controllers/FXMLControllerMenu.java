@@ -14,14 +14,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import serviciosMerchadona.Funcionalidad;
 
 /**
  * FXML Controller class
  *
  * @author daw
  */
-public class FXMLController implements Initializable {
+public class FXMLControllerMenu implements Initializable {
 
+    private Funcionalidad merchadona;
     @FXML
     private BorderPane fxRoot;
 
@@ -30,9 +32,10 @@ public class FXMLController implements Initializable {
         AnchorPane anchor;
         //load up OTHER FXML document
         FXMLLoader loader = new FXMLLoader(
-          getClass().getResource("/fxml/FXML2.fxml"));
+                getClass().getResource("/fxml/FXML2.fxml"));
         anchor = loader.load();
-        //FXMLSceneController controller = loader.getController();
+        FXML2Controller controller = loader.getController();
+        controller.setController(this);
         fxRoot.setCenter(anchor);
     }
 
@@ -41,7 +44,7 @@ public class FXMLController implements Initializable {
         AnchorPane anchor;
         //load up OTHER FXML document
         FXMLLoader loader = new FXMLLoader(
-          getClass().getResource("/fxml/FXML3.fxml"));
+                getClass().getResource("/fxml/FXML3.fxml"));
         anchor = loader.load();
         //FXMLSceneController controller = loader.getController();
         fxRoot.setCenter(anchor);
@@ -53,6 +56,10 @@ public class FXMLController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+    }
+
+    public Funcionalidad getMerchadona() {
+        return merchadona;
     }
 
 }

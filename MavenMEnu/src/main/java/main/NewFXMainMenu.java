@@ -6,7 +6,7 @@
 package main;
 
 import controllers.FXML2Controller;
-import controllers.FXMLController;
+import controllers.FXMLControllerMenu;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -27,7 +27,12 @@ public class NewFXMainMenu extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        BorderPane root = FXMLLoader.load(getClass().getResource("/fxml/FXML.fxml"));
+//        BorderPane root = FXMLLoader.load(getClass().getResource("/fxml/FXML.fxml"));
+        FXMLLoader loaderMenu = new FXMLLoader(
+          getClass().getResource("/fxml/FXML.fxml"));
+        BorderPane root = loaderMenu.load();
+        FXMLControllerMenu menuController = loaderMenu.getController();
+               
         
         AnchorPane anchor;
                     //load up OTHER FXML document
@@ -35,9 +40,12 @@ public class NewFXMainMenu extends Application {
           getClass().getResource("/fxml/FXML2.fxml"));
         anchor = loader.load();
         FXML2Controller controller = loader.getController();
+        controller.setController(menuController);
+        
+        
         root.setCenter(anchor);
         Scene scene = new Scene(root);
-        scene.getStylesheets().add("/css/fxml.css");
+        scene.getStylesheets().add("/css/fxml2.css");
         
         stage.setTitle("JavaFX and Maven");
         stage.setScene(scene);

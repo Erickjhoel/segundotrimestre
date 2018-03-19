@@ -5,9 +5,14 @@
  */
 package controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 
 /**
  * FXML Controller class
@@ -16,12 +21,37 @@ import javafx.fxml.Initializable;
  */
 public class FXML2Controller implements Initializable {
 
+    private FXMLControllerMenu controller;
+
     /**
      * Initializes the controller class.
      */
+    @FXML
+    private void clickAltaEmpleado(ActionEvent event) throws IOException {
+
+        boolean altaOk = this.controller.getMerchadona().daraltaempleado(1,"juan",8);
+
+        if (altaOk) {
+            Alert a = new Alert(Alert.AlertType.INFORMATION, "Alta OK", ButtonType.CLOSE);
+            //final Stage stage = (Stage) fxUser.getScene().getWindow();
+            //a.initOwner(stage);
+            a.showAndWait();
+        } else {
+            Alert a = new Alert(Alert.AlertType.ERROR, "El id ya existe", ButtonType.CLOSE);
+            //final Stage stage = (Stage) fxUser.getScene().getWindow();
+            //a.initOwner(stage);
+            a.showAndWait();
+        }
+
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
+    }
+
+    public void setController(FXMLControllerMenu controller) {
+        this.controller = controller;
+    }
+
 }
