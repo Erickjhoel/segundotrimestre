@@ -19,7 +19,7 @@ import javafx.scene.control.ButtonType;
  *
  * @author daw
  */
-public class FXML2Controller implements Initializable {
+public class FXMLControllerAdministrador implements Initializable {
 
     private FXMLControllerMenu controller;
 

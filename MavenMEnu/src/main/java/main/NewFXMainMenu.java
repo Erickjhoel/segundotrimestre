@@ -5,7 +5,7 @@
  */
 package main;
 
-import controllers.FXML2Controller;
+import controllers.FXMLControllerAdministrador;
 import controllers.FXMLControllerMenu;
 import java.io.IOException;
 import javafx.application.Application;
@@ -39,7 +39,7 @@ public class NewFXMainMenu extends Application {
         FXMLLoader loader = new FXMLLoader(
           getClass().getResource("/fxml/FXML2.fxml"));
         anchor = loader.load();
-        FXML2Controller controller = loader.getController();
+        FXMLControllerAdministrador controller = loader.getController();
         controller.setController(menuController);
         
         

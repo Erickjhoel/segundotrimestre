@@ -34,7 +34,7 @@ public class FXMLControllerMenu implements Initializable {
         FXMLLoader loader = new FXMLLoader(
                 getClass().getResource("/fxml/FXML2.fxml"));
         anchor = loader.load();
-        FXML2Controller controller = loader.getController();
+        FXMLControllerAdministrador controller = loader.getController();
         controller.setController(this);
         fxRoot.setCenter(anchor);
     }
