@@ -10,24 +10,24 @@ and open the template in the editor.
     xsi:noNamespaceSchemaLocation='file:/home/daw/NetBeansProjects/segundotrimestre/XML/public_html/XML/Merchadona/newXmlSchemaMerchadona.xsd'>
     <Empleados>
         <Cajero>
-            <Nombre></Nombre>
+            <Nombre>RONY</Nombre>
             <ID>3</ID>
             <NumeroProductosVendidos>8</NumeroProductosVendidos>
         </Cajero>
         <Reponedor>
-            <Nombre></Nombre>
-            <ID>3</ID>
+            <Nombre>PATRICIO</Nombre>
+            <ID>5</ID>
             <NumeroProductosRepuestos>3</NumeroProductosRepuestos>
         </Reponedor>
     </Empleados>
     <Productos>
         <Perecedero>
-            <FechaDeReposicion></FechaDeReposicion>
+            <FechaDeReposicion>25/01/199</FechaDeReposicion>
             <PrecioProducto>9</PrecioProducto>
-            <NombreProducto></NombreProducto>
+            <NombreProducto>colita</NombreProducto>
         </Perecedero>
         <NoPerecedero>
-            <NombreProducto></NombreProducto>
+            <NombreProducto>toto</NombreProducto>
             <PrecioProducto>3</PrecioProducto>
         </NoPerecedero>
     </Productos>
