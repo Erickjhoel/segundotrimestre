@@ -12,7 +12,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
@@ -21,8 +23,12 @@ import javafx.scene.control.ButtonType;
  */
 public class FXMLControllerAdministrador implements Initializable {
 
-    private FXMLControllerMenu controller;
-
+    private FXMLControllermenu controller;
+    @FXML
+    private Button fxdaralta;
+    @FXML
+    private Button fxdarbaja;
+  
     /**
      * Initializes the controller class.
      */
@@ -44,13 +50,30 @@ public class FXMLControllerAdministrador implements Initializable {
         }
 
     }
+        @FXML
+    private void clickBajaEmpleado(ActionEvent event) throws IOException {
 
+        boolean darbaja = this.controller.getMerchadona().darbajaempleado(8);
+
+        if (darbaja==true) {
+            Alert a = new Alert(Alert.AlertType.INFORMATION, "Baja OK", ButtonType.CLOSE);
+            //final Stage stage = (Stage) fxUser.getScene().getWindow();
+            //a.initOwner(stage);
+            a.showAndWait();
+        } else {
+            Alert a = new Alert(Alert.AlertType.ERROR, "El id ya existe", ButtonType.CLOSE);
+            //final Stage stage = (Stage) fxUser.getScene().getWindow();
+            //a.initOwner(stage);
+            a.showAndWait();
+        }
+
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
 
-    public void setController(FXMLControllerMenu controller) {
+    public void setController(FXMLControllermenu controller) {
         this.controller = controller;
     }
 

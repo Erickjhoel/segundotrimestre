@@ -68,31 +68,18 @@ public class Funcionalidad {
         return darbaja;
     }
 
-    public void daraltaproducto() {
-        String nombre;
-        System.out.println("Introduzca el nombre del producto");
-        nombre = sc.nextLine();
-        double precio;
-        System.out.println("introduzca el precio del producto");
-        precio = sc.nextInt();
-        sc.nextLine();
-        int cantidad;
-        System.out.println("Introduzca la cantidad de productos");
-        cantidad = sc.nextInt();
-        sc.nextLine();
-        int seleccion;
-        System.out.println("Selecciona si el producto es:\n"
-                + "1. Perecedero\n"
-                + "2. No Perecedero");
-        seleccion = sc.nextInt();
-        sc.nextLine();
-        if (seleccion == 1) {
+    public boolean daraltaproducto(String nombre, double precio,int cantidad,int seleccion) {//que verga devuelve
+        boolean daraltaprod=false;
+        if (seleccion == 1) {//si el producto es perecedero
             Perecedero nuevoproducto = new Perecedero(LocalDateTime.now(), nombre, precio, cantidad);
             productos.add(nuevoproducto);
+            daraltaprod=true;
         } else {
             Producto nuevoproducto = new Producto(nombre, precio, cantidad);
             productos.add(nuevoproducto);
+            daraltaprod=true;
         }
+        return daraltaprod;
     }
 
     public void darbajaproducto() {

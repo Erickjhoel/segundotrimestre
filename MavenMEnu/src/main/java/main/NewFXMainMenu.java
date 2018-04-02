@@ -6,7 +6,7 @@
 package main;
 
 import controllers.FXMLControllerAdministrador;
-import controllers.FXMLControllerMenu;
+import controllers.FXMLControllermenu;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -31,7 +31,7 @@ public class NewFXMainMenu extends Application {
         FXMLLoader loaderMenu = new FXMLLoader(
           getClass().getResource("/fxml/FXML.fxml"));
         BorderPane root = loaderMenu.load();
-        FXMLControllerMenu menuController = loaderMenu.getController();
+        FXMLControllermenu menuController = loaderMenu.getController();
                
         
         AnchorPane anchor;
