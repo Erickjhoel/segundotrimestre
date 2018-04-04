@@ -5,8 +5,10 @@
  */
 package main;
 
+import constantesMerchadona.Constante;
 import controllers.FXMLControllerAdministrador;
-import controllers.FXMLControllermenu;
+import controllers.FXMLControllerLoguinID;
+import controllers.FXMLMENUController;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -29,26 +31,25 @@ public class NewFXMainMenu extends Application {
     public void start(Stage stage) throws IOException {
 //        BorderPane root = FXMLLoader.load(getClass().getResource("/fxml/FXML.fxml"));
         FXMLLoader loaderMenu = new FXMLLoader(
-          getClass().getResource("/fxml/FXML.fxml"));
+          getClass().getResource(Constante.PANTALLA_MENU)); //colocar en constantes la ruta*****************
         BorderPane root = loaderMenu.load();
-        FXMLControllermenu menuController = loaderMenu.getController();
-               
-        
+        FXMLMENUController menuController = loaderMenu.getController();
+          
         AnchorPane anchor;
                     //load up OTHER FXML document
         FXMLLoader loader = new FXMLLoader(
-          getClass().getResource("/fxml/FXML2.fxml"));
+          getClass().getResource(Constante.PANTALLA_LOGUINID));
         anchor = loader.load();
-        FXMLControllerAdministrador controller = loader.getController();
-        controller.setController(menuController);
-        
+        FXMLControllerLoguinID controller = loader.getController();
+        controller.setController(menuController);//hay que crear public void... de controller en loguin
         
         root.setCenter(anchor);
         Scene scene = new Scene(root);
-        scene.getStylesheets().add("/css/fxml2.css");
+        scene.getStylesheets().add("/css/fxmlLoguinID.css");
         
         stage.setTitle("JavaFX and Maven");
         stage.setScene(scene);
+        stage.getProperties().put("hostServices", this.getHostServices());
         stage.show();
     }
 

@@ -22,7 +22,7 @@ import javafx.scene.control.TextField;
  * @author A
  */
 public class FXMLControllerLoguinID implements Initializable {
-private FXMLControllermenu controller;
+private FXMLMENUController controller;
     /**
      * Initializes the controller class.
      */
@@ -39,4 +39,7 @@ private TextField Loguin;
         // TODO
     }    
     
+    public void setController(FXMLMENUController controller){
+        this.controller=controller;
+    }
 }

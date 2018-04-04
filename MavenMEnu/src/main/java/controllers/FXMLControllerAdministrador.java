@@ -23,7 +23,7 @@ import javafx.scene.control.TextField;
  */
 public class FXMLControllerAdministrador implements Initializable {
 
-    private FXMLControllermenu controller;
+    private FXMLMENUController controller;
     @FXML
     private Button fxdaralta;
     @FXML
@@ -73,7 +73,7 @@ public class FXMLControllerAdministrador implements Initializable {
         // TODO
     }
 
-    public void setController(FXMLControllermenu controller) {
+    public void setController(FXMLMENUController controller) {
         this.controller = controller;
     }
 

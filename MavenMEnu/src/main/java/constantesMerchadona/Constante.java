@@ -16,5 +16,6 @@ public class Constante {
     public static final int NUM_SEGUNDOS_BAJA_PRECIO = 10;
     public static final double FACTOR_BAJA_PRECIO = 0.10;
 
-   
+    public static final String PANTALLA_MENU = "/fxml/FXMLMENU.fxml";
+    public static final String PANTALLA_LOGUINID = "/fxml/FXMLLoguinID.fxml";
 }
