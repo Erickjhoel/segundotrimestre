@@ -48,7 +48,7 @@ public class FXMLMENUController implements Initializable {
             loader = new FXMLLoader(
                     getClass().getResource(Constante.PANTALLA_LOGUINID));
             loguin = loader.load();
-            FXMLControllerAdministrador controller = loader.getController();
+            FXMLControllerAdministrador controller2 = loader.getController();
             controller.setController(this);
            
             
