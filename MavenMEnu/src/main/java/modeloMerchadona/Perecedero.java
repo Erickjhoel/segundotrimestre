@@ -5,34 +5,29 @@
  */
 package modeloMerchadona;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 /**
  *
  * @author daw
  */
 public class Perecedero extends Producto{
-    private LocalDateTime fechareposicion;
-
-    public Perecedero(LocalDateTime fechareposicion, String nombre, double precioBase, int cantidadStock) {
-        super(nombre, precioBase, cantidadStock);
-        this.fechareposicion = fechareposicion;
-    }
-
-    @Override
-    public String toString() {
-        return "Perecedero{" + "fechareposicion=" + fechareposicion +super.toString()+ '}';
-    }
-
-    public LocalDateTime getFechareposicion() {
-        return fechareposicion;
-    }
-
-    public void setFechareposicion(LocalDateTime fechareposicion) {
-        this.fechareposicion = fechareposicion;
-    }
-
     
-    
+    private LocalDateTime fecha_reposicion;
+
+    public Perecedero(LocalDateTime fecha_reposicion, String nombre, double precio_base) {
+        super(nombre, precio_base);
+        this.fecha_reposicion = fecha_reposicion;
+    }
+
+    public LocalDateTime getFecha_reposicion() {
+        return fecha_reposicion;
+    }
+
+    public void setFecha_reposicion(LocalDateTime fecha_reposicion) {
+        this.fecha_reposicion = fecha_reposicion;
+    }
+
+  
 }

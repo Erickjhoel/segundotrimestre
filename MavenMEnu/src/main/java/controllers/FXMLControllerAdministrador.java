@@ -32,42 +32,42 @@ public class FXMLControllerAdministrador implements Initializable {
     /**
      * Initializes the controller class.
      */
-    @FXML
-    private void clickAltaEmpleado(ActionEvent event) throws IOException {
-
-        boolean altaOk = this.controller.getMerchadona().daraltaempleado(1,"juan",8);
-
-        if (altaOk) {
-            Alert a = new Alert(Alert.AlertType.INFORMATION, "Alta OK", ButtonType.CLOSE);
-            //final Stage stage = (Stage) fxUser.getScene().getWindow();
-            //a.initOwner(stage);
-            a.showAndWait();
-        } else {
-            Alert a = new Alert(Alert.AlertType.ERROR, "El id ya existe", ButtonType.CLOSE);
-            //final Stage stage = (Stage) fxUser.getScene().getWindow();
-            //a.initOwner(stage);
-            a.showAndWait();
-        }
-
-    }
-        @FXML
-    private void clickBajaEmpleado(ActionEvent event) throws IOException {
-
-        boolean darbaja = this.controller.getMerchadona().darbajaempleado(8);
-
-        if (darbaja==true) {
-            Alert a = new Alert(Alert.AlertType.INFORMATION, "Baja OK", ButtonType.CLOSE);
-            //final Stage stage = (Stage) fxUser.getScene().getWindow();
-            //a.initOwner(stage);
-            a.showAndWait();
-        } else {
-            Alert a = new Alert(Alert.AlertType.ERROR, "El id ya existe", ButtonType.CLOSE);
-            //final Stage stage = (Stage) fxUser.getScene().getWindow();
-            //a.initOwner(stage);
-            a.showAndWait();
-        }
-
-    }
+//    @FXML
+//    private void clickAltaEmpleado(ActionEvent event) throws IOException {
+//
+////        boolean altaOk = this.controller.getMerchadona().darAltaEmpleado(1,"juan",8);
+//
+//        if (altaOk) {
+//            Alert a = new Alert(Alert.AlertType.INFORMATION, "Alta OK", ButtonType.CLOSE);
+//            //final Stage stage = (Stage) fxUser.getScene().getWindow();
+//            //a.initOwner(stage);
+//            a.showAndWait();
+//        } else {
+//            Alert a = new Alert(Alert.AlertType.ERROR, "El id ya existe", ButtonType.CLOSE);
+//            //final Stage stage = (Stage) fxUser.getScene().getWindow();
+//            //a.initOwner(stage);
+//            a.showAndWait();
+//        }
+//
+////    }
+//        @FXML
+//    private void clickBajaEmpleado(ActionEvent event) throws IOException {
+//
+//        boolean darbaja = this.controller.getMerchadona().darbajaempleado(8);
+//
+//        if (darbaja==true) {
+//            Alert a = new Alert(Alert.AlertType.INFORMATION, "Baja OK", ButtonType.CLOSE);
+//            //final Stage stage = (Stage) fxUser.getScene().getWindow();
+//            //a.initOwner(stage);
+//            a.showAndWait();
+//        } else {
+//            Alert a = new Alert(Alert.AlertType.ERROR, "El id ya existe", ButtonType.CLOSE);
+//            //final Stage stage = (Stage) fxUser.getScene().getWindow();
+//            //a.initOwner(stage);
+//            a.showAndWait();
+//        }
+//
+//    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

@@ -10,19 +10,30 @@ package modeloMerchadona;
  * @author daw
  */
 public class Reponedor extends Empleado{
-    private int totalrepuestos;
+    
+    private int num_reposiciones;
 
-    public Reponedor(String nombre, Integer ID) {
-        super(nombre, ID);
+    public Reponedor(String nombre, int id_empleado) {
+        super(nombre, id_empleado);
+        this.num_reposiciones = num_reposiciones;
     }
 
-    public int getTotalrepuestos() {
-        return totalrepuestos;
+    
+
+    public int getNum_reposiciones() {
+        return num_reposiciones;
     }
 
-    public void setTotalrepuestos(int totalrepuestos) {
-        this.totalrepuestos = totalrepuestos;
+    public void setNum_reposiciones(int num_reposiciones) {
+        this.num_reposiciones = num_reposiciones;
     }
+
+    @Override
+    public String toString() {
+        return "Reponedor{" + super.toString() + "num_reposiciones=" + num_reposiciones + '}';
+    }
+
+    
     
     
 }

@@ -10,16 +10,14 @@ package modeloMerchadona;
  * @author daw
  */
 public abstract class Empleado {
-    String nombre;
-    private Integer ID;//comprobar que esto no de fallo
+    
+    protected String nombre;
+    protected int id_empleado;
 
-    public Empleado(String nombre, Integer ID) {
+    public Empleado(String nombre, int id_empleado) {
         this.nombre = nombre;
-        this.ID = ID;
+        this.id_empleado = id_empleado;
     }
-    
-    
-    
 
     public String getNombre() {
         return nombre;
@@ -29,17 +27,18 @@ public abstract class Empleado {
         this.nombre = nombre;
     }
 
-    public int getID() {
-        return ID;
+    public int getId_empleado() {
+        return id_empleado;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setId_empleado(int id_empleado) {
+        this.id_empleado = id_empleado;
     }
     
-    
-    
-    
+    @Override
+    public String toString() {
+        return "nombre=" + nombre + ", id_empleado=" + id_empleado + ", ";
+    }
     
     
     

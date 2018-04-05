@@ -29,7 +29,7 @@ public class NewFXMainMenu extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-//        BorderPane root = FXMLLoader.load(getClass().getResource("/fxml/FXML.fxml"));
+//BorderPane root = FXMLLoader.load(getClass().getResource("/fxml/FXML.fxml"));
         FXMLLoader loaderMenu = new FXMLLoader(
           getClass().getResource(Constante.PANTALLA_MENU)); //colocar en constantes la ruta*****************
         BorderPane root = loaderMenu.load();
@@ -45,7 +45,7 @@ public class NewFXMainMenu extends Application {
         
         root.setCenter(anchor);
         Scene scene = new Scene(root);
-        scene.getStylesheets().add("/css/fxmlLoguinID.css");
+        scene.getStylesheets().add("/css/fxmlMENU.css");
         
         stage.setTitle("JavaFX and Maven");
         stage.setScene(scene);

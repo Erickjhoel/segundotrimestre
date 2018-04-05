@@ -22,16 +22,32 @@ import javafx.scene.control.TextField;
  * @author A
  */
 public class FXMLControllerLoguinID implements Initializable {
-private FXMLMENUController controller;
+private FXMLMENUController controllerLoguin;
     /**
      * Initializes the controller class.
      */
+
 @FXML
-private TextField Loguin;
+    private TextField fxLoguin;
         @FXML
     private void clickAltaEmpleado(ActionEvent event) throws IOException {
 
-       
+       int empleadoID = Integer.parseInt(fxLoguin.getText());//parseas el tecto metido
+        this.controllerLoguin.getMerchadona().login(empleadoID);
+
+        this.controllerLoguin.setEmpleadoID(empleadoID);
+
+        switch (this.controllerLoguin.getMerchadona().tipoEmpleado(empleadoID)) {
+            case 1:
+                this.controllerLoguin.;
+                break;
+            case 2:
+
+                break;
+            case 3:
+                break;
+
+        }
 
     }
     @Override
@@ -40,6 +56,6 @@ private TextField Loguin;
     }    
     
     public void setController(FXMLMENUController controller){
-        this.controller=controller;
+        this.controllerLoguin=controller;
     }
 }

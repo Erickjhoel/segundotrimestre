@@ -5,23 +5,23 @@
  */
 package modeloMerchadona;
 
+import java.util.Objects;
+
 /**
  *
  * @author daw
  */
 public class Producto {
+    
     private String nombre;
-    private double precioBase;
-    private int cantidadStock;
+    private double precio_base;
+    private int stock;
 
-    public Producto(String nombre, double precioBase, int cantidadStock) {
+    public Producto(String nombre, double precio_base) {
         this.nombre = nombre;
-        this.precioBase = precioBase;
-        this.cantidadStock = cantidadStock;
+        this.precio_base = precio_base;
+        this.stock = 0;
     }
-
-    
-    
     
     public String getNombre() {
         return nombre;
@@ -31,29 +31,50 @@ public class Producto {
         this.nombre = nombre;
     }
 
-    public double getPrecioBase() {
-        return precioBase;
+    public double getPrecio_base() {
+        return precio_base;
     }
 
-    public void setPrecioBase(double precioBase) {
-        this.precioBase = precioBase;
+    public void setPrecio_base(double precio_base) {
+        this.precio_base = precio_base;
     }
 
-    public int getCantidadStock() {
-        return cantidadStock;
+    public int getStock() {
+        return stock;
     }
 
-    public void setCantidadStock(int cantidadStock) {
-        this.cantidadStock = cantidadStock;
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 
     @Override
-    public String toString() {
-        return "Producto{" + "nombre=" + nombre + ", precioBase=" + precioBase + ", cantidadStock=" + cantidadStock + '}';
+    public int hashCode() {
+        int hash = 5;
+        hash = 53 * hash + Objects.hashCode(this.nombre);
+        return hash;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Producto other = (Producto) obj;
+        return Objects.equals(this.nombre, other.nombre);
+    }
+
     
     
-    
+    @Override
+    public String toString() {
+        return nombre+ " "+stock;
+    }
     
     
     
