@@ -128,16 +128,29 @@
                         </table> 
                     </div>
                     <div>
-                        
+                        <table class="tablaNoPerecedero">
+                            <tr  style="background:#fe9a53" >
+                                <td>No PERECEDERO</td>
+                            </tr>
+                            <xsl:for-each select="Productos/NoPerecedero">
+                                
+                                <tr class="primero">
+                                    <td>
+                                        Precio:
+                                        <xsl:value-of select="PrecioProducto"/>
+                                    </td>
+                                </tr>
+                                <tr class="primero">
+                                    <td>
+                                        Nombre:
+                                        <xsl:value-of select="NombreProducto"/>
+                                    </td>
+                                </tr>
+                            </xsl:for-each>
+                        </table> 
                     </div>
                     
                 </div>    
-                    
-                    
-                    
-                
-                
-                
                 
             </body>
         </html>

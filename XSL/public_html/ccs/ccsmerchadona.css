@@ -18,6 +18,8 @@ and open the template in the editor.
     display:flex;
     flex-direction: row;
 }
+.grande2{display:flex;
+    flex-direction: row;}
 .primero{
     background-color: #cccccc;
 }
