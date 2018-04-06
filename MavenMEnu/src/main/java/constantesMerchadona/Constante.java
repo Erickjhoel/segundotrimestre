@@ -18,4 +18,6 @@ public class Constante {
 
     public static final String PANTALLA_MENU = "/fxml/FXMLMENU.fxml";
     public static final String PANTALLA_LOGUINID = "/fxml/FXMLLoguinID.fxml";
+    public static final String PANTALLA_ADMIN="/fxml/FXMLAdministrador.fxml";
+    public static final String PANTALLA_CAJERA="/fxml/FXMLCajero.fxml";
 }

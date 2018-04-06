@@ -15,7 +15,7 @@ import javafx.fxml.Initializable;
  * @author daw
  */
 public class FXMLCajeroController implements Initializable {
-
+ private FXMLMENUController controllerCajero;
     /**
      * Initializes the controller class.
      */
@@ -23,5 +23,7 @@ public class FXMLCajeroController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-    
+    public void setController(FXMLMENUController controller) {
+        this.controllerCajero = controller;
+    }
 }

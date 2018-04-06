@@ -75,16 +75,15 @@ public class Merchadona {
 
         if (id == Constante.ADMIN_ID) {
             tipo = 1;
-        } else if (empleados.get(id) instanceof Reponedor) {
-            tipo = 2;
         } else if (empleados.get(id) instanceof Cajera) {
+            tipo = 2;
+        } else if (empleados.get(id) instanceof Reponedor) {
             tipo = 3;
         }
         return tipo;
     }
 
-    public boolean darAltaEmpleado(String nombre, int id,
-      int opcion) {
+    public boolean darAltaEmpleado(String nombre, int id,int opcion) {
         boolean altaOK = false;
         if (empleados.get(id) == null) {
             switch (opcion) {
@@ -109,11 +108,7 @@ public class Merchadona {
 
     }
 
-    public void darBajaEmpleado() {
-        int id;
-        System.out.println("Introduce el ID del Empleado:");
-        id = sc.nextInt();
-        sc.nextLine();
+    public void darBajaEmpleado(int id) {
         empleados.remove(id);
     }
 

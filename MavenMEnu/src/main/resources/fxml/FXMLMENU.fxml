@@ -10,14 +10,14 @@
       <MenuBar fx:id="fxMenu" BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" text="Loguin" />
-          <Menu mnemonicParsing="false" text="Admin">
+          <Menu fx:id="fxAdmin" mnemonicParsing="false" text="Admin">
             <items>
               <MenuItem mnemonicParsing="false" text="AltaEmpleado" />
                   <MenuItem mnemonicParsing="false" text="BajaEmpleado" />
             </items>
           </Menu>
+            <Menu fx:id="fxCajero" mnemonicParsing="false" text="Cajero" />
           <Menu mnemonicParsing="false" text="Reponedor" />
-            <Menu mnemonicParsing="false" text="Cajero" />
             <Menu mnemonicParsing="false" text="Listados">
                <items>
                   <MenuItem mnemonicParsing="false" text="Lista Empleados" />
