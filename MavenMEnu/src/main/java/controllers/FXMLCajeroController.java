@@ -7,7 +7,9 @@ package controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
@@ -16,8 +18,12 @@ import javafx.fxml.Initializable;
  */
 public class FXMLCajeroController implements Initializable {
  private FXMLMENUController controllerCajero;
+ @FXML
+    private TextField fxCajero;
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {

@@ -29,14 +29,21 @@ import serviciosMerchadona.Merchadona;
 public class FXMLMENUController implements Initializable {
 
     private Merchadona merchadona;
-    private AnchorPane loguin;
-    private AnchorPane admin;
+    private FXMLListadoController listaEmpleados;
+    private FXMLListadoProductosController listaProductos;
+    private AnchorPane adminAltaEmpleado;
+    private AnchorPane adminAltaProducto;
+    private AnchorPane adminListado;
+    private AnchorPane adminListadoProductos;
     private AnchorPane cajero;
+    private AnchorPane reponedor;
     private int empleadoID;
     @FXML
     private Menu fxAdmin;
     @FXML
     private Menu fxCajero;
+    @FXML
+    private Menu fxReponedor;
     @FXML
     private MenuBar fxMenu;
     @FXML
@@ -50,7 +57,25 @@ public class FXMLMENUController implements Initializable {
      */
     @FXML
     public void handleScene1(ActionEvent event) throws IOException {
+        fxRoot.setCenter(adminAltaEmpleado);
+    }
 
+    @FXML
+    public void handleScene2(ActionEvent event) throws IOException {
+        fxRoot.setCenter(adminAltaProducto);
+    }
+
+    @FXML
+    public void handleScene3(ActionEvent event) throws IOException {
+        fxRoot.setCenter(adminListado);
+        listaEmpleados.ListaDatosEmple();
+        
+    }
+    @FXML
+    public void handleScene4(ActionEvent event) throws IOException {
+        fxRoot.setCenter(adminListadoProductos);
+        listaProductos.ListaDatosProduc();
+        
     }
 
     @Override
@@ -60,29 +85,39 @@ public class FXMLMENUController implements Initializable {
 
             merchadona = new Merchadona();
             FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource(Constante.PANTALLA_LOGUINID));
-            loguin = loader.load();
-            FXMLControllerLoguinID controller = loader.getController();
-            controller.setController(this);
+                    getClass().getResource(Constante.PANTALLA_ADMIN_ALTA_EMPLEADO));
+            adminAltaEmpleado = loader.load();
+            FXMLControllerDarAltaEmpleado controllerAdmin = loader.getController();
+            controllerAdmin.setController(this);
 
             loader = new FXMLLoader(
-                    getClass().getResource(Constante.PANTALLA_ADMIN));
-            admin = loader.load();
-            FXMLControllerAdministrador controllerAdmin = loader.getController();
-            controllerAdmin.setController(this);
-            
+                    getClass().getResource(Constante.PANTALLA_ADMIN_ALTA_PRODUCTO));
+            adminAltaProducto = loader.load();
+            FXMLDarAltaProductoController controllerAdmin2 = loader.getController();
+            controllerAdmin2.setController(this);
+
+            loader = new FXMLLoader(
+                    getClass().getResource(Constante.PANTALLA_LISTADO_PRODUCTOS));
+            adminListadoProductos = loader.load();
+            listaProductos = loader.getController();
+            listaProductos.setController(this);
             
             loader = new FXMLLoader(
-                    getClass().getResource(Constante.PANTALLA_CAJERA));
-            cajero = loader.load();
-            FXMLCajeroController controllerCajero = loader.getController();
-            controllerCajero.setController(this);
+                    getClass().getResource(Constante.PANTALLA_LISTADO));
+            adminListado = loader.load();
+            listaEmpleados = loader.getController();
+            listaEmpleados.setController(this);
+
+            loader = new FXMLLoader(
+                    getClass().getResource(Constante.PANTALLA_REPONEDOR));
+            reponedor = loader.load();
+            FXMLControllerReponedor controllerReponedor = loader.getController();
+            controllerReponedor.setController(this);
 
         } catch (IOException ex) {
             Logger.getLogger(FXMLMENUController.class.getName()).log(Level.SEVERE, null, ex);
         }
         fxMenu.setVisible(false);//desactiva el menu
-        fxRoot.setCenter(loguin);//solo coloca la pantalla de loguin
 
     }
 
@@ -103,14 +138,39 @@ public class FXMLMENUController implements Initializable {
     }
 
     public void habilitaMenuAdmin() {
-        fxRoot.setCenter(admin);
         fxMenu.setVisible(true);
         fxAdmin.setVisible(true);
+        fxCajero.setVisible(false);
+        fxReponedor.setVisible(false);
     }
-    public void habilitarCajero(){
+
+    public void habilitarCajero() {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource(Constante.PANTALLA_CAJERA));
+            cajero = loader.load();
+            
+            FXMLCajeroController controllerCajero = loader.getController();
+            controllerCajero.setController(this);
+            fxRoot.setCenter(cajero);
+
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLMENUController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         fxRoot.setCenter(cajero);
+        fxAdmin.setVisible(false);
+        fxReponedor.setVisible(false);
         fxMenu.setVisible(true);
         fxCajero.setVisible(true);
+    }
+        
+    
+
+    public void habilitarReponedor() {
+        fxRoot.setCenter(reponedor);
+        fxAdmin.setVisible(false);
+        fxMenu.setVisible(true);
+        fxReponedor.setVisible(true);
     }
 
 }

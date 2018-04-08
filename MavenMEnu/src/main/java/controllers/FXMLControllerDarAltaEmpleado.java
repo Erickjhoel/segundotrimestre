@@ -21,7 +21,7 @@ import javafx.scene.control.TextField;
  *
  * @author daw
  */
-public class FXMLControllerAdministrador implements Initializable {
+public class FXMLControllerDarAltaEmpleado implements Initializable {
 
     private FXMLMENUController controllerAdmin;
     @FXML
@@ -42,7 +42,7 @@ public class FXMLControllerAdministrador implements Initializable {
     @FXML
     private void clickAltaEmpleado(ActionEvent event) throws IOException {
 
-        boolean altaOk = this.controllerAdmin.getMerchadona().darAltaEmpleado("juan",2,1);
+        boolean altaOk = this.controllerAdmin.getMerchadona().darAltaEmpleado("nombre", 9, 0);
 
         if (altaOk) {
             Alert a = new Alert(Alert.AlertType.INFORMATION, "Alta OK", ButtonType.CLOSE);

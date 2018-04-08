@@ -32,9 +32,8 @@ public class Merchadona {
 
     public Merchadona() {
 
-        Empleado victor = new Reponedor("Victor", 1234);
-        Empleado alvaro = new Cajera("Alvaro", 1235);
-        Empleado andrea = new Reponedor("Andrea", 1236);
+        Empleado victor = new Reponedor("Victor", 1235);
+        Empleado alvaro = new Cajera("Alvaro",1234);
         Producto chocolate = new Producto("Chocolate", 2.34);
         Producto leche = new Perecedero(LocalDateTime.now(), "Leche", 5.2);
         Producto latas = new Producto("Latas", 3.4);
@@ -42,33 +41,35 @@ public class Merchadona {
 
         empleados.put(victor.getId_empleado(), victor);
         empleados.put(alvaro.getId_empleado(), alvaro);
-        empleados.put(andrea.getId_empleado(), andrea);
                 productos.add(leche);
         productos.add(chocolate);
 
         productos.add(latas);
 
     }
-
-    public void imprimirEmpleados() {
-        for (Empleado empleado1 : empleados.values()) {
-            System.out.println(empleado1);
+    public List<Perecedero> listaProductosPerecederos() {
+         ArrayList<Perecedero> perecederos = new ArrayList<>();
+        for (Producto perecedero : productos) {
+            if (perecedero instanceof Perecedero) {
+                perecederos.add((Perecedero) perecedero);
+            }
         }
+        return perecederos;
     }
 
-    public void imprimirProductos() {
-        int contador = 0;
-        for (Producto producto1 : productos) {
-            System.out.println("-" + contador + ". " + producto1);
-            contador++;
+   public List<Producto> listaProductos() {
+         ArrayList<Producto> productos = new ArrayList<>();
+        for (Producto producto : productos) {
+            if (producto instanceof Perecedero) {
+                //si es perecedero no hace nah
+            }else{
+            productos.add((Producto) producto);
+            }
         }
-        System.out.println("------------------------------------------------");
+        return productos;
     }
+     
 
-    public Empleado login(int id) {
-
-        return empleados.get(id);
-    }
 
     public int tipoEmpleado(int id) {
         int tipo = 0;
@@ -112,10 +113,7 @@ public class Merchadona {
         empleados.remove(id);
     }
 
-    public void darBajaProducto() {
-        String nombre;
-        System.out.println("Introduce el Nombre del producto:");
-        nombre = sc.nextLine();
+    public void darBajaProducto(String nombre) {
         for (int i = 0; i < productos.size(); i++) {
             if (productos.get(i).getNombre().equalsIgnoreCase(nombre)) {
                 productos.remove(i);
@@ -131,6 +129,22 @@ public class Merchadona {
             }
         }
         return cajeras;
+    }
+    public List<Reponedor> listaReponedor() {
+        ArrayList<Reponedor> reponedor = new ArrayList<>();
+        for (Empleado empleado2 : empleados.values()) {
+            if (empleado2 instanceof Reponedor) {
+                reponedor.add((Reponedor) empleado2);
+            }
+        }
+        return reponedor;
+    }
+    public void imprimirProductos() {
+        int contador = 0;
+        for (Producto producto1 : productos) {
+            System.out.println("-" + contador + ". " + producto1);
+            contador++;
+        }
     }
 
     public void reponerProducto(int id) {

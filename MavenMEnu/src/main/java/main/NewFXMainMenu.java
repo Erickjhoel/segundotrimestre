@@ -6,7 +6,7 @@
 package main;
 
 import constantesMerchadona.Constante;
-import controllers.FXMLControllerAdministrador;
+import controllers.FXMLControllerDarAltaEmpleado;
 import controllers.FXMLControllerLoguinID;
 import controllers.FXMLMENUController;
 import java.io.IOException;

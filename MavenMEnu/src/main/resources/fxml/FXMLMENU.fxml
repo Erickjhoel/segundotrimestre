@@ -10,20 +10,16 @@
       <MenuBar fx:id="fxMenu" BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" text="Loguin" />
-          <Menu fx:id="fxAdmin" mnemonicParsing="false" text="Admin">
-            <items>
-              <MenuItem mnemonicParsing="false" text="AltaEmpleado" />
-                  <MenuItem mnemonicParsing="false" text="BajaEmpleado" />
-            </items>
+          <Menu fx:id="fxAdmin" mnemonicParsing="false" text="Administrador">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#handleScene1" text="DarAlta" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleScene2" text="Darbaja" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleScene4" text="ListaProductos" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleScene3" text="ListaEmpleados" />
+               </items>
           </Menu>
             <Menu fx:id="fxCajero" mnemonicParsing="false" text="Cajero" />
-          <Menu mnemonicParsing="false" text="Reponedor" />
-            <Menu mnemonicParsing="false" text="Listados">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Lista Empleados" />
-                  <MenuItem mnemonicParsing="false" text="Lista Productos" />
-               </items>
-            </Menu>
+          <Menu fx:id="fxReponedor" mnemonicParsing="false" text="Reponedor" />
         </menus>
       </MenuBar>
    </top>
