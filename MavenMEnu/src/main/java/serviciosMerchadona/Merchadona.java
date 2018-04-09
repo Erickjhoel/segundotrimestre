@@ -58,14 +58,18 @@ public class Merchadona {
     }
 
    public List<Producto> listaProductos() {
-         ArrayList<Producto> productos = new ArrayList<>();
+         ArrayList<Producto> productoslist = new ArrayList<>();
         for (Producto producto : productos) {
             if (producto instanceof Perecedero) {
                 //si es perecedero no hace nah
             }else{
-            productos.add((Producto) producto);
+            productoslist.add((Producto) producto);
             }
         }
+        return productoslist;
+    }
+   public List<Producto> listaProductos2() {
+      
         return productos;
     }
      

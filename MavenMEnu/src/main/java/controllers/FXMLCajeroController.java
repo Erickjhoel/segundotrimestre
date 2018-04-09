@@ -9,7 +9,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import modeloMerchadona.Cajera;
+import modeloMerchadona.Producto;
+import modeloMerchadona.Reponedor;
 
 /**
  * FXML Controller class
@@ -17,18 +21,28 @@ import javafx.scene.control.TextField;
  * @author daw
  */
 public class FXMLCajeroController implements Initializable {
- private FXMLMENUController controllerCajero;
- @FXML
-    private TextField fxCajero;
+
+    private FXMLMENUController controllerCajero;
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
+    @FXML
+    private ListView<Producto> fxlistaventa;
+
+    public void Listavender() {
+        fxlistaventa.getItems().clear();
+        fxlistaventa.getItems().addAll(
+                this.controllerCajero.getMerchadona().listaProductos2());
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
+
     public void setController(FXMLMENUController controller) {
         this.controllerCajero = controller;
     }

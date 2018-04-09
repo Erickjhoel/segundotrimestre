@@ -7,7 +7,10 @@ package controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ListView;
+import modeloMerchadona.Producto;
 
 /**
  * FXML Controller class
@@ -21,6 +24,14 @@ private FXMLMENUController controllerReponedor;
     /**
      * Initializes the controller class.
      */
+@FXML
+    private ListView<Producto> fxlistareponer;
+
+    public void Listavender() {
+        fxlistareponer.getItems().clear();
+        fxlistareponer.getItems().addAll(
+                this.controllerReponedor.getMerchadona().listaProductos2());
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

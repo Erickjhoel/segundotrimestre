@@ -31,6 +31,8 @@ public class FXMLMENUController implements Initializable {
     private Merchadona merchadona;
     private FXMLListadoController listaEmpleados;
     private FXMLListadoProductosController listaProductos;
+    private FXMLCajeroController listavender;
+    private FXMLControllerReponedor listareponer;
     private AnchorPane adminAltaEmpleado;
     private AnchorPane adminAltaProducto;
     private AnchorPane adminListado;
@@ -69,13 +71,14 @@ public class FXMLMENUController implements Initializable {
     public void handleScene3(ActionEvent event) throws IOException {
         fxRoot.setCenter(adminListado);
         listaEmpleados.ListaDatosEmple();
-        
+
     }
+
     @FXML
     public void handleScene4(ActionEvent event) throws IOException {
         fxRoot.setCenter(adminListadoProductos);
         listaProductos.ListaDatosProduc();
-        
+
     }
 
     @Override
@@ -101,18 +104,12 @@ public class FXMLMENUController implements Initializable {
             adminListadoProductos = loader.load();
             listaProductos = loader.getController();
             listaProductos.setController(this);
-            
+
             loader = new FXMLLoader(
                     getClass().getResource(Constante.PANTALLA_LISTADO));
             adminListado = loader.load();
             listaEmpleados = loader.getController();
             listaEmpleados.setController(this);
-
-            loader = new FXMLLoader(
-                    getClass().getResource(Constante.PANTALLA_REPONEDOR));
-            reponedor = loader.load();
-            FXMLControllerReponedor controllerReponedor = loader.getController();
-            controllerReponedor.setController(this);
 
         } catch (IOException ex) {
             Logger.getLogger(FXMLMENUController.class.getName()).log(Level.SEVERE, null, ex);
@@ -149,28 +146,34 @@ public class FXMLMENUController implements Initializable {
             FXMLLoader loader = new FXMLLoader(
                     getClass().getResource(Constante.PANTALLA_CAJERA));
             cajero = loader.load();
+            listavender = loader.getController();
             
-            FXMLCajeroController controllerCajero = loader.getController();
-            controllerCajero.setController(this);
+            listavender.setController(this);
+            listavender.Listavender();
             fxRoot.setCenter(cajero);
 
         } catch (IOException ex) {
             Logger.getLogger(FXMLMENUController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        fxRoot.setCenter(cajero);
-        fxAdmin.setVisible(false);
-        fxReponedor.setVisible(false);
-        fxMenu.setVisible(true);
-        fxCajero.setVisible(true);
+
     }
-        
-    
 
     public void habilitarReponedor() {
-        fxRoot.setCenter(reponedor);
-        fxAdmin.setVisible(false);
-        fxMenu.setVisible(true);
-        fxReponedor.setVisible(true);
+
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource(Constante.PANTALLA_REPONEDOR));
+            reponedor = loader.load();
+            listareponer.setController(this);
+            listareponer.Listavender();
+
+            fxRoot.setCenter(reponedor);
+            fxAdmin.setVisible(false);
+            fxMenu.setVisible(true);
+            fxReponedor.setVisible(true);
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLMENUController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }
