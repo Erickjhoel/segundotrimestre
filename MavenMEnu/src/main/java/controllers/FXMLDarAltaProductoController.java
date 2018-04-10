@@ -30,6 +30,8 @@ public class FXMLDarAltaProductoController implements Initializable {
     @FXML
     private TextField fxNombreProducto;
     @FXML
+    private TextField fxNombreProductoEliminar;
+    @FXML
     private TextField fxPrecio;
 
     @FXML
@@ -62,6 +64,26 @@ public class FXMLDarAltaProductoController implements Initializable {
             Alert a = new Alert(Alert.AlertType.INFORMATION, "Alta OK", ButtonType.CLOSE);
 //            final Stage stage = (Stage) fxUser.getScene().getWindow();
 //            a.initOwner(stage);
+            a.showAndWait();
+        } else {
+            Alert a = new Alert(Alert.AlertType.ERROR, "El id ya existe", ButtonType.CLOSE);
+            //final Stage stage = (Stage) fxUser.getScene().getWindow();
+            //a.initOwner(stage);
+            a.showAndWait();
+        }
+
+    }
+
+    @FXML
+    private void clickBajaEmpleado(ActionEvent event) throws IOException {
+
+        nombre = fxNombreProductoEliminar.getText();
+        boolean darbaja = this.controllerDarAltaProducto.getMerchadona().darBajaProducto(nombre);
+
+        if (darbaja) {
+            Alert a = new Alert(Alert.AlertType.INFORMATION, "Baja OK", ButtonType.CLOSE);
+            //final Stage stage = (Stage) fxUser.getScene().getWindow();
+            //a.initOwner(stage);
             a.showAndWait();
         } else {
             Alert a = new Alert(Alert.AlertType.ERROR, "El id ya existe", ButtonType.CLOSE);

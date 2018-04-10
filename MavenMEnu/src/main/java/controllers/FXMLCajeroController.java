@@ -5,10 +5,14 @@
  */
 package controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import modeloMerchadona.Cajera;
@@ -23,6 +27,9 @@ import modeloMerchadona.Reponedor;
 public class FXMLCajeroController implements Initializable {
 
     private FXMLMENUController controllerCajero;
+     @FXML
+    private TextField fxcantidad;
+     private int cantidad;
     /**
      * Initializes the controller class.
      *
@@ -36,6 +43,28 @@ public class FXMLCajeroController implements Initializable {
         fxlistaventa.getItems().clear();
         fxlistaventa.getItems().addAll(
                 this.controllerCajero.getMerchadona().listaProductos2());
+    }
+    @FXML
+    private void clickVender(ActionEvent event) throws IOException {
+        cantidad=Integer.parseInt(fxcantidad.getText());
+        int id=this.controllerCajero.getEmpleadoID();
+         Producto p = fxlistaventa.getSelectionModel().getSelectedItem();
+         
+         int error = this.controllerCajero.getMerchadona().venderProducto(id, id, p);
+        switch (error) {
+            case 1:
+                Alert a = new Alert(Alert.AlertType.INFORMATION, "STOCK INSUFICIENTE", ButtonType.CLOSE);
+
+                a.showAndWait();
+                break;
+            case 2:
+                a = new Alert(Alert.AlertType.INFORMATION, "Producto caducado", ButtonType.CLOSE);
+
+                a.showAndWait();
+                break;
+        }
+        Listavender();
+
     }
 
     @Override

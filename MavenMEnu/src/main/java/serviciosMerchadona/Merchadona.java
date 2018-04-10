@@ -130,11 +130,19 @@ public class Merchadona {
     }
 
     public boolean darBajaProducto(String nombre) {///esto hay q cambiarlo
-        boolean ok;
-        productos.remove(nombre);
-        ok = true;
-        return ok;
+        boolean ok=false;
+        
+        for (int i = 0; i < productos.size(); i++) {
+            if (productos.get(i).getNombre().equalsIgnoreCase(nombre)) {
+                productos.remove(i);
+               ok = true; 
+            }
+
+            
+        }return ok;
     }
+
+    
 
     public List<Cajera> listaCajeras() {
         ArrayList<Cajera> cajeras = new ArrayList<>();
@@ -202,7 +210,6 @@ public class Merchadona {
 
     public int venderProducto(int id, int cantidad, Producto producto) {
         int error = 0;
-        boolean salir = false;
         double total = 0;
 
         double precioProducto = producto.getPrecio_base();
@@ -214,6 +221,7 @@ public class Merchadona {
             if (producto.getStock() > cantidad) {
                 producto.setStock(producto.getStock() - cantidad);
                 total = total + precioProducto * cantidad;
+                
             } else {
                 error = 1;
             }
