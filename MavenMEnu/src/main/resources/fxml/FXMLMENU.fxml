@@ -9,7 +9,10 @@
    <top>
       <MenuBar fx:id="fxMenu" BorderPane.alignment="CENTER">
         <menus>
-          <Menu mnemonicParsing="false" text="Loguin" />
+          <Menu mnemonicParsing="false" text="Loguin">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#handleScene5" text="salir" />
+               </items></Menu>
           <Menu fx:id="fxAdmin" mnemonicParsing="false" text="Administrador">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#handleScene1" text="DarAlta" />

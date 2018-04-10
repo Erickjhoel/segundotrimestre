@@ -33,22 +33,22 @@ public class Merchadona {
     public Merchadona() {
 
         Empleado victor = new Reponedor("Victor", 1235);
-        Empleado alvaro = new Cajera("Alvaro",1234);
+        Empleado alvaro = new Cajera("Alvaro", 1234);
         Producto chocolate = new Producto("Chocolate", 2.34);
         Producto leche = new Perecedero(LocalDateTime.now(), "Leche", 5.2);
         Producto latas = new Producto("Latas", 3.4);
-       
 
         empleados.put(victor.getId_empleado(), victor);
         empleados.put(alvaro.getId_empleado(), alvaro);
-                productos.add(leche);
+        productos.add(leche);
         productos.add(chocolate);
 
         productos.add(latas);
 
     }
+
     public List<Perecedero> listaProductosPerecederos() {
-         ArrayList<Perecedero> perecederos = new ArrayList<>();
+        ArrayList<Perecedero> perecederos = new ArrayList<>();
         for (Producto perecedero : productos) {
             if (perecedero instanceof Perecedero) {
                 perecederos.add((Perecedero) perecedero);
@@ -57,23 +57,22 @@ public class Merchadona {
         return perecederos;
     }
 
-   public List<Producto> listaProductos() {
-         ArrayList<Producto> productoslist = new ArrayList<>();
+    public List<Producto> listaProductos() {
+        ArrayList<Producto> productoslist = new ArrayList<>();
         for (Producto producto : productos) {
             if (producto instanceof Perecedero) {
                 //si es perecedero no hace nah
-            }else{
-            productoslist.add((Producto) producto);
+            } else {
+                productoslist.add((Producto) producto);
             }
         }
         return productoslist;
     }
-   public List<Producto> listaProductos2() {
-      
+
+    public List<Producto> listaProductos2() {
+
         return productos;
     }
-     
-
 
     public int tipoEmpleado(int id) {
         int tipo = 0;
@@ -88,7 +87,7 @@ public class Merchadona {
         return tipo;
     }
 
-    public boolean darAltaEmpleado(String nombre, int id,int opcion) {
+    public boolean darAltaEmpleado(String nombre, int id, int opcion) {
         boolean altaOK = false;
         if (empleados.get(id) == null) {
             switch (opcion) {
@@ -105,24 +104,36 @@ public class Merchadona {
         return altaOK;
     }
 
-    public void darAltaProducto(String nombre, double precio) {
-        int opcion;
+    public boolean darAltaProducto(String nombre, double precio, int opcion) {
+
         boolean comprobar = false;
 
-        productos.add(new Producto(nombre, precio));
-
-    }
-
-    public void darBajaEmpleado(int id) {
-        empleados.remove(id);
-    }
-
-    public void darBajaProducto(String nombre) {
-        for (int i = 0; i < productos.size(); i++) {
-            if (productos.get(i).getNombre().equalsIgnoreCase(nombre)) {
-                productos.remove(i);
-            }
+        switch (opcion) {
+            case 1:
+                productos.add(new Producto(nombre, precio));
+                comprobar = true;
+                break;
+            case 2:
+                productos.add(new Perecedero(LocalDateTime.MIN, nombre, precio));
+                comprobar = true;
+                break;
         }
+        return comprobar;
+    }
+
+    public boolean darBajaEmpleado(int id) {
+        boolean ok;
+
+        empleados.remove(id);
+        ok = true;
+        return ok;
+    }
+
+    public boolean darBajaProducto(String nombre) {
+        boolean ok;
+        productos.remove(nombre);
+        ok = true;
+        return ok;
     }
 
     public List<Cajera> listaCajeras() {
@@ -134,6 +145,7 @@ public class Merchadona {
         }
         return cajeras;
     }
+
     public List<Reponedor> listaReponedor() {
         ArrayList<Reponedor> reponedor = new ArrayList<>();
         for (Empleado empleado2 : empleados.values()) {
@@ -143,6 +155,7 @@ public class Merchadona {
         }
         return reponedor;
     }
+
     public void imprimirProductos() {
         int contador = 0;
         for (Producto producto1 : productos) {

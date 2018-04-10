@@ -13,13 +13,13 @@
         <URL value="@/css/fxmldaraltaempleado.css" />
     </stylesheets>
    <children>
-      <Button fx:id="fxDarAlta" layoutX="135.0" layoutY="201.0" mnemonicParsing="false" text="Añadir" />
+      <Button layoutX="135.0" layoutY="201.0" mnemonicParsing="false" onAction="#clickAltaEmpleado" text="Añadir" />
       <TextField fx:id="fxIdAñadir" layoutX="98.0" layoutY="80.0" />
       <TextField fx:id="fxNombreAñadir" layoutX="98.0" layoutY="119.0" />
       <Label layoutX="69.0" layoutY="83.0" text="ID" />
       <Label layoutX="37.0" layoutY="124.0" text="Nombre" />
-      <RadioButton layoutX="37.0" layoutY="165.0" mnemonicParsing="false" text="Reponedor" />
-      <RadioButton layoutX="202.0" layoutY="166.0" mnemonicParsing="false" text="Cajero" />
+      <RadioButton fx:id="fxopcion1" layoutX="37.0" layoutY="165.0" mnemonicParsing="false" text="Reponedor" />
+      <RadioButton fx:id="fxopcion2" layoutX="202.0" layoutY="166.0" mnemonicParsing="false" text="Cajero" />
       <Label layoutX="72.0" layoutY="35.0" text="AÑADIR EMPLEADO">
          <font>
             <Font size="21.0" />
@@ -32,6 +32,6 @@
       </Label>
       <TextField fx:id="fxIdEliminar" layoutX="394.0" layoutY="78.0" />
       <Label layoutX="363.0" layoutY="82.0" text="ID" />
-      <Button fx:id="fxDarBaja" layoutX="442.0" layoutY="119.0" mnemonicParsing="false" text="Eliminar" />
+      <Button layoutX="442.0" layoutY="119.0" mnemonicParsing="false" onAction="#clickBajaEmpleado" text="Eliminar" />
    </children>
 </AnchorPane>

@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 
 /**
@@ -30,19 +31,35 @@ public class FXMLControllerDarAltaEmpleado implements Initializable {
     private TextField fxNombreAñadir;
     @FXML
     private TextField fxIdEliminar;
-    
+
     @FXML
-    private Button fxDarAlta;
+    private RadioButton fxopcion1;
     @FXML
-    private Button fxDarBaja;
-  
+    private RadioButton fxopcion2;
+
     /**
      * Initializes the controller class.
      */
     @FXML
     private void clickAltaEmpleado(ActionEvent event) throws IOException {
+        String nombre;
+        nombre = fxNombreAñadir.getText();
+        int id;
+        id = Integer.parseInt(fxIdAñadir.getText());
+        String opcion;
+        String Reponedor = null;
 
-        boolean altaOk = this.controllerAdmin.getMerchadona().darAltaEmpleado("nombre", 9, 0);
+        int oopcionfinal;
+
+        opcion = fxopcion1.getText();
+        opcion = fxopcion2.getText();
+        if (opcion == Reponedor) {//radio button devuelve string con el nombre que tenga
+            oopcionfinal = 2;
+        } else {
+            oopcionfinal = 1;
+        }
+
+        boolean altaOk = this.controllerAdmin.getMerchadona().darAltaEmpleado(nombre, id, oopcionfinal);
 
         if (altaOk) {
             Alert a = new Alert(Alert.AlertType.INFORMATION, "Alta OK", ButtonType.CLOSE);
@@ -57,24 +74,27 @@ public class FXMLControllerDarAltaEmpleado implements Initializable {
         }
 
     }
-        @FXML
-//    private void clickBajaEmpleado(ActionEvent event) throws IOException {
-//
-//        boolean darbaja = this.controllerAdmin.getMerchadona().darBajaEmpleado(8);
-//
-//        if (darbaja==true) {
-//            Alert a = new Alert(Alert.AlertType.INFORMATION, "Baja OK", ButtonType.CLOSE);
-//            //final Stage stage = (Stage) fxUser.getScene().getWindow();
-//            //a.initOwner(stage);
-//            a.showAndWait();
-//        } else {
-//            Alert a = new Alert(Alert.AlertType.ERROR, "El id ya existe", ButtonType.CLOSE);
-//            //final Stage stage = (Stage) fxUser.getScene().getWindow();
-//            //a.initOwner(stage);
-//            a.showAndWait();
-//        }
-//
-//    }
+
+    @FXML
+    private void clickBajaEmpleado(ActionEvent event) throws IOException {
+        int id;
+        id = Integer.parseInt(fxIdEliminar.getText());
+        boolean darbaja = this.controllerAdmin.getMerchadona().darBajaEmpleado(id);
+
+        if (darbaja) {
+            Alert a = new Alert(Alert.AlertType.INFORMATION, "Baja OK", ButtonType.CLOSE);
+            //final Stage stage = (Stage) fxUser.getScene().getWindow();
+            //a.initOwner(stage);
+            a.showAndWait();
+        } else {
+            Alert a = new Alert(Alert.AlertType.ERROR, "El id ya existe", ButtonType.CLOSE);
+            //final Stage stage = (Stage) fxUser.getScene().getWindow();
+            //a.initOwner(stage);
+            a.showAndWait();
+        }
+
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

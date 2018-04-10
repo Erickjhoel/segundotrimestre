@@ -39,6 +39,8 @@ public class FXMLMENUController implements Initializable {
     private AnchorPane adminListadoProductos;
     private AnchorPane cajero;
     private AnchorPane reponedor;
+     private AnchorPane loguin;
+     
     private int empleadoID;
     @FXML
     private Menu fxAdmin;
@@ -80,6 +82,17 @@ public class FXMLMENUController implements Initializable {
         listaProductos.ListaDatosProduc();
 
     }
+    @FXML
+    public void handleScene5(ActionEvent event) throws IOException {
+         FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource(Constante.PANTALLA_LOGUINID));
+            loguin = loader.load();
+            FXMLControllerLoguinID controllerLoguin = loader.getController();
+            controllerLoguin.setController(this);
+        fxRoot.setCenter(loguin);
+
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -99,12 +112,15 @@ public class FXMLMENUController implements Initializable {
             FXMLDarAltaProductoController controllerAdmin2 = loader.getController();
             controllerAdmin2.setController(this);
 
+            
+            
             loader = new FXMLLoader(
                     getClass().getResource(Constante.PANTALLA_LISTADO_PRODUCTOS));
             adminListadoProductos = loader.load();
             listaProductos = loader.getController();
             listaProductos.setController(this);
 
+            
             loader = new FXMLLoader(
                     getClass().getResource(Constante.PANTALLA_LISTADO));
             adminListado = loader.load();
