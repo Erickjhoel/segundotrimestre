@@ -129,7 +129,7 @@ public class Merchadona {
         return ok;
     }
 
-    public boolean darBajaProducto(String nombre) {
+    public boolean darBajaProducto(String nombre) {///esto hay q cambiarlo
         boolean ok;
         productos.remove(nombre);
         ok = true;
