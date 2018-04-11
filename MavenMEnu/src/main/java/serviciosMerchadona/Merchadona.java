@@ -35,6 +35,7 @@ public class Merchadona {
         Empleado victor = new Reponedor("Victor", 1235);
         Empleado alvaro = new Cajera("Alvaro", 1234);
         Producto chocolate = new Producto("Chocolate", 2.34);
+        Producto carne = new Producto("carne", 0);
         Producto leche = new Perecedero(LocalDateTime.now(), "Leche", 5.2);
         Producto latas = new Producto("Latas", 3.4);
 
@@ -42,7 +43,7 @@ public class Merchadona {
         empleados.put(alvaro.getId_empleado(), alvaro);
         productos.add(leche);
         productos.add(chocolate);
-
+        productos.add(carne);
         productos.add(latas);
 
     }

@@ -20,7 +20,7 @@ public class Producto {
     public Producto(String nombre, double precio_base) {
         this.nombre = nombre;
         this.precio_base = precio_base;
-        this.stock = 0;
+        this.stock = 20;
     }
     
     public String getNombre() {

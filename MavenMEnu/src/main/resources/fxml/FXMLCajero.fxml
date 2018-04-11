@@ -14,8 +14,8 @@
     </stylesheets>
    <children>
       <ListView fx:id="fxlistaventa" layoutX="101.0" layoutY="93.0" prefHeight="200.0" prefWidth="200.0" />
-      <Button layoutX="397.0" layoutY="168.0" mnemonicParsing="false" text="Button" />
-      <TextField layoutX="343.0" layoutY="125.0" />
+      <Button layoutX="397.0" layoutY="168.0" mnemonicParsing="false" onAction="#clickVender" text="Button" />
+      <TextField fx:id="fxcantidad" layoutX="343.0" layoutY="125.0" />
       <Label layoutX="378.0" layoutY="92.0" text="CANTIDAD">
          <font>
             <Font size="20.0" />
