@@ -56,7 +56,7 @@ public class FXMLFicherosController implements Initializable {
 
     }
 
-    @FXML
+    @Override
     public void initialize(URL url, ResourceBundle rb) {
         rutaactual = ("/home/daw");
         fxRutaActual.setText(rutaactual);
