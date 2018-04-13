@@ -6,14 +6,13 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141" fx:controller="controller.FXMLFicherosController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FXMLFicherosController">
     <stylesheets>
         <URL value="@/css/fxmlficheros.css" />
     </stylesheets>
    <children>
-      <ListView fx:id="fxLista" layoutX="148.0" layoutY="75.0"  onMouseClicked="#handleClickEntrar" prefHeight="250.0" prefWidth="371.0" />
-      <Button layoutX="57.0" layoutY="75.0" mnemonicParsing="false" text="Subir" />
-      <Button layoutX="58.0" layoutY="123.0" mnemonicParsing="false" onAction="#handleVolver" text="Bajar" />
-      <Label fx:id="fxRutaActual" layoutX="148.0" layoutY="36.0" prefHeight="35.0" prefWidth="371.0" text="Label" />
+      <ListView fx:id="fxLista" layoutX="110.0" layoutY="69.0" onMouseClicked="#handleClickEntrar" prefHeight="250.0" prefWidth="371.0" />
+      <Button layoutX="110.0" layoutY="320.0" mnemonicParsing="false" onAction="#handleVolver" prefHeight="35.0" prefWidth="371.0" text="Volver" />
+      <Label fx:id="fxRutaActual" layoutX="110.0" layoutY="34.0" prefHeight="35.0" prefWidth="371.0" text="Label" />
    </children>
 </AnchorPane>

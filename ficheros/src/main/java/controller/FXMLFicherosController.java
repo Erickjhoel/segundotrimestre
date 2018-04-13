@@ -16,7 +16,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -36,12 +39,26 @@ public class FXMLFicherosController implements Initializable {
 
     @FXML
     public void handleClickEntrar(MouseEvent event) {
+        boolean vacio = false;
         if (event.getClickCount() > 1) {
-            File seleccionado
-                    = fxLista.getSelectionModel().getSelectedItem();
+            File seleccionado = fxLista.getSelectionModel().getSelectedItem();
 
-            fxRutaActual.setText(seleccionado.getAbsolutePath());
-            cargarFiles();
+            if (seleccionado.isDirectory()) {//si es directorio
+                vacio = false;
+                fxRutaActual.setText(seleccionado + "");
+
+                if (seleccionado.listFiles().length == 0) {// si esta vacio
+                    vacio = true;
+                }
+                if (vacio == true) {
+                    Alert b = new Alert(Alert.AlertType.INFORMATION, "El Directorio esta vacio", ButtonType.CLOSE);
+                    b.showAndWait();
+                }
+                cargarFiles();
+            } else if (!seleccionado.isDirectory()) {
+                Alert b = new Alert(Alert.AlertType.ERROR, "Esto no es un directorio", ButtonType.CLOSE);
+                b.showAndWait();
+            }
 
         }
     }
@@ -49,10 +66,14 @@ public class FXMLFicherosController implements Initializable {
     @FXML
     public void handleVolver(ActionEvent event) {
 
-        fxRutaActual.getParent();
-        File ete = new File(rutaactual);
-        fxRutaActual.setText(fxRutaActual.getText() + "\\..");
-        cargarFiles();
+        File ete = new File(fxRutaActual.getText());
+        if (ete.getParent() == null) {
+            Alert b = new Alert(Alert.AlertType.ERROR, "No se puede volver atras", ButtonType.CLOSE);
+            b.showAndWait();
+        } else {
+            fxRutaActual.setText(ete.getParent());
+            cargarFiles();
+        }
 
     }
 
@@ -60,12 +81,31 @@ public class FXMLFicherosController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         rutaactual = ("/home/daw");
         fxRutaActual.setText(rutaactual);
+        fxLista.setCellFactory(list -> new ListCell<File>() {
+
+            @Override
+            protected void updateItem(File item, boolean empty) {
+                super.updateItem(item, empty);
+                if (item != null) {
+                    setText(item.getName());
+                    if (item.isDirectory()) {
+                        setStyle("-fx-text-fill:green;");
+                    } else {
+                        setStyle("-fx-text-fill:black;");
+                    }
+                }
+            }
+        });
         cargarFiles();
     }
 
     private void cargarFiles() {
+
         File f = new File(fxRutaActual.getText());
-        fxLista.getItems().clear();
-        fxLista.getItems().addAll(f.listFiles());
+        if (f.isDirectory()) {
+            fxLista.getItems().clear();
+            fxLista.getItems().addAll(f.listFiles());
+        } else {
+        }
     }
 }
