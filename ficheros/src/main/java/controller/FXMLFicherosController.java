@@ -22,6 +22,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 /**
@@ -31,6 +33,8 @@ import javafx.scene.layout.AnchorPane;
  */
 public class FXMLFicherosController implements Initializable {
 
+        private FXMLPrincipalController controllerFichero;
+        
     private String rutaactual;
     @FXML
     private Label fxRutaActual;
@@ -89,10 +93,38 @@ public class FXMLFicherosController implements Initializable {
                 if (item != null) {
                     setText(item.getName());
                     if (item.isDirectory()) {
+                        setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/images/folder.png"))));
                         setStyle("-fx-text-fill:green;");
                     } else {
+                        String comprobar = item.getName();
+                        int ultimoPunto = comprobar.lastIndexOf('.');
+                        if (ultimoPunto == -1) {
+                            setGraphic(null);
+                        } else {
+                            String extension = comprobar.substring(ultimoPunto + 1);
+                            switch (extension) {
+                                case "pdf":
+                                    setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/images/pdf.png"))));
+                                    break;
+
+                                case "txt":
+                                    setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/images/txt.png"))));
+                                    break;
+                                case "png":
+                                    setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/images/picture.png"))));
+                                    break;
+                                case "jpg":
+                                    setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/images/picture.png"))));
+                                    break;
+                                default:
+                                    setGraphic(null);
+
+                            }
+                        }
                         setStyle("-fx-text-fill:black;");
                     }
+                } else {
+                    setGraphic(null);
                 }
             }
         });
@@ -108,4 +140,9 @@ public class FXMLFicherosController implements Initializable {
         } else {
         }
     }
+
+    public void setControllerFichero(FXMLPrincipalController controllerFichero) {
+        this.controllerFichero = controllerFichero;
+    }
+    
 }
