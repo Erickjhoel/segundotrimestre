@@ -49,8 +49,7 @@ public class FXMLCajeroController implements Initializable {
         cantidad=Integer.parseInt(fxcantidad.getText());
         int id=this.controllerCajero.getEmpleadoID();
          Producto p = fxlistaventa.getSelectionModel().getSelectedItem();
-         
-         int error = this.controllerCajero.getMerchadona().venderProducto(id, id, p);
+         int error = this.controllerCajero.getMerchadona().venderProducto(id, cantidad, p);
         switch (error) {
             case 1:
                 Alert a = new Alert(Alert.AlertType.INFORMATION, "STOCK INSUFICIENTE", ButtonType.CLOSE);

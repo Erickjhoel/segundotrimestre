@@ -173,20 +173,15 @@ public class Merchadona {
         }
     }
 
-    public void reponerProducto(int id) {
-        int producto, cantidad;
+    public void reponerProducto(int id, int cantidad, Producto producto) {
         int totalRepos = ((Reponedor) empleados.get(id)).getNum_reposiciones();
-        imprimirProductos();
-        producto = sc.nextInt();
-        sc.nextLine();
-
-        System.out.println("Introduce la cantidad a reponer:");
-        cantidad = sc.nextInt();
-        productos.get(producto).setStock(productos.get(producto).getStock() + cantidad);
+        producto.setStock(producto.getStock() + cantidad);
         totalRepos = totalRepos + cantidad;
         ((Reponedor) empleados.get(id)).setNum_reposiciones(totalRepos);
-        if (productos.get(producto) instanceof Perecedero) {
-            ((Perecedero) productos.get(producto)).setFecha_reposicion(LocalDateTime.now());
+        if (producto instanceof Perecedero) {
+            Producto a = producto;
+            Perecedero perecedero = (Perecedero) a;
+            perecedero.setFecha_reposicion(LocalDateTime.now());
         }
     }
 

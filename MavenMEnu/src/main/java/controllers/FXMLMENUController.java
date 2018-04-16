@@ -180,12 +180,14 @@ public class FXMLMENUController implements Initializable {
             FXMLLoader loader = new FXMLLoader(
                     getClass().getResource(Constante.PANTALLA_REPONEDOR));
             reponedor = loader.load();
+            listareponer = loader.getController();
             listareponer.setController(this);
             listareponer.Listavender();
 
             fxRoot.setCenter(reponedor);
             fxAdmin.setVisible(false);
             fxMenu.setVisible(true);
+            fxCajero.setVisible(false);
             fxReponedor.setVisible(true);
         } catch (IOException ex) {
             Logger.getLogger(FXMLMENUController.class.getName()).log(Level.SEVERE, null, ex);
