@@ -16,8 +16,10 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlElements;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import modelo.Mision;
 import modelo.MisionDeCombate;
+import modelo.MyMapAdapter;
 import modelo.Recurso;
 import modelo.RecursoHumano;
 import modelo.RecursoMaterial;
@@ -42,16 +44,10 @@ public class CuerpoDeElite {
     @XmlElement(name = "RecursoMaterialVehiculo", type = RecursoMaterialVehiculo.class),
     })
     private ArrayList<Recurso> recursos = new ArrayList<>();
+    
+
     @XmlElementWrapper(name = "misiones")
     @XmlElements({
-        @XmlElement(name = "RecursoHumano", type = RecursoHumano.class)
-        ,
-        @XmlElement(name = "RecursoMaterial", type = RecursoMaterial.class)
-        ,
-        @XmlElement(name = "RecursoMaterialVehiculo", type = RecursoMaterialVehiculo.class)
-        ,
-        @XmlElement(name = "Recurso", type = Recurso.class)
-        ,
         @XmlElement(name = "Mision", type = Mision.class)
             ,
         @XmlElement(name = "MisionDeCombate", type = MisionDeCombate.class)
@@ -72,9 +68,9 @@ public class CuerpoDeElite {
         recursos.add(new RecursoHumano(0, 0, 97, 0, 53, "RoboPrimo"));
         recursos.add(new RecursoHumano(0, 25, 50, 7, 47, "Kiko"));
         recursos.add(new RecursoHumano(15, 0, 65, 700, 93, "Sgt. Ripley"));
-        Mision ete = new Mision(LocalDate.MIN, "ete", 8, "misionSecreta");
+        Mision ete = new Mision(LocalDate.now(), "ete", 8, "misionSecreta");
         misiones.put(ete.getNombre(), ete);
-        MisionDeCombate ete2 = new MisionDeCombate(0, LocalDate.MIN, "Ecuador", 5, "guerra");
+        MisionDeCombate ete2 = new MisionDeCombate(0, LocalDate.now(), "Ecuador", 5, "guerra");
         misiones.put(ete2.getNombre(), ete2);
     }
 

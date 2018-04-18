@@ -9,6 +9,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
 import java.util.Map;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlIDREF;
 import modelo.Mision;
 /**
  *
@@ -18,11 +22,17 @@ public abstract class Recurso {
 
     protected int potenciaDeMuerte;
     protected String nombre;
+    @XmlIDREF
+    @XmlElementWrapper(name = "Misiones")
+    @XmlElement( name = "Mision" )
     private ArrayList<Mision> misiones = new ArrayList<>();
 
     public Recurso() {
     }
-
+  @XmlID
+    public String getId() {
+        return Integer.toString(System.identityHashCode(this));
+    }
     public String getNombre() {
         return nombre;
     }

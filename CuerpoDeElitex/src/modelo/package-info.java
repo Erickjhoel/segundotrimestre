@@ -2,8 +2,6 @@
     @XmlJavaTypeAdapter(type=LocalDate.class, 
         value=LocalDateAdapter.class),
 })
-
-
 package modelo;
 
 import modelo.LocalDateAdapter;

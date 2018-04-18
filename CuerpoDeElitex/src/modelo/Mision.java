@@ -8,6 +8,10 @@ package modelo;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlIDREF;
 
 /**
  *
@@ -20,6 +24,9 @@ public class Mision {
     private String lugar;
     private int expGanada;
     protected boolean exito;
+      @XmlIDREF
+    @XmlElementWrapper(name = "Recursos")
+    @XmlElement( name = "Recurso" )
     private ArrayList<RecursoMision> recursosMision = new ArrayList<>();
 
     public Mision(LocalDate fecha, String lugar, int expGanada, String nombre) {
@@ -27,6 +34,11 @@ public class Mision {
         this.lugar = lugar;
         this.expGanada = expGanada;
         this.nombre = nombre;
+    }
+
+       @XmlID
+    public String getId() {
+        return Integer.toString(System.identityHashCode(this));
     }
 
     public String getLugar() {
