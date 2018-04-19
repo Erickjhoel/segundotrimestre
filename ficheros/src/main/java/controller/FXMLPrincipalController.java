@@ -26,9 +26,10 @@ public class FXMLPrincipalController implements Initializable {
 
     @FXML
     private BorderPane fxRoot;
-    
+
     private AnchorPane imagenes;
     private AnchorPane pdf;
+    private AnchorPane fichero;
     private AnchorPane texto;
 
     /**
@@ -36,7 +37,7 @@ public class FXMLPrincipalController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       try {
+        try {
             FXMLLoader loader = new FXMLLoader(
                     getClass().getResource(Constante.PANTALLA_IMAGENES));
             imagenes = loader.load();
@@ -46,16 +47,34 @@ public class FXMLPrincipalController implements Initializable {
             loader = new FXMLLoader(
                     getClass().getResource(Constante.PANTALLA_PDF));
             pdf = loader.load();
-            FXMLPDFController controllerAdmin2 = loader.getController();
-            controllerAdmin2.setControllerpdf(this);
+            FXMLPDFController controllerPdf = loader.getController();
+            controllerPdf.setControllerpdf(this);
+
+            loader = new FXMLLoader(
+                    getClass().getResource(Constante.PANTALLA_FICHERO));
+            fichero = loader.load();
+            FXMLFicherosController controllerFichero = loader.getController();
+            controllerFichero.setControllerFichero(this);
+            loader = new FXMLLoader(
+                    getClass().getResource(Constante.PANTALLA_TEXTO));
+            texto = loader.load();
+            FXMLTextoController controllerTexto = loader.getController();
+            controllerTexto.setControllerTexto(this);
 
         } catch (IOException ex) {
             Logger.getLogger(FXMLPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+               fxRoot.setCenter(fichero);
         }
     }
+
     public void pantallaImagen() {
         fxRoot.setCenter(imagenes);
     }
-
-
+    public void pantallaPdf() {
+        fxRoot.setCenter(pdf);
+    }
+    public void pantallaTexto() {
+        fxRoot.setCenter(texto);
+    }
 }

@@ -29,7 +29,7 @@ public class NewFXMain extends Application {
         BorderPane root = loaderMenu.load();
         FXMLPrincipalController menuController = loaderMenu.getController();
           
-        AnchorPane anchor;
+        AnchorPane anchor;/////////qiitar esto y colocarlo por defecto en try de principal************************************
                     //load up OTHER FXML document
         FXMLLoader loader = new FXMLLoader(
           getClass().getResource(Constante.PANTALLA_FICHERO));

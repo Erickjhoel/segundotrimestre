@@ -10,6 +10,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
@@ -21,6 +23,7 @@ import javafx.scene.input.MouseEvent;
 public class FXMLImagenesController implements Initializable {
 
     private FXMLPrincipalController controllerImagen;
+    private FXMLFicherosController controlerseleccionado;
     @FXML
     ImageView fxImage;
 
@@ -28,8 +31,16 @@ public class FXMLImagenesController implements Initializable {
      * Initializes the controller class.
      */
     @FXML
-    public void handleClickEntrar(MouseEvent event) {
-        
+    public void volverAtras(MouseEvent event) {
+//        File ete = new File(fxRutaActual.getText());
+//        if (ete.getParent() == null) {
+//            Alert b = new Alert(Alert.AlertType.ERROR, "No se puede volver atras", ButtonType.CLOSE);
+//            b.showAndWait();
+//        } else {
+//            fxRutaActual.setText(ete.getParent());
+//            cargarFiles();
+//        }
+
     }
     
     

@@ -39,7 +39,6 @@ public class FXMLFicherosController implements Initializable {
     private Label fxRutaActual;
     @FXML
     private ListView<File> fxLista;
-
     @FXML
     public void handleClickEntrar(MouseEvent event) {
         boolean vacio = false;
@@ -64,8 +63,10 @@ public class FXMLFicherosController implements Initializable {
                 String extension = comprobar.substring(ultimoPunto + 1);
                 switch (extension) {
                     case "pdf":
+                        controllerFichero.pantallaPdf();
                         break;
                     case "txt":
+                        controllerFichero.pantallaTexto();
                         break;
                     case "png":
                         controllerFichero.pantallaImagen();
@@ -79,12 +80,8 @@ public class FXMLFicherosController implements Initializable {
                 Alert b = new Alert(Alert.AlertType.ERROR, "Esto no es un directorio", ButtonType.CLOSE);
                 b.showAndWait();
             }
-
         }
     }
-    
-
-    
     @FXML
     public void handleVolver(ActionEvent event) {
 

@@ -15,7 +15,9 @@ import javafx.fxml.Initializable;
  * @author daw
  */
 public class FXMLTextoController implements Initializable {
+    private FXMLPrincipalController controllerTexto;
 
+   
     /**
      * Initializes the controller class.
      */
@@ -23,5 +25,7 @@ public class FXMLTextoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-    
+     public void setControllerTexto(FXMLPrincipalController controllerTexto) {
+        this.controllerTexto = controllerTexto;
+    }
 }
