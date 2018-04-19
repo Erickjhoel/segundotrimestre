@@ -45,14 +45,9 @@ public class CuerpoDeElite {
     })
     private ArrayList<Recurso> recursos = new ArrayList<>();
     
-
-    @XmlElementWrapper(name = "misiones")
-    @XmlElements({
-        @XmlElement(name = "Mision", type = Mision.class)
-            ,
-        @XmlElement(name = "MisionDeCombate", type = MisionDeCombate.class)
-    })
-    private Map<String, Mision> misiones = new LinkedHashMap<>();
+    @XmlJavaTypeAdapter(MyMapAdapter.class)
+    @XmlElement
+    private HashMap<String, Mision> misiones = new LinkedHashMap<>();
 
     public CuerpoDeElite() {
         recursos.add(new RecursoMaterialVehiculo(8, 35, 300, 20, "Furgón"));

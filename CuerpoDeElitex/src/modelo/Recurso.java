@@ -26,12 +26,17 @@ public abstract class Recurso {
     @XmlElementWrapper(name = "Misiones")
     @XmlElement( name = "Mision" )
     private ArrayList<Mision> misiones = new ArrayList<>();
+    private String id;
 
     public Recurso() {
     }
-  @XmlID
+    @XmlID
     public String getId() {
         return Integer.toString(System.identityHashCode(this));
+    }
+    
+    public void setId(String id) {
+        this.id = id;
     }
     public String getNombre() {
         return nombre;

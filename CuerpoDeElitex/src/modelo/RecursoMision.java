@@ -6,6 +6,9 @@
 package modelo;
 
 import java.util.Objects;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlIDREF;
 
 /**
  *
@@ -13,7 +16,10 @@ import java.util.Objects;
  */
 public class RecursoMision {
 
-    private Recurso recurso;
+    @XmlIDREF
+    @XmlElementWrapper(name = "Recursos")
+    @XmlElement(name = "Recurso")
+    private Recurso recurso;//recurso tiene id
     private String uso;
 
     public RecursoMision(Recurso recurso, String uso) {
@@ -69,7 +75,7 @@ public class RecursoMision {
 
     @Override
     public String toString() {
-        return  "Recurso=" + recurso + ", Uso: " + uso + '}';
+        return "Recurso=" + recurso + ", Uso: " + uso + '}';
     }
 
 }

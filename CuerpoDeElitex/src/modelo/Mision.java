@@ -24,9 +24,8 @@ public class Mision {
     private String lugar;
     private int expGanada;
     protected boolean exito;
-      @XmlIDREF
-    @XmlElementWrapper(name = "Recursos")
-    @XmlElement( name = "Recurso" )
+    private String id;
+ //aqui no va IDREF xque recurso mision no tiene id va en recurso mision
     private ArrayList<RecursoMision> recursosMision = new ArrayList<>();
 
     public Mision(LocalDate fecha, String lugar, int expGanada, String nombre) {
@@ -39,6 +38,10 @@ public class Mision {
        @XmlID
     public String getId() {
         return Integer.toString(System.identityHashCode(this));
+    }
+    
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getLugar() {
@@ -109,6 +112,11 @@ public class Mision {
     public LocalDate getFecha() {
         return fecha;
     }
+
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
+    }
+    
 
     public boolean requisitoVehiculos() {
         boolean requisito = false;
