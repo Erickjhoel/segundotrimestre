@@ -15,7 +15,7 @@ import javafx.fxml.Initializable;
  * @author daw
  */
 public class FXMLPDFController implements Initializable {
-
+private FXMLPrincipalController controllerpdf;
     /**
      * Initializes the controller class.
      */
@@ -23,5 +23,9 @@ public class FXMLPDFController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    public void setControllerpdf(FXMLPrincipalController controllerpdf) {
+        this.controllerpdf = controllerpdf;
+    }
     
 }

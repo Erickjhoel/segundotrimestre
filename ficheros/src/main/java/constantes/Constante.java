@@ -13,7 +13,7 @@ public class Constante {
 
 
     public static final String PANTALLA_PRINCIPAL = "/fxml/FXMLPrincipal.fxml";
-    public static final String PANTALLA_FICHERO = "/fxml/FXMLFichero.fxml";
+    public static final String PANTALLA_FICHERO = "/fxml/FXMLFicheros.fxml";
     public static final String PANTALLA_IMAGENES = "/fxml/FXMLImagenes.fxml";
     public static final String PANTALLA_PDF = "/fxml/FXMLPDF.fxml";
     public static final String PANTALLA_TEXTO = "/fxml/FXMLTexto.fxml";

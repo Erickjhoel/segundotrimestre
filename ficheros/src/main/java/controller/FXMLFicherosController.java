@@ -33,8 +33,7 @@ import javafx.scene.layout.AnchorPane;
  */
 public class FXMLFicherosController implements Initializable {
 
-        private FXMLPrincipalController controllerFichero;
-        
+    private FXMLPrincipalController controllerFichero;
     private String rutaactual;
     @FXML
     private Label fxRutaActual;
@@ -59,14 +58,33 @@ public class FXMLFicherosController implements Initializable {
                     b.showAndWait();
                 }
                 cargarFiles();
-            } else if (!seleccionado.isDirectory()) {
+            } else {
+                String comprobar = seleccionado.getName();
+                int ultimoPunto = comprobar.lastIndexOf('.');
+                String extension = comprobar.substring(ultimoPunto + 1);
+                switch (extension) {
+                    case "pdf":
+                        break;
+                    case "txt":
+                        break;
+                    case "png":
+                        controllerFichero.pantallaImagen();
+                        break;
+                    case "jpg":
+                       controllerFichero.pantallaImagen();
+                        break;
+                    default:
+
+                }
                 Alert b = new Alert(Alert.AlertType.ERROR, "Esto no es un directorio", ButtonType.CLOSE);
                 b.showAndWait();
             }
 
         }
     }
+    
 
+    
     @FXML
     public void handleVolver(ActionEvent event) {
 
@@ -106,7 +124,6 @@ public class FXMLFicherosController implements Initializable {
                                 case "pdf":
                                     setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/images/pdf.png"))));
                                     break;
-
                                 case "txt":
                                     setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/images/txt.png"))));
                                     break;
@@ -144,5 +161,5 @@ public class FXMLFicherosController implements Initializable {
     public void setControllerFichero(FXMLPrincipalController controllerFichero) {
         this.controllerFichero = controllerFichero;
     }
-    
+
 }
