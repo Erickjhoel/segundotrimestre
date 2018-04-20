@@ -34,9 +34,9 @@ import javafx.scene.layout.AnchorPane;
 public class FXMLFicherosController implements Initializable {
 
     private FXMLPrincipalController controllerFichero;
-    private String rutaactual;
+    public String rutaactual;
     @FXML
-    private Label fxRutaActual;
+    public Label fxRutaActual;
     @FXML
     private ListView<File> fxLista;
     @FXML

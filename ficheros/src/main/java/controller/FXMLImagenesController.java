@@ -8,10 +8,12 @@ package controller;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
@@ -30,23 +32,18 @@ public class FXMLImagenesController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    
     @FXML
-    public void volverAtras(MouseEvent event) {
-//        File ete = new File(fxRutaActual.getText());
-//        if (ete.getParent() == null) {
-//            Alert b = new Alert(Alert.AlertType.ERROR, "No se puede volver atras", ButtonType.CLOSE);
-//            b.showAndWait();
-//        } else {
-//            fxRutaActual.setText(ete.getParent());
-//            cargarFiles();
-//        }
-
+    public void volverAtras(ActionEvent event) {
+     controlerseleccionado.handleVolver(event);
     }
-    
-    
+        
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        Image image
+          = new Image(getClass().getResourceAsStream(controlerseleccionado.rutaactual));
+        fxImage.setImage(image);
     }
 
     public void setControllerImagenes(FXMLPrincipalController controllerFichero) {
