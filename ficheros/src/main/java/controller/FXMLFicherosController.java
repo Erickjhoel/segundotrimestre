@@ -35,10 +35,12 @@ public class FXMLFicherosController implements Initializable {
 
     private FXMLPrincipalController controllerFichero;
     public String rutaactual;
+    public String comprobar;
     @FXML
     public Label fxRutaActual;
     @FXML
     private ListView<File> fxLista;
+
     @FXML
     public void handleClickEntrar(MouseEvent event) {
         boolean vacio = false;
@@ -58,21 +60,24 @@ public class FXMLFicherosController implements Initializable {
                 }
                 cargarFiles();
             } else {
-                String comprobar = seleccionado.getName();
+                comprobar = seleccionado.getPath();
                 int ultimoPunto = comprobar.lastIndexOf('.');
                 String extension = comprobar.substring(ultimoPunto + 1);
                 switch (extension) {
                     case "pdf":
-                        controllerFichero.pantallaPdf();
+                        controllerFichero.setRuta(comprobar);
+                        controllerFichero.pantallaCargarPDF();
                         break;
                     case "txt":
                         controllerFichero.pantallaTexto();
                         break;
                     case "png":
-                        controllerFichero.pantallaImagen();
+                        controllerFichero.setRuta(comprobar);
+                        controllerFichero.pantallaCargarIma();
                         break;
                     case "jpg":
-                       controllerFichero.pantallaImagen();
+                        controllerFichero.setRuta(comprobar);
+                        controllerFichero.pantallaCargarIma();
                         break;
                     default:
 
@@ -82,6 +87,7 @@ public class FXMLFicherosController implements Initializable {
             }
         }
     }
+
     @FXML
     public void handleVolver(ActionEvent event) {
 

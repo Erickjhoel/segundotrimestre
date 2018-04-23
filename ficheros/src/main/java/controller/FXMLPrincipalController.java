@@ -24,6 +24,8 @@ import javafx.scene.layout.BorderPane;
  */
 public class FXMLPrincipalController implements Initializable {
 
+    private FXMLImagenesController imagenCargar;
+    private FXMLPDFController pdfCargar;
     @FXML
     private BorderPane fxRoot;
 
@@ -31,6 +33,7 @@ public class FXMLPrincipalController implements Initializable {
     private AnchorPane pdf;
     private AnchorPane fichero;
     private AnchorPane texto;
+    private String ruta;
 
     /**
      * Initializes the controller class.
@@ -38,24 +41,8 @@ public class FXMLPrincipalController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
+
             FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource(Constante.PANTALLA_IMAGENES));
-            imagenes = loader.load();
-            FXMLImagenesController controllerImagenes = loader.getController();
-            controllerImagenes.setControllerImagenes(this);
-
-            loader = new FXMLLoader(
-                    getClass().getResource(Constante.PANTALLA_PDF));
-            pdf = loader.load();
-            FXMLPDFController controllerPdf = loader.getController();
-            controllerPdf.setControllerpdf(this);
-
-            loader = new FXMLLoader(
-                    getClass().getResource(Constante.PANTALLA_FICHERO));
-            fichero = loader.load();
-            FXMLFicherosController controllerFichero = loader.getController();
-            controllerFichero.setControllerFichero(this);
-            loader = new FXMLLoader(
                     getClass().getResource(Constante.PANTALLA_TEXTO));
             texto = loader.load();
             FXMLTextoController controllerTexto = loader.getController();
@@ -64,17 +51,65 @@ public class FXMLPrincipalController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(FXMLPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-               fxRoot.setCenter(fichero);
+            fxRoot.setCenter(fichero);
         }
     }
 
-    public void pantallaImagen() {
-        fxRoot.setCenter(imagenes);
+    public void pantallaCargarIma() {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource(Constante.PANTALLA_IMAGENES));
+            imagenes = loader.load();
+            imagenCargar = loader.getController();
+            imagenCargar.setControllerImagenes(this);
+            imagenCargar.cargarImagen();
+            fxRoot.setCenter(imagenes);
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
-    public void pantallaPdf() {
-        fxRoot.setCenter(pdf);
+
+    public void pantallaCargarPDF() {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource(Constante.PANTALLA_PDF));
+            pdf = loader.load();
+            pdfCargar = loader.getController();
+            pdfCargar.setControllerpdf(this);
+            pdfCargar.cargarPDF();
+            fxRoot.setCenter(pdf);
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
+
+    public void pantallaVolverPrincipal() {
+        try {
+
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource(Constante.PANTALLA_FICHERO));
+            fichero = loader.load();
+            FXMLFicherosController controllerFichero = loader.getController();
+            controllerFichero.setControllerFichero(this);
+            fxRoot.setCenter(fichero);
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
     public void pantallaTexto() {
         fxRoot.setCenter(texto);
     }
+
+    public String getRuta() {
+        return ruta;
+    }
+
+    public void setRuta(String ruta) {
+        this.ruta = ruta;
+    }
+
 }

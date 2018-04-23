@@ -6,6 +6,8 @@
 package controller;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -25,28 +27,31 @@ import javafx.scene.input.MouseEvent;
 public class FXMLImagenesController implements Initializable {
 
     private FXMLPrincipalController controllerImagen;
-    private FXMLFicherosController controlerseleccionado;
     @FXML
     ImageView fxImage;
 
     /**
      * Initializes the controller class.
      */
-    
     @FXML
     public void volverAtras(ActionEvent event) {
-     controlerseleccionado.handleVolver(event);
+        controllerImagen.pantallaVolverPrincipal();
     }
-        
+
+    public void cargarImagen() throws FileNotFoundException {
+        String path=controllerImagen.getRuta();
+        Image image = new Image(new FileInputStream(path));
+        fxImage.setImage(image);
+
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Image image
-          = new Image(getClass().getResourceAsStream(controlerseleccionado.rutaactual));
-        fxImage.setImage(image);
-    }
 
-    public void setControllerImagenes(FXMLPrincipalController controllerFichero) {
-        this.controllerImagen = controllerFichero;
+    }
+    
+    
+    public void setControllerImagenes(FXMLPrincipalController controller) {
+        this.controllerImagen = controller;
     }
 }
