@@ -60,30 +60,38 @@ public class FXMLFicherosController implements Initializable {
                 }
                 cargarFiles();
             } else {
+                
                 comprobar = seleccionado.getPath();
                 int ultimoPunto = comprobar.lastIndexOf('.');
                 String extension = comprobar.substring(ultimoPunto + 1);
                 switch (extension) {
                     case "pdf":
+                        Alert b = new Alert(Alert.AlertType.ERROR, "Estoes un PDF", ButtonType.CLOSE);
+                b.showAndWait();
                         controllerFichero.setRuta(comprobar);
                         controllerFichero.pantallaCargarPDF();
                         break;
                     case "txt":
+                        Alert c = new Alert(Alert.AlertType.ERROR, "Esto es un Fichero de texto", ButtonType.CLOSE);
+                c.showAndWait();
                         controllerFichero.pantallaTexto();
                         break;
                     case "png":
+                        Alert d = new Alert(Alert.AlertType.ERROR, "Esto es una imagen", ButtonType.CLOSE);
+                d.showAndWait();
                         controllerFichero.setRuta(comprobar);
                         controllerFichero.pantallaCargarIma();
                         break;
                     case "jpg":
+                        Alert e = new Alert(Alert.AlertType.ERROR, "Esto es una imagen", ButtonType.CLOSE);
+                e.showAndWait();
                         controllerFichero.setRuta(comprobar);
                         controllerFichero.pantallaCargarIma();
                         break;
                     default:
 
                 }
-                Alert b = new Alert(Alert.AlertType.ERROR, "Esto no es un directorio", ButtonType.CLOSE);
-                b.showAndWait();
+                
             }
         }
     }
@@ -104,7 +112,7 @@ public class FXMLFicherosController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        rutaactual = ("/home/daw");
+        rutaactual = ("C:/");
         fxRutaActual.setText(rutaactual);
         fxLista.setCellFactory(list -> new ListCell<File>() {
 
