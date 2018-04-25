@@ -27,33 +27,14 @@ public class FXMLTextoController implements Initializable {
 
     private FXMLPrincipalController controllerTexto;
 
-    @FXML
-    public void eliminar() {
-        File delete = new File("test.test");
-            delete.delete();
-    }
-
-    @FXML
-    public void renombrar() {
-        File rename = new File("test.test.copia");
-            rename.renameTo(new File("test.test.copia2"));
-    }
-
-    @FXML
-    public void copiar() {
-        try {
-            Files.copy(new File("test.test"),new File("test.test.copia"));
-        } catch (IOException ex) {
-            Logger.getLogger(FXMLTextoController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+   
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
     }
 
     public void setControllerTexto(FXMLPrincipalController controllerTexto) {

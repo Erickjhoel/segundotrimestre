@@ -5,6 +5,7 @@
  */
 package controller;
 
+import com.google.common.io.Files;
 import javafx.scene.input.MouseEvent;
 import java.io.File;
 import java.io.IOException;
@@ -112,7 +113,7 @@ public class FXMLFicherosController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        rutaactual = ("C:/");
+        rutaactual = ("/home/daw");
         fxRutaActual.setText(rutaactual);
         fxLista.setCellFactory(list -> new ListCell<File>() {
 
@@ -171,6 +172,26 @@ public class FXMLFicherosController implements Initializable {
 
     public void setControllerFichero(FXMLPrincipalController controllerFichero) {
         this.controllerFichero = controllerFichero;
+    }
+     @FXML
+    public void eliminar() {
+        File delete = new File("test.test");
+            delete.delete();
+    }
+
+    @FXML
+    public void renombrar() {
+        File rename = new File("test.test.copia");
+            rename.renameTo(new File("test.test.copia2"));
+    }
+
+    @FXML
+    public void copiar() {
+        try {
+            Files.copy(new File("test.test"),new File("test.test.copia"));
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLTextoController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }
