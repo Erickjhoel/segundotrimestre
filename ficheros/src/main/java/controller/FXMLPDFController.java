@@ -33,7 +33,7 @@ public class FXMLPDFController implements Initializable {
      * Initializes the controller class.
      */
     @FXML
-    public void volverAtras(ActionEvent event) {
+    public void volverAtrasPDF(ActionEvent event) {
         controllerpdf.pantallaVolverPrincipal();
     }
 

@@ -15,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -25,16 +26,17 @@ import javafx.scene.input.MouseEvent;
  * @author daw
  */
 public class FXMLImagenesController implements Initializable {
-
+    private FXMLFicherosController controllerRuta;
     private FXMLPrincipalController controllerImagen;
     @FXML
     ImageView fxImage;
-
+    @FXML
+    public Label fxRutaImagen;
     /**
      * Initializes the controller class.
      */
     @FXML
-    public void volverAtras(ActionEvent event) {
+    public void volverAtrasImagen(ActionEvent event) {
         controllerImagen.pantallaVolverPrincipal();
     }
 
@@ -47,7 +49,7 @@ public class FXMLImagenesController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+//        fxRutaImagen=controllerRuta.fxRutaActual;
     }
     
     

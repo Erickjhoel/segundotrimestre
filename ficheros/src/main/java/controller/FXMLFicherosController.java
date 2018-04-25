@@ -67,24 +67,24 @@ public class FXMLFicherosController implements Initializable {
                 String extension = comprobar.substring(ultimoPunto + 1);
                 switch (extension) {
                     case "pdf":
-                        Alert b = new Alert(Alert.AlertType.ERROR, "Estoes un PDF", ButtonType.CLOSE);
+                        Alert b = new Alert(Alert.AlertType.INFORMATION, "Estoes un PDF", ButtonType.CLOSE);
                 b.showAndWait();
                         controllerFichero.setRuta(comprobar);
                         controllerFichero.pantallaCargarPDF();
                         break;
                     case "txt":
-                        Alert c = new Alert(Alert.AlertType.ERROR, "Esto es un Fichero de texto", ButtonType.CLOSE);
+                        Alert c = new Alert(Alert.AlertType.INFORMATION, "Esto es un Fichero de texto", ButtonType.CLOSE);
                 c.showAndWait();
                         controllerFichero.pantallaTexto();
                         break;
                     case "png":
-                        Alert d = new Alert(Alert.AlertType.ERROR, "Esto es una imagen", ButtonType.CLOSE);
+                        Alert d = new Alert(Alert.AlertType.INFORMATION, "Esto es una imagen", ButtonType.CLOSE);
                 d.showAndWait();
                         controllerFichero.setRuta(comprobar);
                         controllerFichero.pantallaCargarIma();
                         break;
                     case "jpg":
-                        Alert e = new Alert(Alert.AlertType.ERROR, "Esto es una imagen", ButtonType.CLOSE);
+                        Alert e = new Alert(Alert.AlertType.INFORMATION, "Esto es una imagen", ButtonType.CLOSE);
                 e.showAndWait();
                         controllerFichero.setRuta(comprobar);
                         controllerFichero.pantallaCargarIma();
@@ -113,7 +113,7 @@ public class FXMLFicherosController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        rutaactual = ("/home/daw");
+        rutaactual = ("C:/");
         fxRutaActual.setText(rutaactual);
         fxLista.setCellFactory(list -> new ListCell<File>() {
 
@@ -174,21 +174,22 @@ public class FXMLFicherosController implements Initializable {
         this.controllerFichero = controllerFichero;
     }
      @FXML
-    public void eliminar() {
-        File delete = new File("test.test");
+    public void eliminar(ActionEvent event) {
+        File delete =fxLista.getSelectionModel().getSelectedItem();
             delete.delete();
+            cargarFiles();
     }
 
     @FXML
-    public void renombrar() {
-        File rename = new File("test.test.copia");
-            rename.renameTo(new File("test.test.copia2"));
+    public void renombrar(ActionEvent event) {
+        File rename = fxLista.getSelectionModel().getSelectedItem();
+            rename.renameTo(new File("test.test.copia2"));/////esto falta
     }
 
     @FXML
-    public void copiar() {
+    public void copiar(ActionEvent event) {
         try {
-            Files.copy(new File("test.test"),new File("test.test.copia"));
+            Files.copy(fxLista.getSelectionModel().getSelectedItem(),new File(fxLista.getSelectionModel().getSelectedItem()+".copia"));
         } catch (IOException ex) {
             Logger.getLogger(FXMLTextoController.class.getName()).log(Level.SEVERE, null, ex);
         }
