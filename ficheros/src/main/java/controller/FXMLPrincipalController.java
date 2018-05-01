@@ -40,19 +40,8 @@ public class FXMLPrincipalController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        try {
+        fxRoot.setCenter(fichero);
 
-            FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource(Constante.PANTALLA_TEXTO));
-            texto = loader.load();
-            FXMLTextoController controllerTexto = loader.getController();
-            controllerTexto.setControllerTexto(this);
-
-        } catch (IOException ex) {
-            Logger.getLogger(FXMLPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            fxRoot.setCenter(fichero);
-        }
     }
 
     public void pantallaCargarIma() {
@@ -100,8 +89,18 @@ public class FXMLPrincipalController implements Initializable {
 
     }
 
-    public void pantallaTexto() {
-        fxRoot.setCenter(texto);
+    public void pantallaCargarTXT() {
+        try {
+
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource(Constante.PANTALLA_TEXTO));
+            texto = loader.load();
+            FXMLTextoController controllerTexto = loader.getController();
+            controllerTexto.setControllerTexto(this);
+            fxRoot.setCenter(texto);
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public String getRuta() {

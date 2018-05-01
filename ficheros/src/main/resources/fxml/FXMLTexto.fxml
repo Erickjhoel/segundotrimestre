@@ -11,8 +11,8 @@
         <URL value="@/css/fxmltexto.css" />
     </stylesheets>
    <children>
-      <Button layoutX="274.0" layoutY="374.0" mnemonicParsing="false" onAction="#volverAtras" text="volver" />
-      <TextArea layoutX="48.0" layoutY="65.0" prefHeight="296.0" prefWidth="508.0" />
+      <Button layoutX="274.0" layoutY="374.0" mnemonicParsing="false" onAction="#volverAtrasTexto" text="volver" />
+      <TextArea fx:id="fxtexto" layoutX="48.0" layoutY="65.0" prefHeight="296.0" prefWidth="508.0" />
       <Label fx:id="fxRutaTexto" layoutX="48.0" layoutY="32.0" prefHeight="17.0" prefWidth="508.0" text="Label" />
    </children>
 </AnchorPane>

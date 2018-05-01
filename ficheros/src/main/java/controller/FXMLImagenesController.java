@@ -26,12 +26,9 @@ import javafx.scene.input.MouseEvent;
  * @author daw
  */
 public class FXMLImagenesController implements Initializable {
-    private FXMLFicherosController controllerRuta;
     private FXMLPrincipalController controllerImagen;
     @FXML
     ImageView fxImage;
-    @FXML
-    public Label fxRutaImagen;
     /**
      * Initializes the controller class.
      */
@@ -49,7 +46,6 @@ public class FXMLImagenesController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-//        fxRutaImagen=controllerRuta.fxRutaActual;
     }
     
     

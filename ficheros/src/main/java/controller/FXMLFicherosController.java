@@ -49,8 +49,10 @@ public class FXMLFicherosController implements Initializable {
             File seleccionado = fxLista.getSelectionModel().getSelectedItem();
 
             if (seleccionado.isDirectory()) {//si es directorio
+
                 vacio = false;
                 fxRutaActual.setText(seleccionado + "");
+                cargarFiles();
 
                 if (seleccionado.listFiles().length == 0) {// si esta vacio
                     vacio = true;
@@ -59,40 +61,38 @@ public class FXMLFicherosController implements Initializable {
                     Alert b = new Alert(Alert.AlertType.INFORMATION, "El Directorio esta vacio", ButtonType.CLOSE);
                     b.showAndWait();
                 }
-                cargarFiles();
             } else {
-                
                 comprobar = seleccionado.getPath();
                 int ultimoPunto = comprobar.lastIndexOf('.');
                 String extension = comprobar.substring(ultimoPunto + 1);
                 switch (extension) {
                     case "pdf":
                         Alert b = new Alert(Alert.AlertType.INFORMATION, "Estoes un PDF", ButtonType.CLOSE);
-                b.showAndWait();
+                        b.showAndWait();
                         controllerFichero.setRuta(comprobar);
                         controllerFichero.pantallaCargarPDF();
                         break;
                     case "txt":
                         Alert c = new Alert(Alert.AlertType.INFORMATION, "Esto es un Fichero de texto", ButtonType.CLOSE);
-                c.showAndWait();
-                        controllerFichero.pantallaTexto();
+                        c.showAndWait();
+                        controllerFichero.pantallaCargarTXT();
                         break;
                     case "png":
                         Alert d = new Alert(Alert.AlertType.INFORMATION, "Esto es una imagen", ButtonType.CLOSE);
-                d.showAndWait();
+                        d.showAndWait();
                         controllerFichero.setRuta(comprobar);
                         controllerFichero.pantallaCargarIma();
                         break;
                     case "jpg":
                         Alert e = new Alert(Alert.AlertType.INFORMATION, "Esto es una imagen", ButtonType.CLOSE);
-                e.showAndWait();
+                        e.showAndWait();
                         controllerFichero.setRuta(comprobar);
                         controllerFichero.pantallaCargarIma();
                         break;
                     default:
 
                 }
-                
+
             }
         }
     }
@@ -161,7 +161,6 @@ public class FXMLFicherosController implements Initializable {
     }
 
     private void cargarFiles() {
-
         File f = new File(fxRutaActual.getText());
         if (f.isDirectory()) {
             fxLista.getItems().clear();
@@ -173,23 +172,27 @@ public class FXMLFicherosController implements Initializable {
     public void setControllerFichero(FXMLPrincipalController controllerFichero) {
         this.controllerFichero = controllerFichero;
     }
-     @FXML
+
+    @FXML
     public void eliminar(ActionEvent event) {
-        File delete =fxLista.getSelectionModel().getSelectedItem();
-            delete.delete();
-            cargarFiles();
+        File delete = fxLista.getSelectionModel().getSelectedItem();
+        delete.delete();
+        cargarFiles();
     }
 
     @FXML
     public void renombrar(ActionEvent event) {
         File rename = fxLista.getSelectionModel().getSelectedItem();
-            rename.renameTo(new File("test.test.copia2"));/////esto falta
+        rename.renameTo(new File("reombrado-" + rename));/////esto falta
+        cargarFiles();
     }
 
     @FXML
     public void copiar(ActionEvent event) {
         try {
-            Files.copy(fxLista.getSelectionModel().getSelectedItem(),new File(fxLista.getSelectionModel().getSelectedItem()+".copia"));
+            File copiar = fxLista.getSelectionModel().getSelectedItem();
+            Files.copy(copiar, new File(copiar + "-copia"));
+            cargarFiles();
         } catch (IOException ex) {
             Logger.getLogger(FXMLTextoController.class.getName()).log(Level.SEVERE, null, ex);
         }
