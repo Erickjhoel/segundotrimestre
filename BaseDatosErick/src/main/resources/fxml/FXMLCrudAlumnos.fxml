@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.net.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FXMLCrudAlumnosController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141" fx:controller="controllers.FXMLCrudAlumnosController">
     <stylesheets>
-        <URL value="@/css/fxmlcrudalumnos.css"/>
+        <URL value="@/css/fxmlcrudalumnos.css" />
     </stylesheets>
+   <children>
+      <ListView fx:id="fxLista" layoutX="14.0" layoutY="20.0" prefHeight="367.0" prefWidth="228.0" />
+      <TextField layoutX="271.0" layoutY="43.0" />
+      <TextField layoutX="271.0" layoutY="87.0" />
+      <RadioButton layoutX="271.0" layoutY="125.0" mnemonicParsing="false" text="RadioButton" />
+   </children>
 </AnchorPane>

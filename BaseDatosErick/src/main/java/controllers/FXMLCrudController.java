@@ -33,10 +33,8 @@ public class FXMLCrudController implements Initializable {
     
     List<Asignaturas> ete;
      private void cargarFiles() {
-         
             fxLista.getItems().clear();
             fxLista.getItems().addAll(ete);
-        
     }
     
     

@@ -84,8 +84,67 @@ public class ConexionSimpleBD {
         return lista;
 
     }
+    
+     public List<Alumno> getAllAlumnoJDBC() {
+        List<Alumno> lista = new ArrayList<>();
+        Alumno nuevo = null;
 
-    public Alumno getAlumnoJDBC(int idWhere) {
+        Connection con = null;
+        Statement stmt = null;
+        ResultSet rs = null;
+        try {
+            Class.forName(Configuration.getInstance().getDriverDB());
+
+            con = DriverManager.getConnection(
+                    Configuration.getInstance().getUrlDB(),
+                    Configuration.getInstance().getUserDB(),
+                    Configuration.getInstance().getPassDB());
+
+            stmt = con.createStatement();
+            String sql;
+
+            sql = "SELECT * FROM alumnos";
+            rs = stmt.executeQuery(sql);
+
+            //STEP 5: Extract data from result set
+            while (rs.next()) {
+                //Retrieve by column name
+                int id = rs.getInt("id");
+                String nombre = rs.getString("nombre");
+                Date fecha_nacimiento = rs.getDate("fecha_nacimiento");
+                Boolean mayor_edad = rs.getBoolean("mayor_edad");
+                nuevo = new Alumno();
+                nuevo.setNombre(nombre);
+                nuevo.setId(id);
+                nuevo.setFecha_nacimiento(fecha_nacimiento);
+                nuevo.setMayor_edad(mayor_edad);
+                lista.add(nuevo);
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stmt != null) {
+                    stmt.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+        return lista;
+
+    }
+    
+
+    public Alumno getAlumnoJDBC(int idWhere) {//conn filtro
 
         Alumno nuevo = null;
 
@@ -142,7 +201,7 @@ public class ConexionSimpleBD {
 
     }
 
-    public int updateAlumnoJDBC(Alumno a) {
+    public int updateAlumnoJDBC(Alumno a) {//Actualizar Alumno
         Connection con = null;
         PreparedStatement stmt = null;
         int filas = -1;
@@ -189,7 +248,7 @@ public class ConexionSimpleBD {
 
     }
 
-     public int insertAlumnoJDBC(Alumno a) {
+     public int insertAlumnoJDBC(Alumno a) {//insertar alumno
         Connection con = null;
         PreparedStatement stmt = null;
         int filas = -1;
@@ -237,3 +296,4 @@ public class ConexionSimpleBD {
     }
 
 }
+
