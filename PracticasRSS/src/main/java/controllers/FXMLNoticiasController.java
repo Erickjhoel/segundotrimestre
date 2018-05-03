@@ -50,9 +50,6 @@ public class FXMLNoticiasController implements Initializable {
     private String titulo;
     private String tituloLabel;
     int pri = 0;
-    int seg = 1;
-    int ter = 2;
-    int cua = 3;
 
     ArrayList<String> lista = new ArrayList<>();
 
@@ -90,14 +87,12 @@ public class FXMLNoticiasController implements Initializable {
                 Timeline fiveSecondsWonder = new Timeline(new KeyFrame(Duration.seconds(4), new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
-                        fxprimero.setText(lista.get(pri));
-                        fxsegundo.setText(lista.get(seg));
-                        fxtercero.setText(lista.get(ter));
-                        fxcuarto.setText(lista.get(cua));
+                        fxprimero.setText(lista.get((pri)%lista.size()));
+                        fxsegundo.setText(lista.get((pri+1)%lista.size()));
+                        fxtercero.setText(lista.get((pri+2)%lista.size()));
+                        fxcuarto.setText(lista.get((pri+3)%lista.size()));
                         pri++;
-                        seg++;
-                        ter++;
-                        cua++;
+                        pri=pri%lista.size();
                         
                     }
                 }));
