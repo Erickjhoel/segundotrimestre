@@ -3,7 +3,6 @@
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FXMLNoticiasController">
@@ -11,13 +10,12 @@
         <URL value="@/css/fxmlnoticias.css" />
     </stylesheets>
    <children>
-      <ImageView fitHeight="116.0" fitWidth="154.0" layoutX="18.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="116.0" fitWidth="154.0" layoutX="221.0" layoutY="131.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="116.0" fitWidth="154.0" layoutX="430.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true" />
       <Button layoutX="101.0" layoutY="319.0" mnemonicParsing="false" text="Button" />
       <Button layoutX="430.0" layoutY="319.0" mnemonicParsing="false" text="Button" />
-      <Label fx:id="fxTitulo" layoutX="215.0" layoutY="11.0" prefHeight="75.0" prefWidth="165.0" text="Label" />
-      <Label fx:id="fxTituloPri" layoutX="33.0" layoutY="91.0" prefHeight="26.0" prefWidth="544.0" text="Label" />
-      <Label fx:id="fxTituloPri" layoutX="34.0" layoutY="130.0" prefHeight="26.0" prefWidth="519.0" text="Label" />
+      <Label fx:id="fxTitulo" layoutX="215.0" layoutY="11.0" prefHeight="75.0" prefWidth="165.0" text="Cargando Noticia" />
+      <Label fx:id="fxprimero" layoutX="26.0" layoutY="126.0" prefHeight="26.0" prefWidth="544.0" text="Cargando Noticia" />
+      <Label fx:id="fxsegundo" layoutX="25.0" layoutY="168.0" prefHeight="26.0" prefWidth="519.0" text="Cargando Noticia" />
+      <Label fx:id="fxtercero" layoutX="26.0" layoutY="209.0" prefHeight="26.0" prefWidth="519.0" text="Cargando Noticia" />
+      <Label fx:id="fxcuarto" layoutX="26.0" layoutY="253.0" prefHeight="26.0" prefWidth="519.0" text="Cargando Noticia" />
    </children>
 </AnchorPane>
