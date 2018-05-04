@@ -23,6 +23,7 @@ import model.Asignaturas;
  * @author daw
  */
 public class FXMLCrudController implements Initializable {
+    private FXMLMenuController controllerAsig;
     ConexionSimpleBD c = new    ConexionSimpleBD();
     /**
      * Initializes the controller class.
@@ -43,5 +44,9 @@ public class FXMLCrudController implements Initializable {
         ete= c.getAllAsignaturasJDBC();
         cargarFiles();
     }    
+
+    public void setControllerAsig(FXMLMenuController controllerAsig) {
+        this.controllerAsig = controllerAsig;
+    }
     
 }

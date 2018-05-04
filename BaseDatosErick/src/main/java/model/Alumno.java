@@ -6,6 +6,7 @@
 package model;
 
 
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -46,6 +47,8 @@ public class Alumno {
         this.fecha_nacimiento = fecha_nacimiento;
     }
 
+   
+
     public Boolean getMayor_edad() {
         return mayor_edad;
     }
@@ -56,6 +59,11 @@ public class Alumno {
 
   
     public Alumno() {
+    }
+
+    @Override
+    public String toString() {
+        return "Alumno{" + "id=" + id + ", nombre=" + nombre + ", fecha_nacimiento=" + fecha_nacimiento + ", mayor_edad=" + mayor_edad + '}';
     }
 
    

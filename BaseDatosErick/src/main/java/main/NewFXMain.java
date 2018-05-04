@@ -5,6 +5,8 @@
  */
 package main;
 
+import constantes.Constante;
+import controllers.FXMLMenuController;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -13,6 +15,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
@@ -24,10 +27,12 @@ public class NewFXMain extends Application {
     
     @Override
     public void start(Stage primaryStage) throws IOException {
-            FXMLLoader loaderMenu = new FXMLLoader(getClass().getResource("/fxml/FXMLCrud.fxml")); //colocar en constantes la ruta*****************
-        AnchorPane root = loaderMenu.load();
+            FXMLLoader loaderMenu = new FXMLLoader(
+          getClass().getResource(Constante.PANTALLA_MENU)); //colocar en constantes la ruta*****************
+        BorderPane root = loaderMenu.load();
+        
          Scene scene = new Scene(root);
-        scene.getStylesheets().add("/css/fxmlcrud.css");
+        scene.getStylesheets().add("/css/fxmlmenu.css");
         primaryStage.setTitle("JavaFX and Maven");
         primaryStage.setScene(scene);
         primaryStage.show();
