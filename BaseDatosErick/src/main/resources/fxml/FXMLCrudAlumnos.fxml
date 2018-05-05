@@ -15,13 +15,13 @@
     </stylesheets>
    <children>
       <ListView fx:id="fxLista" layoutX="14.0" layoutY="10.0" prefHeight="190.0" prefWidth="571.0" />
-      <TextField layoutX="138.0" layoutY="212.0" />
-      <RadioButton layoutX="361.0" layoutY="231.0" mnemonicParsing="false" text="Mayor Edad" />
-      <DatePicker layoutX="138.0" layoutY="251.0" />
+      <TextField fx:id="fxnombre" layoutX="138.0" layoutY="210.0" />
+      <RadioButton fx:id="fxedad" layoutX="368.0" layoutY="227.0" mnemonicParsing="false" text="Mayor Edad" />
+      <DatePicker fx:id="fxfecha" layoutX="138.0" layoutY="250.0" />
       <Label layoutX="19.0" layoutY="213.0" prefHeight="18.0" prefWidth="111.0" text="Nombre Alumno" />
       <Label layoutX="16.0" layoutY="254.0" text="Fecha Nacimiento" />
-      <Button layoutX="44.0" layoutY="338.0" mnemonicParsing="false" text="Insertar" />
-      <Button layoutX="257.0" layoutY="338.0" mnemonicParsing="false" text="Actualizar" />
-      <Button layoutX="500.0" layoutY="338.0" mnemonicParsing="false" text="Eliminar" />
+      <Button layoutX="44.0" layoutY="338.0" mnemonicParsing="false" onAction="#insertar" text="Insertar" />
+      <Button layoutX="266.0" layoutY="338.0" mnemonicParsing="false" onAction="#actualizar" text="Actualizar" />
+      <Button layoutX="496.0" layoutY="338.0" mnemonicParsing="false" onAction="#borrar" text="Eliminar" />
    </children>
 </AnchorPane>

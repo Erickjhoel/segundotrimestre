@@ -6,6 +6,7 @@
 package controllers;
 
 import dao.ConexionSimpleBD;
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -57,22 +58,34 @@ public class FXMLCrudAlumnosController implements Initializable {
     @FXML
     private void actualizar(ActionEvent event) throws IOException {
         Date fecha;
-        Alumno modificado =fxLista.getSelectionModel().getSelectedItem();
+        Alumno modificado = fxLista.getSelectionModel().getSelectedItem();
         modificado.setNombre(fxnombre.getText());
-        fecha=java.sql.Date.valueOf(fxfecha.getValue());
+        fecha = java.sql.Date.valueOf(fxfecha.getValue());
         modificado.setFecha_nacimiento(fecha);
-        
+//        modificado.setMayor_edad(fxedad.get);
+
         c.updateAlumnoJDBC(modificado);
+        //fxLista.refresh();
     }
 
     @FXML
     private void insertar(ActionEvent event) throws IOException {
     }
 
+    @FXML
+    private void rellenar(MouseEvent event) {
+        //        Alumno inicio=fxLista.getSelectionModel().getSelectedItem();
+//        fxnombre.setText(inicio.getNombre());
+////        fxfecha.setValue(inicio.getFecha_nacimiento());
+//        fxedad.setNOSEQUEVERGAPONERAQUI;
+
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        ete = c.getAllAlumnoJDBC();
+        ete = c.getAllAlumnoJDBC();//hace la selec* form alumnos
         cargarFiles();
+
     }
 
     public void setControllerAlum(FXMLMenuController controllerAlum) {

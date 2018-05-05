@@ -6,6 +6,7 @@
 package controllers;
 
 import constantes.Constante;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -16,6 +17,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.MenuBar;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
@@ -32,6 +35,8 @@ public class FXMLMenuController implements Initializable {
     private BorderPane fxRoot;
     @FXML
     private MenuBar fxMenu;
+    @FXML
+    ImageView fxImage;
 
     /**
      * Initializes the controller class.
@@ -65,6 +70,10 @@ public class FXMLMenuController implements Initializable {
             Logger.getLogger(FXMLMenuController.class.getName()).log(Level.SEVERE, null, ex);
         }
         fxMenu.setVisible(true);
+
+        Image image = new Image(getClass().getResourceAsStream("/images/crud.png"));
+
+        fxImage.setImage(image);
     }
 
 }
