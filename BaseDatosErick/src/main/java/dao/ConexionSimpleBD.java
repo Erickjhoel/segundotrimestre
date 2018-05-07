@@ -306,14 +306,14 @@ public class ConexionSimpleBD {
                     Configuration.getInstance().getPassDB());
 
             stmt = con.prepareStatement("DELETE asignaturas "
-                    + "SET NOMBRE=?,CURSO=?,CICLO=?");
+                    + "SET NOMBRE=?,CURSO=?,CICLO=? where ID=?");
 
             stmt.setString(1, a.getNombre());
 
             stmt.setString(2,a.getCurso());
 
             stmt.setString(3,a.getCiclo());
-
+            stmt.setInt(4, a.getId());
             
 
             filas = stmt.executeUpdate();
@@ -338,7 +338,7 @@ public class ConexionSimpleBD {
 
     }
     
-    public int DeleteAlumnoJDBC(Alumno a) {
+    public int DeleteAlumnoJDBC(Alumno a, int idWhere) {
         Connection con = null;
         PreparedStatement stmt = null;
         int filas = -1;
@@ -351,13 +351,15 @@ public class ConexionSimpleBD {
                     Configuration.getInstance().getPassDB());
 
             stmt = con.prepareStatement("DELETE alumnos "
-                    + "SET NOMBRE=?,FECHA_NACIMIENTO=?,MAYOR_EDAD=?");
+                    + "SET NOMBRE=?,FECHA_NACIMIENTO=?,MAYOR_EDAD=? where ID=?");
 
             stmt.setString(1, a.getNombre());
 
             stmt.setDate(2, new java.sql.Date(a.getFecha_nacimiento().getTime()));
 
             stmt.setBoolean(3, a.getMayor_edad());
+            stmt.setInt(4, a.getId());
+            
 
             filas = stmt.executeUpdate();
 
@@ -403,6 +405,58 @@ public class ConexionSimpleBD {
               new java.sql.Date(a.getFecha_nacimiento().getTime()));
 
             stmt.setBoolean(3, a.getMayor_edad());
+
+            
+
+            filas = stmt.executeUpdate();
+            
+            ResultSet rs = stmt.getGeneratedKeys();
+            if (rs.next()) {
+                a.setId(rs.getInt(1));
+            }
+            
+            
+        } catch (Exception ex) {
+            Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+
+                if (stmt != null) {
+                    stmt.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+        return filas;
+
+    }
+     
+      public int insertAsignaturaJDBC(Asignaturas a) {
+        Connection con = null;
+        PreparedStatement stmt = null;
+        int filas = -1;
+        try {
+            Class.forName(Configuration.getInstance().getDriverDB());
+
+            con = DriverManager.getConnection(
+              Configuration.getInstance().getUrlDB(),
+              Configuration.getInstance().getUserDB(),
+              Configuration.getInstance().getPassDB());
+
+            stmt = con.prepareStatement("INSERT INTO asignaturas "
+              + "(NOMBRE,CURSO,CICLO)  "
+              + "VALUES (?,?,?)", Statement.RETURN_GENERATED_KEYS);
+
+            stmt.setString(1, a.getNombre());
+
+            stmt.setString(2,a.getCurso());
+
+            stmt.setString(3, a.getCiclo());
 
             
 

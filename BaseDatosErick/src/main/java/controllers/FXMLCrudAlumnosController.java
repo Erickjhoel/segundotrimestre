@@ -58,6 +58,7 @@ public class FXMLCrudAlumnosController implements Initializable {
     @FXML
     private void borrar(ActionEvent event) throws IOException {
         Alumno eliminar = fxLista.getSelectionModel().getSelectedItem();
+        int id= eliminar.getId();
         c.DeleteAlumnoJDBC(eliminar);
         fxLista.refresh();
     }
@@ -103,16 +104,8 @@ public class FXMLCrudAlumnosController implements Initializable {
         nuevo.setNombre(nombre);
         nuevo.setFecha_nacimiento(fecha);
         nuevo.setMayor_edad(opcion);
+        c.insertAlumnoJDBC(nuevo);
         fxLista.refresh();
-    }
-
-    @FXML
-    private void rellenar(MouseEvent event) {
-        //        Alumno inicio=fxLista.getSelectionModel().getSelectedItem();
-//        fxnombre.setText(inicio.getNombre());
-////        fxfecha.setValue(inicio.getFecha_nacimiento());
-//        fxedad.setNOSEQUEVERGAPONERAQUI;
-
     }
 
     @Override

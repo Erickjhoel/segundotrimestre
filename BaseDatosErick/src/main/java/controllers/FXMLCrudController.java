@@ -51,6 +51,18 @@ public class FXMLCrudController implements Initializable {
 
     @FXML
     private void insertar(ActionEvent event) throws IOException {
+        String nombre;
+        String curso;
+        String ciclo;
+        nombre=fxnombre.getText();
+        curso=fxcurso.getText();
+        ciclo=fxciclo.getText();
+        Asignaturas nueva= new Asignaturas();
+        nueva.setNombre(nombre);
+        nueva.setCurso(curso);
+        nueva.setCiclo(ciclo);
+        c.insertAsignaturaJDBC(nueva);
+        fxLista.refresh();
     }
 
     @FXML
