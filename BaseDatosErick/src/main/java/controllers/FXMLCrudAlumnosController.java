@@ -20,7 +20,9 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import model.Alumno;
+import model.Asignaturas;
 
 /**
  * FXML Controller class
@@ -43,6 +45,8 @@ public class FXMLCrudAlumnosController implements Initializable {
     private DatePicker fxfecha;
     @FXML
     private RadioButton fxedad;
+    @FXML
+    private ToggleGroup fxtipo;
 
     List<Alumno> ete;
 
@@ -53,23 +57,53 @@ public class FXMLCrudAlumnosController implements Initializable {
 
     @FXML
     private void borrar(ActionEvent event) throws IOException {
+        Alumno eliminar = fxLista.getSelectionModel().getSelectedItem();
+        c.DeleteAlumnoJDBC(eliminar);
+        fxLista.refresh();
     }
 
     @FXML
     private void actualizar(ActionEvent event) throws IOException {
         Date fecha;
-        Alumno modificado = fxLista.getSelectionModel().getSelectedItem();
+        String tipo;
+        String mayor = "Mayor";
+        Alumno modificado = fxLista.getSelectionModel().getSelectedItem();//alumno seleccionado
         modificado.setNombre(fxnombre.getText());
-        fecha = java.sql.Date.valueOf(fxfecha.getValue());
+        fecha = java.sql.Date.valueOf(fxfecha.getValue());//date /localdate
         modificado.setFecha_nacimiento(fecha);
-//        modificado.setMayor_edad(fxedad.get);
-
+        boolean opcion;
+        tipo = ((RadioButton) fxtipo.getSelectedToggle()).getText();
+        if (tipo.equals(mayor)) {
+            opcion = true;
+        } else {
+            opcion=false;
+        }
+        modificado.setMayor_edad(opcion);
         c.updateAlumnoJDBC(modificado);
-        //fxLista.refresh();
+        fxLista.refresh();
     }
 
     @FXML
     private void insertar(ActionEvent event) throws IOException {
+        String tipo;
+        String nombre;
+        Date fecha;
+        String mayor="Mayor";
+        nombre=fxnombre.getText();
+        fecha=java.sql.Date.valueOf(fxfecha.getValue());
+        boolean opcion;
+        tipo = ((RadioButton) fxtipo.getSelectedToggle()).getText();
+        if (tipo.equals(mayor)) {
+            opcion = true;
+        } else {
+            opcion=false;
+        }
+        
+        Alumno nuevo= new Alumno();
+        nuevo.setNombre(nombre);
+        nuevo.setFecha_nacimiento(fecha);
+        nuevo.setMayor_edad(opcion);
+        fxLista.refresh();
     }
 
     @FXML

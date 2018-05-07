@@ -54,7 +54,7 @@ public class FXMLCrudController implements Initializable {
     }
 
     @FXML
-    private void eliminar(ActionEvent event) throws IOException {//PREGUNTAR ESTA VERGA TAMBN SI ES DROPA TABLE O SI ES DELETED
+    private void eliminar(ActionEvent event) throws IOException {
         Asignaturas eliminar= fxLista.getSelectionModel().getSelectedItem();
         c.DeleteAsignaturaJDBC(eliminar);
         fxLista.refresh();
