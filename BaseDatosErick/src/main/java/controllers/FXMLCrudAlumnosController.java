@@ -59,7 +59,7 @@ public class FXMLCrudAlumnosController implements Initializable {
     private void borrar(ActionEvent event) throws IOException {
         Alumno eliminar = fxLista.getSelectionModel().getSelectedItem();
         int id= eliminar.getId();
-        c.DeleteAlumnoJDBC(eliminar);
+        c.DeleteAlumnoJDBC(eliminar,id);
         fxLista.refresh();
     }
 
