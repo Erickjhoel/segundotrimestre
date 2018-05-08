@@ -22,6 +22,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 import javax.xml.bind.JAXBContext;
@@ -47,6 +48,8 @@ public class FXMLNoticiasController implements Initializable {
     private Label fxtercero;
     @FXML
     private Label fxcuarto;
+    @FXML
+    private ImageView fximagen;
     private String titulo;
     private String tituloLabel;
     int pri = 0;
@@ -58,6 +61,9 @@ public class FXMLNoticiasController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        Image image = new Image(getClass().getResourceAsStream("/images/FCB.png"));
+
+        fximagen.setImage(image);
         CargarRSS();
     }
 
