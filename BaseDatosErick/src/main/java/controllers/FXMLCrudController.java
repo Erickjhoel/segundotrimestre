@@ -68,7 +68,8 @@ public class FXMLCrudController implements Initializable {
     @FXML
     private void eliminar(ActionEvent event) throws IOException {
         Asignaturas eliminar= fxLista.getSelectionModel().getSelectedItem();
-        c.DeleteAsignaturaJDBC(eliminar);
+        int id= eliminar.getId();
+        c.DeleteAsignaturaJDBC(id);
         fxLista.refresh();
         
     }

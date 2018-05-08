@@ -293,7 +293,7 @@ public class ConexionSimpleBD {
         return filas;
 
     }
-    public int DeleteAsignaturaJDBC(Asignaturas a) {//Actualizar Aasignatura
+    public int DeleteAsignaturaJDBC(int idWhere) {//Actualizar Aasignatura
         Connection con = null;
         PreparedStatement stmt = null;
         int filas = -1;
@@ -305,18 +305,13 @@ public class ConexionSimpleBD {
                     Configuration.getInstance().getUserDB(),
                     Configuration.getInstance().getPassDB());
 
-            stmt = con.prepareStatement("DELETE asignaturas "
-                    + "SET NOMBRE=?,CURSO=?,CICLO=? where ID=?");
+            stmt = con.prepareStatement("DELETE FROM asignaturas"
+                    + " WHERE id=?;");
 
-            stmt.setString(1, a.getNombre());
-
-            stmt.setString(2,a.getCurso());
-
-            stmt.setString(3,a.getCiclo());
-            stmt.setInt(4, a.getId());
-            
+            stmt.setInt(1, idWhere);
 
             filas = stmt.executeUpdate();
+
 
         } catch (Exception ex) {
             Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -338,7 +333,7 @@ public class ConexionSimpleBD {
 
     }
     
-    public int DeleteAlumnoJDBC(Alumno a, int idWhere) {
+    public int DeleteAlumnoJDBC(int idWhere) {
         Connection con = null;
         PreparedStatement stmt = null;
         int filas = -1;
@@ -350,16 +345,10 @@ public class ConexionSimpleBD {
                     Configuration.getInstance().getUserDB(),
                     Configuration.getInstance().getPassDB());
 
-            stmt = con.prepareStatement("DELETE alumnos "
-                    + "SET NOMBRE=?,FECHA_NACIMIENTO=?,MAYOR_EDAD=? where ID=?");
+             stmt = con.prepareStatement("DELETE FROM alumnos"
+                    + " WHERE id=?;");
 
-            stmt.setString(1, a.getNombre());
-
-            stmt.setDate(2, new java.sql.Date(a.getFecha_nacimiento().getTime()));
-
-            stmt.setBoolean(3, a.getMayor_edad());
-            stmt.setInt(4, a.getId());
-            
+            stmt.setInt(1, idWhere);
 
             filas = stmt.executeUpdate();
 
@@ -391,31 +380,28 @@ public class ConexionSimpleBD {
             Class.forName(Configuration.getInstance().getDriverDB());
 
             con = DriverManager.getConnection(
-              Configuration.getInstance().getUrlDB(),
-              Configuration.getInstance().getUserDB(),
-              Configuration.getInstance().getPassDB());
+                    Configuration.getInstance().getUrlDB(),
+                    Configuration.getInstance().getUserDB(),
+                    Configuration.getInstance().getPassDB());
 
             stmt = con.prepareStatement("INSERT INTO alumnos "
-              + "(NOMBRE,FECHA_NACIMIENTO,MAYOR_EDAD)  "
-              + "VALUES (?,?,?)", Statement.RETURN_GENERATED_KEYS);
+                    + "(NOMBRE,FECHA_NACIMIENTO,MAYOR_EDAD)  "
+                    + "VALUES (?,?,?)", Statement.RETURN_GENERATED_KEYS);
 
             stmt.setString(1, a.getNombre());
 
             stmt.setDate(2,
-              new java.sql.Date(a.getFecha_nacimiento().getTime()));
+                    new java.sql.Date(a.getFecha_nacimiento().getTime()));
 
             stmt.setBoolean(3, a.getMayor_edad());
 
-            
-
             filas = stmt.executeUpdate();
-            
+
             ResultSet rs = stmt.getGeneratedKeys();
             if (rs.next()) {
                 a.setId(rs.getInt(1));
             }
-            
-            
+
         } catch (Exception ex) {
             Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
@@ -450,7 +436,7 @@ public class ConexionSimpleBD {
 
             stmt = con.prepareStatement("INSERT INTO asignaturas "
               + "(NOMBRE,CURSO,CICLO)  "
-              + "VALUES (?,?,?)", Statement.RETURN_GENERATED_KEYS);
+              + "VALUES (?,?,?) ", Statement.RETURN_GENERATED_KEYS);
 
             stmt.setString(1, a.getNombre());
 

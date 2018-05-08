@@ -56,10 +56,10 @@ public class FXMLCrudAlumnosController implements Initializable {
     }
 
     @FXML
-    private void borrar(ActionEvent event) throws IOException {
+    private void borrar(ActionEvent event) throws IOException {//se elimina por id , se pasa la id
         Alumno eliminar = fxLista.getSelectionModel().getSelectedItem();
-        int id= eliminar.getId();
-        c.DeleteAlumnoJDBC(eliminar,id);
+        int id= eliminar.getId();//EL ID DEL ALUMNNO A ELIMINAR
+        c.DeleteAlumnoJDBC(id);
         fxLista.refresh();
     }
 
@@ -73,12 +73,10 @@ public class FXMLCrudAlumnosController implements Initializable {
         fecha = java.sql.Date.valueOf(fxfecha.getValue());//date /localdate
         modificado.setFecha_nacimiento(fecha);
         boolean opcion;
-        tipo = ((RadioButton) fxtipo.getSelectedToggle()).getText();
-        if (tipo.equals(mayor)) {
-            opcion = true;
-        } else {
-            opcion=false;
-        }
+        tipo = ((RadioButton) fxtipo.getSelectedToggle()).getText();//para el radio button
+        //esto sirve igual que el( si el tipo.equals(mayor) opcion=true else mayor = false)///////
+        opcion = tipo.equals(mayor);
+        //////////////////////////////////////////////////////////////////////////////////////////
         modificado.setMayor_edad(opcion);
         c.updateAlumnoJDBC(modificado);
         fxLista.refresh();
@@ -94,11 +92,9 @@ public class FXMLCrudAlumnosController implements Initializable {
         fecha=java.sql.Date.valueOf(fxfecha.getValue());
         boolean opcion;
         tipo = ((RadioButton) fxtipo.getSelectedToggle()).getText();
-        if (tipo.equals(mayor)) {
-            opcion = true;
-        } else {
-            opcion=false;
-        }
+        //esto sirve igual que el( si el tipo.equals(mayor) opcion=true else mayor = false)///////
+        opcion = tipo.equals(mayor);
+        //////////////////////////////////////////////////////////////////////////////////////////
         
         Alumno nuevo= new Alumno();
         nuevo.setNombre(nombre);
