@@ -31,6 +31,8 @@ public class FXMLMenuController implements Initializable {
 
     private AnchorPane alumnis;
     private AnchorPane asignaturis;
+    private AnchorPane enlace;
+    private AnchorPane notas;
     @FXML
     private BorderPane fxRoot;
     @FXML
@@ -51,6 +53,14 @@ public class FXMLMenuController implements Initializable {
     public void handleScene2(ActionEvent event) throws IOException {
         fxRoot.setCenter(asignaturis);
     }
+    @FXML
+    public void handleScene3(ActionEvent event) throws IOException {
+        fxRoot.setCenter(enlace);
+    }
+    @FXML
+    public void handleScene4(ActionEvent event) throws IOException {
+        fxRoot.setCenter(notas);
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -66,6 +76,18 @@ public class FXMLMenuController implements Initializable {
             asignaturis = loader.load();
             FXMLCrudController controllerasig = loader.getController();
             controllerasig.setControllerAsig(this);
+            
+            loader = new FXMLLoader(
+                    getClass().getResource(Constante.PANTALLA_ENLACE));
+            enlace = loader.load();
+            FXMLEnlasarAlumAsigController controllerenlace = loader.getController();
+            controllerenlace.setControllerEnlace(this);
+            
+            loader = new FXMLLoader(
+                    getClass().getResource(Constante.PANTALLA_NOTAS));
+            notas = loader.load();
+            FXMLAñadirNotaController controllernota= loader.getController();
+            controllernota.setControllerNota(this);
         } catch (IOException ex) {
             Logger.getLogger(FXMLMenuController.class.getName()).log(Level.SEVERE, null, ex);
         }

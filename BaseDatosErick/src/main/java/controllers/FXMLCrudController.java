@@ -15,10 +15,13 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import model.Alumno;
 import model.Asignaturas;
+import servicios.AsignaturasServicios;
 
 /**
  * FXML Controller class
@@ -28,7 +31,7 @@ import model.Asignaturas;
 public class FXMLCrudController implements Initializable {
 
     private FXMLMenuController controllerAsig;
-    ConexionSimpleBD c = new ConexionSimpleBD();
+    private AsignaturasServicios servicios;
     @FXML
     private TextField fxnombre;
     @FXML
@@ -42,11 +45,9 @@ public class FXMLCrudController implements Initializable {
     @FXML
     private ListView<Asignaturas> fxLista;
 
-    List<Asignaturas> ete;
-
     private void cargarFiles() {
         fxLista.getItems().clear();
-        fxLista.getItems().addAll(ete);
+        fxLista.getItems().addAll(servicios.getAllAsignatura());
     }
 
     @FXML
@@ -61,7 +62,10 @@ public class FXMLCrudController implements Initializable {
         nueva.setNombre(nombre);
         nueva.setCurso(curso);
         nueva.setCiclo(ciclo);
-        c.insertAsignaturaJDBC(nueva);
+        fxLista.getItems().add(nueva);
+        servicios.getInsertAsignatura(nueva);
+        Alert b = new Alert(Alert.AlertType.INFORMATION, "Asignatura Insertada", ButtonType.CLOSE);
+                        b.showAndWait();
         fxLista.refresh();
     }
 
@@ -69,7 +73,10 @@ public class FXMLCrudController implements Initializable {
     private void eliminar(ActionEvent event) throws IOException {
         Asignaturas eliminar= fxLista.getSelectionModel().getSelectedItem();
         int id= eliminar.getId();
-        c.DeleteAsignaturaJDBC(id);
+        fxLista.getItems().remove(eliminar);
+        servicios.getBorrarAsignatura(id);
+        Alert b = new Alert(Alert.AlertType.INFORMATION, "Asignatura Eliminada", ButtonType.CLOSE);
+                        b.showAndWait();
         fxLista.refresh();
         
     }
@@ -80,13 +87,15 @@ public class FXMLCrudController implements Initializable {
         modificable.setNombre(fxnombre.getText());
         modificable.setCurso(fxcurso.getText());
         modificable.setCiclo(fxciclo.getText());
-        c.updateAsignaturaJDBC(modificable);
+        servicios.getActualizarAsignatura(modificable);
+        Alert b = new Alert(Alert.AlertType.INFORMATION, "Asignatura Actualizada", ButtonType.CLOSE);
+                        b.showAndWait();
         fxLista.refresh();
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        ete = c.getAllAsignaturasJDBC();
+        servicios = new AsignaturasServicios();
         cargarFiles();
     }
 

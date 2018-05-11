@@ -5,10 +5,213 @@
  */
 package dao;
 
+import config.Configuration;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import model.Asignaturas;
+
 /**
  *
  * @author oscar
  */
 public class AsignaturasDAO {
-    
+     public int insertAsignaturaJDBC(Asignaturas a) {
+        Connection con = null;
+        PreparedStatement stmt = null;
+        int filas = -1;
+        try {
+            Class.forName(Configuration.getInstance().getDriverDB());
+
+            con = DriverManager.getConnection(
+              Configuration.getInstance().getUrlDB(),
+              Configuration.getInstance().getUserDB(),
+              Configuration.getInstance().getPassDB());
+
+            stmt = con.prepareStatement("INSERT INTO asignaturas "
+              + "(NOMBRE,CURSO,CICLO)  "
+              + "VALUES (?,?,?) ", Statement.RETURN_GENERATED_KEYS);
+
+            stmt.setString(1, a.getNombre());
+
+            stmt.setString(2,a.getCurso());
+
+            stmt.setString(3, a.getCiclo());
+
+            
+
+            filas = stmt.executeUpdate();
+            
+            ResultSet rs = stmt.getGeneratedKeys();
+            if (rs.next()) {
+                a.setId(rs.getInt(1));
+            }
+            
+            
+        } catch (Exception ex) {
+            Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+
+                if (stmt != null) {
+                    stmt.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+        return filas;
+
+    }
+      public int DeleteAsignaturaJDBC(int idWhere) {//Actualizar Aasignatura
+        Connection con = null;
+        PreparedStatement stmt = null;
+        int filas = -1;
+        try {
+            Class.forName(Configuration.getInstance().getDriverDB());
+
+            con = DriverManager.getConnection(
+                    Configuration.getInstance().getUrlDB(),
+                    Configuration.getInstance().getUserDB(),
+                    Configuration.getInstance().getPassDB());
+
+            stmt = con.prepareStatement("DELETE FROM asignaturas"
+                    + " WHERE id=?;");
+
+            stmt.setInt(1, idWhere);
+
+            filas = stmt.executeUpdate();
+
+
+        } catch (Exception ex) {
+            Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+
+                if (stmt != null) {
+                    stmt.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+        return filas;
+
+    }
+       public int updateAsignaturaJDBC(Asignaturas a) {//Actualizar Aasignatura
+        Connection con = null;
+        PreparedStatement stmt = null;
+        int filas = -1;
+        try {
+            Class.forName(Configuration.getInstance().getDriverDB());
+
+            con = DriverManager.getConnection(
+                    Configuration.getInstance().getUrlDB(),
+                    Configuration.getInstance().getUserDB(),
+                    Configuration.getInstance().getPassDB());
+
+            stmt = con.prepareStatement("UPDATE asignaturas "
+                    + "SET NOMBRE=?,CURSO=?,CICLO=? where ID=?");
+
+            stmt.setString(1, a.getNombre());
+
+            stmt.setString(2,a.getCurso());
+
+            stmt.setString(3,a.getCiclo());
+
+            stmt.setInt(4, a.getId());
+
+            filas = stmt.executeUpdate();
+
+        } catch (Exception ex) {
+            Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+
+                if (stmt != null) {
+                    stmt.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+        return filas;
+
+    }
+        public List<Asignaturas> getAllAsignaturasJDBC() {
+        List<Asignaturas> lista = new ArrayList<>();
+        Asignaturas nuevo = null;
+
+        Connection con = null;
+        Statement stmt = null;
+        ResultSet rs = null;
+        try {
+            Class.forName(Configuration.getInstance().getDriverDB());
+
+            con = DriverManager.getConnection(
+                    Configuration.getInstance().getUrlDB(),
+                    Configuration.getInstance().getUserDB(),
+                    Configuration.getInstance().getPassDB());
+
+            stmt = con.createStatement();
+            String sql;
+
+            sql = "SELECT * FROM asignaturas";
+            rs = stmt.executeQuery(sql);
+
+            //STEP 5: Extract data from result set
+            while (rs.next()) {
+                //Retrieve by column name
+                int id = rs.getInt("id");
+                String nombre = rs.getString("nombre");
+                String curso = rs.getNString("curso");
+                String ciclo = rs.getString("ciclo");
+                nuevo = new Asignaturas();
+                nuevo.setCurso(curso);
+                nuevo.setId(id);
+                nuevo.setCiclo(ciclo);
+                nuevo.setNombre(nombre);
+                lista.add(nuevo);
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stmt != null) {
+                    stmt.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+        return lista;
+
+    }
 }

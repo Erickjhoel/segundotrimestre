@@ -20,6 +20,16 @@
               <MenuItem mnemonicParsing="false" onAction="#handleScene2" text="listado" />
             </items>
           </Menu>
+            <Menu mnemonicParsing="false" text="Enlace Alu-Asig">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#handleScene3" text="enlace" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Añadir Nota">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#handleScene4" text="notas" />
+              </items>
+            </Menu>
         </menus>
       </MenuBar>
    </top>

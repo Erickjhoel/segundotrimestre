@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141" fx:controller="controllers.FXMLEnlasarAlumAsigController">
+    <stylesheets>
+        <URL value="@/css/fxmlenlasaralumasig.css" />
+    </stylesheets>
+   <children>
+      <ListView layoutX="14.0" layoutY="20.0" prefHeight="298.0" prefWidth="282.0" />
+      <ListView layoutX="304.0" layoutY="20.0" prefHeight="298.0" prefWidth="282.0" />
+      <Button layoutX="124.0" layoutY="360.0" mnemonicParsing="false" text="AÑADIR" />
+      <Button layoutX="414.0" layoutY="360.0" mnemonicParsing="false" text="ELIMINAR" />
+   </children>
+</AnchorPane>

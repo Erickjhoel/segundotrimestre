@@ -13,4 +13,6 @@ public class Constante {
     public static final String PANTALLA_MENU = "/fxml/FXMLMenu.fxml";
     public static final String PANTALLA_ALUMNO="/fxml/FXMLCrudAlumnos.fxml";
     public static final String PANTALLA_ASIGNATURA="/fxml/FXMLCrud.fxml";
+    public static final String PANTALLA_ENLACE="/fxml/FXMLEnlasarAlumAsig.fxml";
+    public static final String PANTALLA_NOTAS="/fxml/FXMLAñadirNota.fxml";
 }

@@ -20,20 +20,24 @@ public class AlumnosServicios {
     {
         AlumnosDAO dao = new AlumnosDAO();
         
-        return dao.getAllAlumnosJDBCTemplate();
+        return dao.getAllAlumnoJDBC();
     }
     
-    public Alumno getAlumnoById(int id){
+    public int getBorrarAlum(int id){
         AlumnosDAO dao = new AlumnosDAO();
         
-        return dao.getUserById(id);
+        return dao.DeleteAlumnoJDBC(id);
         
     }
-    public Alumno addAlumno(Alumno alumnoNuevo)
+    public int getActualizarAlum(Alumno alumnoNuevo)
     {
         AlumnosDAO dao = new AlumnosDAO();
-        
-        return dao.addUserSimpleJDBCTemplate(alumnoNuevo);
+       return dao.updateAlumnoJDBC(alumnoNuevo);
+    }
+    public int getInsertAlum(Alumno alumnoNuevo)
+    {
+        AlumnosDAO dao = new AlumnosDAO();
+       return dao.insertAlumnoJDBC(alumnoNuevo);
     }
     
 }
