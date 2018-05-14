@@ -16,6 +16,7 @@ import javafx.fxml.Initializable;
  */
 public class FXMLAñadirNotaController implements Initializable {
 private FXMLMenuController controllerNota;
+
     /**
      * Initializes the controller class.
      */

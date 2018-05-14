@@ -22,6 +22,7 @@ public class Alumno {
 
     private Date fecha_nacimiento;
     private Boolean mayor_edad;
+    
 
     public int getId() {
         return id;
