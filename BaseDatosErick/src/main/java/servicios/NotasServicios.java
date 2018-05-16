@@ -31,4 +31,9 @@ public class NotasServicios {
         NotasDAO dao = new NotasDAO();
        return dao.delAsig2(eliminar);
     }
+    public int getCambiarBox(Asignatura cambiar)
+    {
+        NotasDAO dao = new NotasDAO();
+       return dao.getCambia(cambiar);
+    }
 }

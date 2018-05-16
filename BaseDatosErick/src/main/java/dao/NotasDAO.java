@@ -122,7 +122,7 @@ public class NotasDAO {
         return filas;
 
     }
-    public List<Alumno> getAllAlumnoJDBC() {
+    public List<Alumno> getCambia( Asignatura a) {
         List<Alumno> lista = new ArrayList<>();
         Alumno nuevo = null;
 
@@ -140,7 +140,7 @@ public class NotasDAO {
             stmt = con.createStatement();
             String sql;
 
-            sql = "SELECT * FROM alumnos where ";
+            sql = "SELECT a.NOMBRE FROM alumnos a join notas n on a.ID=n.id_alumnos join asignaturas s on s.ID=n.id_asignaturas   ";
             rs = stmt.executeQuery(sql);
 
             //STEP 5: Extract data from result set

@@ -52,7 +52,10 @@ public class FXMLAñadirNotaController implements Initializable {
     }
     @FXML
     private void cambiar(ActionEvent event) throws IOException {
-       comboAsignaturas.getSelectionModel().toString();
+        String cambiar;
+        cambiar=comboAsignaturas.getSelectionModel().toString();
+        
+        
         
     }
     @Override
