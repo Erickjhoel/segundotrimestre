@@ -74,8 +74,8 @@ public class BusDao {
         GenericUrl url = new GenericUrl("https://openbus.emtmadrid.es:9443/emt-proxy-server/last/geo/GetStopsLine.php");
 
         GenericData data = new GenericData();
-        data.put("idClient", "WEB.SERV.oscar.novillo@iesquevedo.es");
-        data.put("passKey", "4C7A2AC7-2AC4-4AAE-9E63-E27EEA72969E");
+        data.put("idClient", "WEB.SERV.toledoerick1999@gmail.com ");
+        data.put("passKey", "870B493F-2470-480A-A1F7-8EEAC8F096CC");
         data.put("line", idLine);
         data.put("direction", Direccion);
 
@@ -94,8 +94,8 @@ public class BusDao {
         GenericUrl url = new GenericUrl("https://openbus.emtmadrid.es:9443/emt-proxy-server/last/geo/GetArriveStop.php");
 
         GenericData data = new GenericData();
-        data.put("idClient", "WEB.SERV.oscar.novillo@iesquevedo.es");
-        data.put("passKey", "4C7A2AC7-2AC4-4AAE-9E63-E27EEA72969E");
+        data.put("idClient", "WEB.SERV.toledoerick1999@gmail.com ");
+        data.put("passKey", "870B493F-2470-480A-A1F7-8EEAC8F096CC");
         data.put("idStop", idStop);
 
         HttpRequest requestGoogle = requestFactory.buildPostRequest(url, new UrlEncodedContent(data));
