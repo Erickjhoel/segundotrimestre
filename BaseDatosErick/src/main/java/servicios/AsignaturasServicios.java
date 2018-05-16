@@ -9,14 +9,14 @@ import dao.AlumnosDAO;
 import dao.AsignaturasDAO;
 import java.util.List;
 import model.Alumno;
-import model.Asignaturas;
+import model.Asignatura;
 
 /**
  *
  * @author daw
  */
 public class AsignaturasServicios {
-    public List<Asignaturas> getAllAsignatura()
+    public List<Asignatura> getAllAsignatura()
     {
         AsignaturasDAO dao = new AsignaturasDAO();
         
@@ -29,12 +29,12 @@ public class AsignaturasServicios {
         return dao.DeleteAsignaturaJDBC(id);
         
     }
-    public int getActualizarAsignatura(Asignaturas asignueva)
+    public int getActualizarAsignatura(Asignatura asignueva)
     {
         AsignaturasDAO dao = new AsignaturasDAO();
        return dao.updateAsignaturaJDBC(asignueva);
     }
-    public int getInsertAsignatura(Asignaturas asignueva)
+    public int getInsertAsignatura(Asignatura asignueva)
     {
         AsignaturasDAO dao = new AsignaturasDAO();
        return dao.insertAsignaturaJDBC(asignueva);

@@ -24,7 +24,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import model.Alumno;
-import model.Asignaturas;
+import model.Asignatura;
 import servicios.AlumnosServicios;
 
 /**

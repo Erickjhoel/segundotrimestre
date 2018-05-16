@@ -20,7 +20,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import model.Alumno;
-import model.Asignaturas;
+import model.Asignatura;
 import servicios.AsignaturasServicios;
 
 /**
@@ -43,7 +43,7 @@ public class FXMLCrudController implements Initializable {
      */
 
     @FXML
-    private ListView<Asignaturas> fxLista;
+    private ListView<Asignatura> fxLista;
 
     private void cargarFiles() {
         fxLista.getItems().clear();
@@ -58,7 +58,7 @@ public class FXMLCrudController implements Initializable {
         nombre=fxnombre.getText();
         curso=fxcurso.getText();
         ciclo=fxciclo.getText();
-        Asignaturas nueva= new Asignaturas();
+        Asignatura nueva= new Asignatura();
         nueva.setNombre(nombre);
         nueva.setCurso(curso);
         nueva.setCiclo(ciclo);
@@ -71,7 +71,7 @@ public class FXMLCrudController implements Initializable {
 
     @FXML
     private void eliminar(ActionEvent event) throws IOException {
-        Asignaturas eliminar= fxLista.getSelectionModel().getSelectedItem();
+        Asignatura eliminar= fxLista.getSelectionModel().getSelectedItem();
         int id= eliminar.getId();
         fxLista.getItems().remove(eliminar);
         servicios.getBorrarAsignatura(id);
@@ -83,7 +83,7 @@ public class FXMLCrudController implements Initializable {
 
     @FXML
     private void actualizar(ActionEvent event) throws IOException {//PREGUNTAR PORQUE VERGA SE ACTUALIZA TODA LA TABLA
-        Asignaturas modificable = fxLista.getSelectionModel().getSelectedItem();
+        Asignatura modificable = fxLista.getSelectionModel().getSelectedItem();
         modificable.setNombre(fxnombre.getText());
         modificable.setCurso(fxcurso.getText());
         modificable.setCiclo(fxciclo.getText());

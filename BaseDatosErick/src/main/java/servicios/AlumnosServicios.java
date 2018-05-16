@@ -23,6 +23,7 @@ public class AlumnosServicios {
         return dao.getAllAlumnoJDBC();
     }
     
+    
     public int getBorrarAlum(int id){
         AlumnosDAO dao = new AlumnosDAO();
         

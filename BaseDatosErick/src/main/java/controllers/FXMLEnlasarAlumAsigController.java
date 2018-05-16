@@ -17,7 +17,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import model.Alumno;
-import model.Asignaturas;
+import model.Asignatura;
 import servicios.AlumnosServicios;
 import servicios.AsignaturasServicios;
 import servicios.NotasServicios;
@@ -37,7 +37,7 @@ public class FXMLEnlasarAlumAsigController implements Initializable {
     @FXML
     private ListView<Alumno> fxListaAlum;
     @FXML
-    private ListView<Asignaturas> fxListaAsign;
+    private ListView<Asignatura> fxListaAsign;
 
     /**
      * Initializes the controller class.
@@ -53,11 +53,29 @@ public class FXMLEnlasarAlumAsigController implements Initializable {
     @FXML
     private void Añadil(ActionEvent event) throws IOException {
         Alumno nuevo =fxListaAlum.getSelectionModel().getSelectedItem();
-        Asignaturas nueva =fxListaAsign.getSelectionModel().getSelectedItem();
+        Asignatura nueva =fxListaAsign.getSelectionModel().getSelectedItem();
+        notis.getInsertAlum(nuevo, nueva);
         Alert b = new Alert(Alert.AlertType.INFORMATION, "Se ha añadido el alumno a la asignatura", ButtonType.CLOSE);
         b.showAndWait();
-        notis.getInsertAlum(nuevo, nueva);
+    }
+    @FXML
+    private void EliminarAlumno(ActionEvent event) throws IOException {
+        Alumno eliminal =fxListaAlum.getSelectionModel().getSelectedItem();
+        notis.getEliminarAlum(eliminal);
+        fxListaAlum.getItems().remove(eliminal);
+        Alert b = new Alert(Alert.AlertType.INFORMATION, "Se ha eliminado el alumno ", ButtonType.CLOSE);
+        b.showAndWait();
+        fxListaAlum.refresh();
         
+    }
+    @FXML
+    private void EliminarAsignatura(ActionEvent event) throws IOException {
+        Asignatura eliminal =fxListaAsign.getSelectionModel().getSelectedItem();
+        notis.getEliminarAsig(eliminal);
+        fxListaAsign.getItems().remove(eliminal);
+        Alert b = new Alert(Alert.AlertType.INFORMATION, "Se ha eliminado la asignatura ", ButtonType.CLOSE);
+        b.showAndWait();
+        fxListaAlum.refresh();
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {

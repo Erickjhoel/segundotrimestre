@@ -16,14 +16,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import model.Asignaturas;
+import model.Asignatura;
 
 /**
  *
  * @author oscar
  */
 public class AsignaturasDAO {
-     public int insertAsignaturaJDBC(Asignaturas a) {
+     public int insertAsignaturaJDBC(Asignatura a) {
         Connection con = null;
         PreparedStatement stmt = null;
         int filas = -1;
@@ -113,7 +113,7 @@ public class AsignaturasDAO {
         return filas;
 
     }
-       public int updateAsignaturaJDBC(Asignaturas a) {//Actualizar Aasignatura
+       public int updateAsignaturaJDBC(Asignatura a) {//Actualizar Aasignatura
         Connection con = null;
         PreparedStatement stmt = null;
         int filas = -1;
@@ -157,9 +157,9 @@ public class AsignaturasDAO {
         return filas;
 
     }
-        public List<Asignaturas> getAllAsignaturasJDBC() {
-        List<Asignaturas> lista = new ArrayList<>();
-        Asignaturas nuevo = null;
+        public List<Asignatura> getAllAsignaturasJDBC() {
+        List<Asignatura> lista = new ArrayList<>();
+        Asignatura nuevo = null;
 
         Connection con = null;
         Statement stmt = null;
@@ -185,7 +185,7 @@ public class AsignaturasDAO {
                 String nombre = rs.getString("nombre");
                 String curso = rs.getNString("curso");
                 String ciclo = rs.getString("ciclo");
-                nuevo = new Asignaturas();
+                nuevo = new Asignatura();
                 nuevo.setCurso(curso);
                 nuevo.setId(id);
                 nuevo.setCiclo(ciclo);

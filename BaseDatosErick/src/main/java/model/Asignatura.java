@@ -9,7 +9,7 @@ package model;
  *
  * @author daw
  */
-public class Asignaturas {
+public class Asignatura {
     
     private int id;
 
@@ -17,7 +17,7 @@ public class Asignaturas {
      private String curso;
      private String ciclo;
 
-    public Asignaturas() {
+    public Asignatura() {
     }
 
     public int getId() {
@@ -54,7 +54,7 @@ public class Asignaturas {
 
     @Override
     public String toString() {
-        return "Asignaturas{" + "id=" + id + ", nombre=" + nombre + ", curso=" + curso + ", ciclo=" + ciclo + '}';
+        return "Asignatura{" + "--" + id + "--" + nombre + "--" + curso + "--" + ciclo + '}';
     }
      
 }
