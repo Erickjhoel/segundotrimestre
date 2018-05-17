@@ -7,6 +7,7 @@ package servicios;
 
 import dao.AlumnosDAO;
 import dao.NotasDAO;
+import java.util.List;
 import model.Alumno;
 import model.Asignatura;
 import model.Notas;
@@ -31,7 +32,7 @@ public class NotasServicios {
         NotasDAO dao = new NotasDAO();
        return dao.delAsig2(eliminar);
     }
-    public int getCambiarBox(Asignatura cambiar)
+    public List<Alumno> getCambiarBox(Asignatura cambiar)
     {
         NotasDAO dao = new NotasDAO();
        return dao.getCambia(cambiar);

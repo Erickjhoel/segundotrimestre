@@ -21,6 +21,7 @@ import model.Alumno;
 import model.Asignatura;
 import servicios.AlumnosServicios;
 import servicios.AsignaturasServicios;
+import servicios.NotasServicios;
 
 /**
  * FXML Controller class
@@ -32,6 +33,7 @@ public class FXMLAñadirNotaController implements Initializable {
     private FXMLMenuController controllerNota;
     private AlumnosServicios alum;
     private AsignaturasServicios asig;
+    private NotasServicios notis;
     @FXML
     private ComboBox<Asignatura> comboAsignaturas;
     @FXML
@@ -52,18 +54,16 @@ public class FXMLAñadirNotaController implements Initializable {
     }
     @FXML
     private void cambiar(ActionEvent event) throws IOException {
-        String cambiar;
-        cambiar=comboAsignaturas.getSelectionModel().toString();
-        
-        
-        
+        Asignatura cambio=comboAsignaturas.getSelectionModel().getSelectedItem();
+        notis.getCambiarBox(cambio);
+        fxListaAlumnos.getItems().addAll(notis.getCambiarBox(cambio));
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         asig= new AsignaturasServicios();
         alum=new AlumnosServicios();
+        notis= new NotasServicios();
         cargarBox();
-        cargar();
     }
 
     public void setControllerNota(FXMLMenuController controllerNota) {

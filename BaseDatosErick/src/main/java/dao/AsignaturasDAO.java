@@ -126,7 +126,7 @@ public class AsignaturasDAO {
                     Configuration.getInstance().getPassDB());
 
             stmt = con.prepareStatement("UPDATE asignaturas "
-                    + "SET NOMBRE=?,CURSO=?,CICLO=? where ID=?");
+                    + "SET NOMBRE=?,CURSO=?,CICLO=? where id=?");
 
             stmt.setString(1, a.getNombre());
 

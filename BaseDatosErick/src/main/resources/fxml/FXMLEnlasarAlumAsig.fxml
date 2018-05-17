@@ -13,7 +13,7 @@
       <ListView fx:id="fxListaAlum" layoutX="14.0" layoutY="20.0" prefHeight="298.0" prefWidth="282.0" />
       <ListView fx:id="fxListaAsign" layoutX="304.0" layoutY="20.0" prefHeight="298.0" prefWidth="282.0" />
       <Button layoutX="262.0" layoutY="345.0" mnemonicParsing="false" onAction="#Añadil" text="AÑADIR" />
-      <Button layoutX="362.0" layoutY="344.0" mnemonicParsing="false" text="ELIMINAR ASIGNATURA" />
+      <Button layoutX="362.0" layoutY="344.0" mnemonicParsing="false" onAction="#EliminarAsignatura" text="ELIMINAR ASIGNATURA" />
       <Button layoutX="62.0" layoutY="343.0" mnemonicParsing="false" onAction="#EliminarAlumno" text="ELIMINAR ALUMNO" />
    </children>
 </AnchorPane>

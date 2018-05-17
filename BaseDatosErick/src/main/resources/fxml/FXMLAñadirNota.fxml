@@ -17,6 +17,6 @@
       <TextField layoutX="417.0" layoutY="24.0" />
       <Label layoutX="372.0" layoutY="28.0" text="NOTA" />
       <Button layoutX="269.0" layoutY="353.0" mnemonicParsing="false" text="AÑADIR" />
-      <ComboBox fx:id="comboAsignaturas" layoutX="46.0" layoutY="27.0" prefWidth="150.0" />
+      <ComboBox fx:id="comboAsignaturas" layoutX="46.0" layoutY="27.0" onAction="#cambiar" prefWidth="150.0" />
    </children>
 </AnchorPane>

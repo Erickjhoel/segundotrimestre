@@ -35,7 +35,7 @@ public class NotasDAO {
         try {
             con = abreCierra.getConnection();
 
-            stmt = con.prepareStatement("INSERT INTO `baseerick`.`notas` (`id_alumnos`, `id_asignaturas`) VALUES (?,?);");
+            stmt = con.prepareStatement("INSERT INTO `baseerick`.`notas` (`ID_ALUMNO`, `ID_ASIGNATURA`) VALUES (?,?);");
 
             stmt.setInt(1, a.getId());
 
@@ -58,13 +58,13 @@ public class NotasDAO {
         try {
             con = db.getConnection();
             con.setAutoCommit(false);
-            String sql = "DELETE FROM notas WHERE id_alumnos = ?";
+            String sql = "DELETE FROM notas WHERE ID_ALUMNO = ?";
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setLong(1, a.getId());
 
             filas += stmt.executeUpdate();
 
-            sql = "DELETE FROM alumnos WHERE id = ?";
+            sql = "DELETE FROM alumnos WHERE ID = ?";
             stmt = con.prepareStatement(sql);
             stmt.setLong(1, a.getId());
 
@@ -94,7 +94,7 @@ public class NotasDAO {
         try {
             con = db.getConnection();
             con.setAutoCommit(false);
-            String sql = "DELETE FROM notas WHERE id_asignaturas = ?";
+            String sql = "DELETE FROM notas WHERE ID_ASIGNATURA = ?";
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setLong(1, a.getId());
 
@@ -127,7 +127,7 @@ public class NotasDAO {
         Alumno nuevo = null;
 
         Connection con = null;
-        Statement stmt = null;
+        PreparedStatement stmt = null;
         ResultSet rs = null;
         try {
             Class.forName(Configuration.getInstance().getDriverDB());
@@ -136,20 +136,21 @@ public class NotasDAO {
                     Configuration.getInstance().getUrlDB(),
                     Configuration.getInstance().getUserDB(),
                     Configuration.getInstance().getPassDB());
-
-            stmt = con.createStatement();
-            String sql;
-
-            sql = "SELECT a.NOMBRE FROM alumnos a join notas n on a.ID=n.id_alumnos join asignaturas s on s.ID=n.id_asignaturas   ";
-            rs = stmt.executeQuery(sql);
+          
+            
+            stmt = con.prepareStatement("SELECT a.* FROM alumnos a join notas n on a.ID = n.ID_ALUMNO where ID_ASIGNATURA=?  ");
+            
 
             //STEP 5: Extract data from result set
+            stmt.setInt(1, a.getId());
+            rs = stmt.executeQuery();
             while (rs.next()) {
                 //Retrieve by column name
                 int id = rs.getInt("id");
                 String nombre = rs.getString("nombre");
                 Date fecha_nacimiento = rs.getDate("fecha_nacimiento");
                 Boolean mayor_edad = rs.getBoolean("mayor_edad");
+                
                 nuevo = new Alumno();
                 nuevo.setNombre(nombre);
                 nuevo.setId(id);
