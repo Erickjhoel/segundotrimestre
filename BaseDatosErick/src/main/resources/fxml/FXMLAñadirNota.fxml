@@ -14,9 +14,9 @@
     </stylesheets>
    <children>
       <ListView fx:id="fxListaAlumnos" layoutX="14.0" layoutY="71.0" prefHeight="267.0" prefWidth="573.0" />
-      <TextField layoutX="417.0" layoutY="24.0" />
+      <TextField fx:id="fxnotacambio" layoutX="417.0" layoutY="24.0" />
       <Label layoutX="372.0" layoutY="28.0" text="NOTA" />
-      <Button layoutX="269.0" layoutY="353.0" mnemonicParsing="false" text="AÑADIR" />
+      <Button layoutX="269.0" layoutY="353.0" mnemonicParsing="false" onAction="#introducil" text="AÑADIR" />
       <ComboBox fx:id="comboAsignaturas" layoutX="46.0" layoutY="27.0" onAction="#cambiar" prefWidth="150.0" />
    </children>
 </AnchorPane>

@@ -20,6 +20,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Alumno;
 import model.Asignatura;
+import model.Notas;
 
 /**
  *
@@ -178,6 +179,46 @@ public class NotasDAO {
 
         }
         return lista;
+
+    }
+    public int updateNota(Notas n) {
+        Alumno a = null;
+        Connection con = null;
+        PreparedStatement stmt = null;
+        int filas = -1;
+        try {
+            Class.forName(Configuration.getInstance().getDriverDB());
+
+            con = DriverManager.getConnection(
+                    Configuration.getInstance().getUrlDB(),
+                    Configuration.getInstance().getUserDB(),
+                    Configuration.getInstance().getPassDB());
+
+            stmt = con.prepareStatement("UPDATE notas "
+                    + "SET NOTA=? where ID_ALUMNO=?");
+
+            stmt.setInt(1, n.getNota());
+            stmt.setInt(2, a.getId());
+
+            filas = stmt.executeUpdate();
+
+        } catch (Exception ex) {
+            Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+
+                if (stmt != null) {
+                    stmt.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+        return filas;
 
     }
 }

@@ -17,8 +17,10 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
 import model.Alumno;
 import model.Asignatura;
+import model.Notas;
 import servicios.AlumnosServicios;
 import servicios.AsignaturasServicios;
 import servicios.NotasServicios;
@@ -37,32 +39,45 @@ public class FXMLAñadirNotaController implements Initializable {
     @FXML
     private ComboBox<Asignatura> comboAsignaturas;
     @FXML
+    private TextField fxnotacambio;
+    @FXML
     private ListView<Alumno> fxListaAlumnos;
+    private ListView<Notas> fxnotas;
 
     /**
      * Initializes the controller class.
      */
-    private void cargar() {
-        fxListaAlumnos.getItems().clear();
-        fxListaAlumnos.getItems().addAll(alum.getAllAlumnos());
-    }
-
     private void cargarBox() {
-        for (Asignatura ete :asig.getAllAsignatura()){
-        comboAsignaturas.getItems().add(ete);
+        for (Asignatura ete : asig.getAllAsignatura()) {
+            comboAsignaturas.getItems().add(ete);
         }
     }
+
     @FXML
     private void cambiar(ActionEvent event) throws IOException {
-        Asignatura cambio=comboAsignaturas.getSelectionModel().getSelectedItem();
+        Asignatura cambio = comboAsignaturas.getSelectionModel().getSelectedItem();
         notis.getCambiarBox(cambio);
         fxListaAlumnos.getItems().addAll(notis.getCambiarBox(cambio));
     }
+
+    @FXML
+    private void introducil(ActionEvent event) throws IOException {
+        Alumno modificable = fxListaAlumnos.getSelectionModel().getSelectedItem();
+        Notas cambiar= fxnotas.getSelectionModel().getSelectedItem();
+        cambiar.setNota(fxnotacambio.getLength());
+        notis.CambiaNota(cambiar);
+        Alert b = new Alert(Alert.AlertType.INFORMATION, "Asignatura Actualizada", ButtonType.CLOSE);
+        b.showAndWait();
+        
+
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        asig= new AsignaturasServicios();
-        alum=new AlumnosServicios();
-        notis= new NotasServicios();
+        asig = new AsignaturasServicios();
+        alum = new AlumnosServicios();
+        notis = new NotasServicios();
+        fxnotas= new ListView<>();
         cargarBox();
     }
 

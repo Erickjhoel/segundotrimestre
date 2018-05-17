@@ -6,6 +6,7 @@
 package servicios;
 
 import dao.AlumnosDAO;
+import dao.AsignaturasDAO;
 import dao.NotasDAO;
 import java.util.List;
 import model.Alumno;
@@ -36,5 +37,10 @@ public class NotasServicios {
     {
         NotasDAO dao = new NotasDAO();
        return dao.getCambia(cambiar);
+    }
+    public int CambiaNota(Notas cambio)
+    {
+       NotasDAO dao = new NotasDAO();
+       return dao.updateNota(cambio);
     }
 }
