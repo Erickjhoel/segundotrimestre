@@ -20,7 +20,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Alumno;
 import model.Asignatura;
-import model.Notas;
+import model.Nota;
 
 /**
  *
@@ -181,8 +181,7 @@ public class NotasDAO {
         return lista;
 
     }
-    public int updateNota(Notas n) {
-        Alumno a = null;
+    public int updateNota(int nota,Alumno a, Asignatura s) {
         Connection con = null;
         PreparedStatement stmt = null;
         int filas = -1;
@@ -195,10 +194,11 @@ public class NotasDAO {
                     Configuration.getInstance().getPassDB());
 
             stmt = con.prepareStatement("UPDATE notas "
-                    + "SET NOTA=? where ID_ALUMNO=?");
+                    + "SET NOTA=? where ID_ALUMNO=? and ID_ASIGNATURA=?");
 
-            stmt.setInt(1, n.getNota());
+            stmt.setInt(1, nota);
             stmt.setInt(2, a.getId());
+            stmt.setInt(3,s.getId());
 
             filas = stmt.executeUpdate();
 

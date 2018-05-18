@@ -11,7 +11,7 @@ import dao.NotasDAO;
 import java.util.List;
 import model.Alumno;
 import model.Asignatura;
-import model.Notas;
+import model.Nota;
 
 /**
  *
@@ -38,9 +38,9 @@ public class NotasServicios {
         NotasDAO dao = new NotasDAO();
        return dao.getCambia(cambiar);
     }
-    public int CambiaNota(Notas cambio)
+    public int CambiaNota(int nota,Alumno a, Asignatura s)
     {
        NotasDAO dao = new NotasDAO();
-       return dao.updateNota(cambio);
+       return dao.updateNota(nota, a, s);
     }
 }

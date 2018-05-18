@@ -20,7 +20,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import model.Alumno;
 import model.Asignatura;
-import model.Notas;
+import model.Nota;
 import servicios.AlumnosServicios;
 import servicios.AsignaturasServicios;
 import servicios.NotasServicios;
@@ -42,7 +42,6 @@ public class FXMLAñadirNotaController implements Initializable {
     private TextField fxnotacambio;
     @FXML
     private ListView<Alumno> fxListaAlumnos;
-    private ListView<Notas> fxnotas;
 
     /**
      * Initializes the controller class.
@@ -63,13 +62,11 @@ public class FXMLAñadirNotaController implements Initializable {
     @FXML
     private void introducil(ActionEvent event) throws IOException {
         Alumno modificable = fxListaAlumnos.getSelectionModel().getSelectedItem();
-        Notas cambiar= fxnotas.getSelectionModel().getSelectedItem();
-        cambiar.setNota(fxnotacambio.getLength());
-        notis.CambiaNota(cambiar);
-        Alert b = new Alert(Alert.AlertType.INFORMATION, "Asignatura Actualizada", ButtonType.CLOSE);
+        Asignatura cambiar= comboAsignaturas.getSelectionModel().getSelectedItem();
+        int nota=Integer.parseInt(fxnotacambio.getText());
+        notis.CambiaNota(nota, modificable, cambiar);
+        Alert b = new Alert(Alert.AlertType.INFORMATION, "Se a introducido la nota", ButtonType.CLOSE);
         b.showAndWait();
-        
-
     }
 
     @Override
@@ -77,7 +74,6 @@ public class FXMLAñadirNotaController implements Initializable {
         asig = new AsignaturasServicios();
         alum = new AlumnosServicios();
         notis = new NotasServicios();
-        fxnotas= new ListView<>();
         cargarBox();
     }
 
