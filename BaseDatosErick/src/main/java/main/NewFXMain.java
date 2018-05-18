@@ -7,6 +7,7 @@ package main;
 
 import constantes.Constante;
 import controllers.FXMLMenuController;
+import dao.CreaTablas;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -27,6 +28,8 @@ public class NewFXMain extends Application {
     
     @Override
     public void start(Stage primaryStage) throws IOException {
+        CreaTablas ete =new CreaTablas();
+        ete.crearModeloJDBC();
             FXMLLoader loaderMenu = new FXMLLoader(
           getClass().getResource(Constante.PANTALLA_MENU)); //colocar en constantes la ruta*****************
         BorderPane root = loaderMenu.load();

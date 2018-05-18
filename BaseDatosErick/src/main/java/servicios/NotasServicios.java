@@ -11,7 +11,7 @@ import dao.NotasDAO;
 import java.util.List;
 import model.Alumno;
 import model.Asignatura;
-import model.Nota;
+import model.Notas;
 
 /**
  *

@@ -20,7 +20,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import model.Alumno;
 import model.Asignatura;
-import model.Nota;
+import model.Notas;
 import servicios.AlumnosServicios;
 import servicios.AsignaturasServicios;
 import servicios.NotasServicios;

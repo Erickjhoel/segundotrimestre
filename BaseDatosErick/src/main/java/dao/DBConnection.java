@@ -5,21 +5,12 @@
  */
 package dao;
 
-import com.mysql.jdbc.jdbc2.optional.MysqlConnectionPoolDataSource;
-import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
-import com.zaxxer.hikari.HikariConfig;
-import com.zaxxer.hikari.HikariDataSource;
 import config.Configuration;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 /**
  *
@@ -27,7 +18,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
  */
 public class DBConnection {
 
-   public DBConnection()
+    public DBConnection()
     {
         
     }

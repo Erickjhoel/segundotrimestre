@@ -20,7 +20,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Alumno;
 import model.Asignatura;
-import model.Nota;
+import model.Notas;
 
 /**
  *

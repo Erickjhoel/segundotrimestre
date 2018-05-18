@@ -9,7 +9,7 @@ package model;
  *
  * @author daw
  */
-public class Nota {
+public class Notas {
     private int id_alumnos;
     private int id_asignaturas;
     private int nota;
