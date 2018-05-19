@@ -122,6 +122,7 @@ public class FXMLMapsController implements Initializable, MapComponentInitialize
     @FXML
     private void pintar(ActionEvent event) throws IOException {
         
+        
     }
     public void pintar (int autobus, String destino) throws IOException{
         
@@ -166,7 +167,7 @@ public class FXMLMapsController implements Initializable, MapComponentInitialize
         int parada;
         parada = Integer.parseInt(fxnumParada.getText());
         Timeline timeline = new Timeline(
-                new KeyFrame(Duration.seconds(5), e -> {
+                new KeyFrame(Duration.seconds(3), e -> {
                     try {
                         loadBud(parada);
                     } catch (IOException ex) {
@@ -174,7 +175,7 @@ public class FXMLMapsController implements Initializable, MapComponentInitialize
                     }
                 })
         );
-        timeline.setCycleCount(10);
+        timeline.setCycleCount(12);
         timeline.play();
         
     }
