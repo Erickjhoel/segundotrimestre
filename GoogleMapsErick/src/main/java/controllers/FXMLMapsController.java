@@ -44,6 +44,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.util.Duration;
 import model.Arrive;
@@ -58,13 +59,13 @@ import netscape.javascript.JSObject;
  * @author user
  */
 public class FXMLMapsController implements Initializable, MapComponentInitializedListener {
-    
+
     @FXML
     private GoogleMapView mapView;
-    
+
     @FXML
     private ComboBox combo;
-    
+
     private GoogleMap map;
     @FXML
     private TextField fxnumParada;
@@ -73,34 +74,32 @@ public class FXMLMapsController implements Initializable, MapComponentInitialize
     @FXML
     private TextField fxDireccionPintar;
     @FXML
-    private Label fxtiempo;
-    @FXML
-    private Label fxcalle;
-    
+    private ListView lista;
+
     @FXML
     public void handleCombo(ActionEvent event) {
         System.out.println(combo.getSelectionModel().getSelectedItem().toString());
-        
+
     }
-    
+
     private void loadBud(int parada) throws IOException {
         String paradaa = parada + "";
         map.clearMarkers();
         ObjectMapper m = new ObjectMapper();
         BusDao b = new BusDao();
         m.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-        
+
         Arrives arrives = m.readValue(b.GetArrivesStop(paradaa), new TypeReference<Arrives>() {
         });
-        
-        fxcalle.setText(arrives.getArrives().get(0).getDestination());
-        int tiempo;
-        tiempo = arrives.getArrives().get(0).getBusTimeLeft();
-        if (tiempo > 9999) {
-            fxtiempo.setText("+20 min");
-        } else {
-            fxtiempo.setText(tiempo / 60 + " min");
-        }
+
+//        fxcalle.setText(arrives.getArrives().get(0).getDestination());
+//        int tiempo;
+//        tiempo = arrives.getArrives().get(0).getBusTimeLeft();
+//        if (tiempo > 9999) {
+//            fxtiempo.setText("+20 min");
+//        } else {
+//            fxtiempo.setText(tiempo / 60 + " min");
+//        }
         for (Arrive autobus : arrives.getArrives()) {
 //            System.out.println("id" + autobus.getStopId());
 //            System.out.println("tiempo" + autobus.getBusTimeLeft());
@@ -113,53 +112,63 @@ public class FXMLMapsController implements Initializable, MapComponentInitialize
             MarkerOptions markerOptions5 = new MarkerOptions();
             markerOptions5.position(punto);
             markerOptions5.title(autobus.getBusId());
-            
+
             Marker joeSmithMarker = new Marker(markerOptions5);
             map.addMarker(joeSmithMarker);
-            
+
         }
     }
+
     @FXML
     private void pintar(ActionEvent event) throws IOException {
-        
-        
+        Arrive autobus = new Arrive();
+        autobus.setBusId(fxnumParadaPintar.getText());
+        autobus.setDestination(fxDireccionPintar.getText());
+        pintar(autobus);
     }
-    public void pintar (int autobus, String destino) throws IOException{
-        
+
+    public void pintar(Arrive autobus) throws IOException {
+
         ObjectMapper m = new ObjectMapper();
+        m.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         BusDao b = new BusDao();
-        StopsLine stopp = m.readValue(b.GetStopsLine(autobus+"",destino), new TypeReference<StopsLine>() {
+        StopsLine stopp = m.readValue(b.GetStopsLine(autobus.getBusId(), autobus.getDestination()), new TypeReference<StopsLine>() {
         });
         double[] latitud = new double[stopp.getStop().size()];
         double[] longitud = new double[stopp.getStop().size()];
         int i = 0;
         for (Stop stop : stopp.getStop()) {
             latitud[i] = stop.getLatitude();
-            longitud[i + 1] = stop.getLongitude();
+            longitud[i] = stop.getLongitude();
+            i++;
         }
         i = 0;
         for (Stop stop : stopp.getStop()) {
-            LatLong centreP = new LatLong(latitud[i], longitud[i + 1]);
-            LatLong start = new LatLong(latitud[i], longitud[i + 1]);
-            
+            LatLong centreP = new LatLong(latitud[i], longitud[i]);
+            LatLong start = new LatLong(latitud[i + 1], longitud[i + 1]);
+
             LatLong[] latlongs = new LatLong[2];
             latlongs[0] = centreP;
             latlongs[1] = start;
-            
+
             MVCArray array = new MVCArray(latlongs);
-            
+
             PolylineOptions polyOpts = new PolylineOptions()
                     .path(array)
                     .strokeColor("#ff0000")
                     .strokeWeight(2);
             Polyline pp = new Polyline(polyOpts);
-            
+
             map.addMapShape(pp);
-            
-            map.setZoom(16);
-            
+
+            map.setZoom(10);
+            if (i == stopp.getStop().size() - 2) {
+
+            } else {
+                i++;
+            }
         }
-        
+
     }
 
     @FXML
@@ -177,9 +186,8 @@ public class FXMLMapsController implements Initializable, MapComponentInitialize
         );
         timeline.setCycleCount(12);
         timeline.play();
-        
-    }
 
+    }
 
     /**
      * Initializes the controller class.
@@ -190,7 +198,7 @@ public class FXMLMapsController implements Initializable, MapComponentInitialize
         mapView.addMapInializedListener(this);
         combo.getItems().add("hola");
     }
-    
+
     @Override
     public void mapInitialized() {
         LatLong TiernoGalvan = new LatLong(40.381932, -3.624535);
@@ -201,7 +209,7 @@ public class FXMLMapsController implements Initializable, MapComponentInitialize
 
         //Set the initial properties of the map.
         MapOptions mapOptions = new MapOptions();
-        
+
         mapOptions.center(new LatLong(40.381932, -3.624535))
                 .mapType(MapTypeIdEnum.ROADMAP)
                 .overviewMapControl(false)
@@ -211,7 +219,7 @@ public class FXMLMapsController implements Initializable, MapComponentInitialize
                 .streetViewControl(false)
                 .zoomControl(false)
                 .zoom(12);
-        
+
         map = mapView.createMap(mapOptions);
 
         //Add markers to the map
@@ -252,16 +260,16 @@ public class FXMLMapsController implements Initializable, MapComponentInitialize
 //        fredWilkeInfoWindow.open(map, fredWilkieMarker);
         mapView.getMap().addUIEventHandler(joeSmithMarker, UIEventType.click, (JSObject obj) -> {
             LatLong ll = new LatLong((JSObject) obj.getMember("latLng"));
-            
+
             combo.getItems().add(ll.toString());
             InfoWindowOptions infoWindowOptions1 = new InfoWindowOptions();
             infoWindowOptions1.content("<h2>Vallecas City</h2>"
                     + "Localizacion cercana a la casa del señor profesor que me va a aprobar");
-            
+
             InfoWindow fredWilkeInfoWindow1 = new InfoWindow(infoWindowOptions1);
             fredWilkeInfoWindow1.open(map, joeSmithMarker);
-            
+
         });
     }
-    
+
 }
