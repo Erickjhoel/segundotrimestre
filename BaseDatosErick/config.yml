@@ -1,6 +1,6 @@
 ## YAML Template.
 ---
-driverDB: com.mysql.jdbc.Driver
+#driverDB: com.mysql.jdbc.Driver
 #urlDB: jdbc:mysql://db4free.net:3307/baseerick?useSSL=false
 driverDB: org.hsqldb.jdbc.JDBCDriver
 urlDB: jdbc:hsqldb:mem:instituto

@@ -56,7 +56,9 @@ public class FXMLAñadirNotaController implements Initializable {
     private void cambiar(ActionEvent event) throws IOException {
         Asignatura cambio = comboAsignaturas.getSelectionModel().getSelectedItem();
         notis.getCambiarBox(cambio);
+        fxListaAlumnos.getItems().clear();
         fxListaAlumnos.getItems().addAll(notis.getCambiarBox(cambio));
+        
     }
 
     @FXML

@@ -28,12 +28,7 @@ public class AsignaturasDAO {
         PreparedStatement stmt = null;
         int filas = -1;
         try {
-            Class.forName(Configuration.getInstance().getDriverDB());
-
-            con = DriverManager.getConnection(
-              Configuration.getInstance().getUrlDB(),
-              Configuration.getInstance().getUserDB(),
-              Configuration.getInstance().getPassDB());
+           con=DBConnectionPool.getInstance().getConnection();
 
             stmt = con.prepareStatement("INSERT INTO asignaturas "
               + "(NOMBRE,CURSO,CICLO)  "
@@ -58,17 +53,7 @@ public class AsignaturasDAO {
         } catch (Exception ex) {
             Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            try {
-
-                if (stmt != null) {
-                    stmt.close();
-                }
-                if (con != null) {
-                    con.close();
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            DBConnectionPool.getInstance().cerrarConexion(con);
 
         }
         return filas;
@@ -79,12 +64,7 @@ public class AsignaturasDAO {
         PreparedStatement stmt = null;
         int filas = -1;
         try {
-            Class.forName(Configuration.getInstance().getDriverDB());
-
-            con = DriverManager.getConnection(
-                    Configuration.getInstance().getUrlDB(),
-                    Configuration.getInstance().getUserDB(),
-                    Configuration.getInstance().getPassDB());
+            con=DBConnectionPool.getInstance().getConnection();
 
             stmt = con.prepareStatement("DELETE FROM asignaturas"
                     + " WHERE id=?;");
@@ -97,17 +77,7 @@ public class AsignaturasDAO {
         } catch (Exception ex) {
             Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            try {
-
-                if (stmt != null) {
-                    stmt.close();
-                }
-                if (con != null) {
-                    con.close();
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }
+           DBConnectionPool.getInstance().cerrarConexion(con);
 
         }
         return filas;
@@ -118,12 +88,7 @@ public class AsignaturasDAO {
         PreparedStatement stmt = null;
         int filas = -1;
         try {
-            Class.forName(Configuration.getInstance().getDriverDB());
-
-            con = DriverManager.getConnection(
-                    Configuration.getInstance().getUrlDB(),
-                    Configuration.getInstance().getUserDB(),
-                    Configuration.getInstance().getPassDB());
+            con=DBConnectionPool.getInstance().getConnection();
 
             stmt = con.prepareStatement("UPDATE asignaturas "
                     + "SET NOMBRE=?,CURSO=?,CICLO=? where id=?");
@@ -141,18 +106,7 @@ public class AsignaturasDAO {
         } catch (Exception ex) {
             Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            try {
-
-                if (stmt != null) {
-                    stmt.close();
-                }
-                if (con != null) {
-                    con.close();
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
+           DBConnectionPool.getInstance().cerrarConexion(con);
         }
         return filas;
 
@@ -165,12 +119,7 @@ public class AsignaturasDAO {
         Statement stmt = null;
         ResultSet rs = null;
         try {
-            Class.forName(Configuration.getInstance().getDriverDB());
-
-            con = DriverManager.getConnection(
-                    Configuration.getInstance().getUrlDB(),
-                    Configuration.getInstance().getUserDB(),
-                    Configuration.getInstance().getPassDB());
+            con=DBConnectionPool.getInstance().getConnection();
 
             stmt = con.createStatement();
             String sql;
@@ -196,19 +145,7 @@ public class AsignaturasDAO {
         } catch (Exception ex) {
             Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            try {
-                if (rs != null) {
-                    rs.close();
-                }
-                if (stmt != null) {
-                    stmt.close();
-                }
-                if (con != null) {
-                    con.close();
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            DBConnectionPool.getInstance().cerrarConexion(con);
 
         }
         return lista;

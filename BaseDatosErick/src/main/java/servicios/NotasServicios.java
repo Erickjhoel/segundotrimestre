@@ -28,7 +28,8 @@ public class NotasServicios {
         NotasDAO dao = new NotasDAO();
        return dao.delUser2(eliminar);
     }
-    public int getEliminarAsig(Asignatura eliminar)
+   
+    public int getEliminarAsig(Asignatura eliminar) throws Exception
     {
         NotasDAO dao = new NotasDAO();
        return dao.delAsig2(eliminar);

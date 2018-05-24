@@ -20,25 +20,34 @@ public class AlumnosServicios {
     {
         AlumnosDAO dao = new AlumnosDAO();
         
-        return dao.getAllAlumnoJDBC();
+        return dao.getAllAlumnosDBUtils();
     }
     
     
-    public int getBorrarAlum(int id){
+    public int getBorrarAlum(Alumno eliminal){
         AlumnosDAO dao = new AlumnosDAO();
         
-        return dao.DeleteAlumnoJDBC(id);
+        return dao.DeleteUserDBUtils(eliminal);
         
     }
-    public int getActualizarAlum(Alumno alumnoNuevo)
+     public int getEliminarAlumReferenciado(Alumno eliminar)
     {
         AlumnosDAO dao = new AlumnosDAO();
-       return dao.updateAlumnoJDBC(alumnoNuevo);
+       return dao.eliminalReferenciado(eliminar);
     }
-    public int getInsertAlum(Alumno alumnoNuevo)
+    public Alumno getActualizarAlum(Alumno alumnoNuevo)
     {
         AlumnosDAO dao = new AlumnosDAO();
-       return dao.insertAlumnoJDBC(alumnoNuevo);
+       return dao.updateUserDBUtils(alumnoNuevo);
+    }
+    public Alumno getInsertAlum(Alumno alumnoNuevo)
+    {
+        AlumnosDAO dao = new AlumnosDAO();
+       return dao.addUserDBUtils(alumnoNuevo);
+    }
+
+    public void getBorrarAlum(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

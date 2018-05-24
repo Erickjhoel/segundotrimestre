@@ -80,6 +80,7 @@ public class FXMLEnlasarAlumAsigController implements Initializable {
         fxListaAlum.refresh();
 
     }
+    
 
     @FXML
     private void EliminarAsignatura(ActionEvent event) throws IOException {

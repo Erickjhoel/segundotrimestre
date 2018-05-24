@@ -5,13 +5,13 @@
  */
 package controllers;
 
-import dao.ConexionSimpleBD;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,6 +26,7 @@ import javafx.scene.control.ToggleGroup;
 import model.Alumno;
 import model.Asignatura;
 import servicios.AlumnosServicios;
+import servicios.NotasServicios;
 
 /**
  * FXML Controller class
@@ -68,6 +69,25 @@ public class FXMLCrudAlumnosController implements Initializable {
         Alert b = new Alert(Alert.AlertType.INFORMATION, "Alumno eliminado", ButtonType.CLOSE);
                         b.showAndWait();
         fxLista.refresh();
+    }
+    
+    private void EliminarAlumnoReferenciado(ActionEvent event) throws IOException {
+        Alumno eliminal = fxLista.getSelectionModel().getSelectedItem();
+
+        Alert seguridad = new Alert(Alert.AlertType.CONFIRMATION, "Esta seguro que quiere eliminar al alumno esta referencido" );
+        Optional<ButtonType> result = seguridad.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            servicios.getEliminarAlumReferenciado(eliminal);
+            fxLista.getItems().remove(eliminal);
+            Alert b = new Alert(Alert.AlertType.INFORMATION, "Se ha eliminado el alumno ", ButtonType.CLOSE);
+            b.showAndWait();
+        } else {
+            Alert c = new Alert(Alert.AlertType.INFORMATION, "El alumno no se ha eliminado ", ButtonType.CLOSE);
+            c.showAndWait();
+        }
+
+        fxLista.refresh();
+
     }
 
     @FXML

@@ -13,13 +13,20 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import model.Asignatura;
+import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.ResultSetHandler;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 /**
  *
@@ -27,199 +34,122 @@ import model.Asignatura;
  */
 public class AlumnosDAO {
 
-    // Select JDBC
-    public List<Alumno> getAllAlumnoJDBC() {
-        List<Alumno> lista = new ArrayList<>();
-        Alumno nuevo = null;
-
+    
+    ////////Apache commmons**************************************************************************************
+    public List<Alumno> getAllAlumnosDBUtils() {
+        List<Alumno> lista = null;
+       
         Connection con = null;
-        Statement stmt = null;
-        ResultSet rs = null;
         try {
-            Class.forName(Configuration.getInstance().getDriverDB());
+            con = DBConnectionPool.getInstance().getConnection();
 
-            con = DriverManager.getConnection(
-                    Configuration.getInstance().getUrlDB(),
-                    Configuration.getInstance().getUserDB(),
-                    Configuration.getInstance().getPassDB());
-
-            stmt = con.createStatement();
-            String sql;
-
-            sql = "SELECT * FROM alumnos";
-            rs = stmt.executeQuery(sql);
-
-            //STEP 5: Extract data from result set
-            while (rs.next()) {
-                //Retrieve by column name
-                int id = rs.getInt("id");
-                String nombre = rs.getString("nombre");
-                Date fecha_nacimiento = rs.getDate("fecha_nacimiento");
-                Boolean mayor_edad = rs.getBoolean("mayor_edad");
-                nuevo = new Alumno();
-                nuevo.setNombre(nombre);
-                nuevo.setId(id);
-                nuevo.setFecha_nacimiento(fecha_nacimiento);
-                nuevo.setMayor_edad(mayor_edad);
-                lista.add(nuevo);
-            }
+            QueryRunner qr = new QueryRunner();
+            ResultSetHandler<List<Alumno>> handler
+              = new BeanListHandler<>(Alumno.class);
+            lista = qr.query(con, "select * FROM ALUMNOS", handler);
 
         } catch (Exception ex) {
             Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            try {
-                if (rs != null) {
-                    rs.close();
-                }
-                if (stmt != null) {
-                    stmt.close();
-                }
-                if (con != null) {
-                    con.close();
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
+            
+            DBConnectionPool.getInstance().cerrarConexion(con);
         }
         return lista;
-
     }
 
-    //inser JDBC
-     public int insertAlumnoJDBC(Alumno a) {
+    public Alumno addUserDBUtils(Alumno alumno) {
+   
         Connection con = null;
-        PreparedStatement stmt = null;
-        int filas = -1;
+
         try {
-            Class.forName(Configuration.getInstance().getDriverDB());
-
-            con = DriverManager.getConnection(
-                    Configuration.getInstance().getUrlDB(),
-                    Configuration.getInstance().getUserDB(),
-                    Configuration.getInstance().getPassDB());
-
-            stmt = con.prepareStatement("INSERT INTO alumnos "
-                    + "(NOMBRE,FECHA_NACIMIENTO,MAYOR_EDAD)  "
-                    + "VALUES (?,?,?)", Statement.RETURN_GENERATED_KEYS);
-
-            stmt.setString(1, a.getNombre());
-
-            stmt.setDate(2,
-                    new java.sql.Date(a.getFecha_nacimiento().getTime()));
-
-            stmt.setBoolean(3, a.getMayor_edad());
-
-            filas = stmt.executeUpdate();
-
-            ResultSet rs = stmt.getGeneratedKeys();
-            if (rs.next()) {
-                a.setId(rs.getInt(1));
-            }
+            con = DBConnectionPool.getInstance().getConnection();
+            con.setAutoCommit(false);
+            QueryRunner qr = new QueryRunner();
+            Integer id = qr.insert(con,
+              "INSERT INTO alumnos (NOMBRE,FECHA_NACIMIENTO,MAYOR_EDAD) "
+                      + "VALUES(?,?,?)",
+              new ScalarHandler<>(),
+              alumno.getNombre(), alumno.getFecha_nacimiento(),alumno.getMayor_edad());
+            alumno.setId(id.intValue());
+            con.commit();
 
         } catch (Exception ex) {
-            Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
             try {
-
-                if (stmt != null) {
-                    stmt.close();
-                }
-                if (con != null) {
-                    con.close();
-                }
-            } catch (SQLException ex) {
                 Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
+                if (con!= null)
+                    con.rollback();
+            } catch (SQLException ex1) {
+                Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex1);
             }
-
+        } finally {
+            DBConnectionPool.getInstance().cerrarConexion(con);
         }
-        return filas;
+        return alumno;
 
     }
     
-    public int DeleteAlumnoJDBC(int idWhere) {
+    public Alumno updateUserDBUtils(Alumno alumno) {//-*/-*/-*/-*/-*/-*/-*/-*/-*/*-/-*/-*/-*/-*/-*/-*
         Connection con = null;
-        PreparedStatement stmt = null;
-        int filas = -1;
         try {
-            Class.forName(Configuration.getInstance().getDriverDB());
-
-            con = DriverManager.getConnection(
-                    Configuration.getInstance().getUrlDB(),
-                    Configuration.getInstance().getUserDB(),
-                    Configuration.getInstance().getPassDB());
-
-             stmt = con.prepareStatement("DELETE FROM alumnos"
-                    + " WHERE ID=?;");
-
-            stmt.setInt(1, idWhere);
-
-            filas = stmt.executeUpdate();
-
+            con = DBConnectionPool.getInstance().getConnection();
+            QueryRunner qr = new QueryRunner();
+           int filas = qr.update(con,
+              "UPDATE ALUMNOS SET NOMBRE = ? WHERE ID = ?",
+              alumno.getNombre(),alumno.getId());
         } catch (Exception ex) {
             Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
+            DBConnectionPool.getInstance().cerrarConexion(con);
+        }
+        return alumno;
+    }
+    
+     public int DeleteUserDBUtils(Alumno alumno) {//-*/-*/-*/-*/-*/-*/-*/-*/-*/*-/-*/-*/-*/-*/-*/-*
+        Connection con = null;int filas=-1;
+        try {
+            con = DBConnectionPool.getInstance().getConnection();
+            QueryRunner qr = new QueryRunner();
+           filas= qr.update(con,
+              "DELETE FROM ALUMNOS WHERE ID = ?",
+              alumno.getId());
+        } catch (SQLIntegrityConstraintViolationException ex) {
+            Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
+            eliminalReferenciado(alumno);
+        }catch (Exception ex) {
+            Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            DBConnectionPool.getInstance().cerrarConexion(con);
+        }
+        return filas;
+    }
+     public int eliminalReferenciado(Alumno alumno) {
+        Connection con = null;
+        int filas = 0;
+        try {
+             con=DBConnectionPool.getInstance().getConnection();
+              QueryRunner qr = new QueryRunner();
+           filas= qr.update(con,
+              "DELETE FROM ALUMNOS WHERE ID = ?",
+              alumno.getId());
+
+           filas= qr.update(con,
+              "DELETE FROM notas WHERE ID_ALUMNO = ?",
+              alumno.getId());
+            con.commit();
+
+        } catch (Exception ex) {
+            Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
             try {
-
-                if (stmt != null) {
-                    stmt.close();
-                }
                 if (con != null) {
-                    con.close();
+                    con.rollback();
                 }
-            } catch (SQLException ex) {
-                Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex1) {
+                Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex1);
             }
-
+        } finally {
+              DBConnectionPool.getInstance().cerrarConexion(con);
         }
         return filas;
 
     }
-    public int updateAlumnoJDBC(Alumno a) {//Actualizar Alumno
-        Connection con = null;
-        PreparedStatement stmt = null;
-        int filas = -1;
-        try {
-            Class.forName(Configuration.getInstance().getDriverDB());
-
-            con = DriverManager.getConnection(
-                    Configuration.getInstance().getUrlDB(),
-                    Configuration.getInstance().getUserDB(),
-                    Configuration.getInstance().getPassDB());
-
-            stmt = con.prepareStatement("UPDATE alumnos "
-                    + "SET NOMBRE=?,FECHA_NACIMIENTO=?,MAYOR_EDAD=? where ID=?");
-
-            stmt.setString(1, a.getNombre());
-
-            stmt.setDate(2,
-                    new java.sql.Date(a.getFecha_nacimiento().getTime()));
-
-            stmt.setBoolean(3, a.getMayor_edad());
-            
-             stmt.setInt(4, a.getId());
-            
-
-            filas = stmt.executeUpdate();
-
-        } catch (Exception ex) {
-            Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-
-                if (stmt != null) {
-                    stmt.close();
-                }
-                if (con != null) {
-                    con.close();
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-        }
-        return filas;
-
-    }
-
 }
