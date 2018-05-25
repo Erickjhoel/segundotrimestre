@@ -20,7 +20,7 @@ public class AsignaturasServicios {
     {
         AsignaturasDAO dao = new AsignaturasDAO();
         
-        return dao.getAllAsignaturasJDBC();
+        return dao.getAllAlumnosJDBCTemplate();
     }
     
     public int getBorrarAsignatura(int id){
@@ -32,7 +32,7 @@ public class AsignaturasServicios {
     public int getActualizarAsignatura(Asignatura asignueva)
     {
         AsignaturasDAO dao = new AsignaturasDAO();
-       return dao.updateAsignaturaJDBC(asignueva);
+       return dao.updateJDBCTemplate(asignueva);
     }
     public int getInsertAsignatura(Asignatura asignueva)
     {

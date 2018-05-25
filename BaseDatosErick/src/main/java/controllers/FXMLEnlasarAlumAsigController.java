@@ -10,6 +10,8 @@ import java.net.URL;
 import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -88,10 +90,14 @@ public class FXMLEnlasarAlumAsigController implements Initializable {
         Alert seguridad = new Alert(Alert.AlertType.CONFIRMATION, "Esta seguro que quiere eliminar esta asignatura");
         Optional<ButtonType> result = seguridad.showAndWait();
         if (result.get() == ButtonType.OK) {
-            notis.getEliminarAsig(eliminal);
-            fxListaAsign.getItems().remove(eliminal);
-            Alert b = new Alert(Alert.AlertType.INFORMATION, "Se ha eliminado la asignatura ", ButtonType.CLOSE);
-            b.showAndWait();
+            try {
+                notis.getEliminarAsig(eliminal);
+                fxListaAsign.getItems().remove(eliminal);
+                Alert b = new Alert(Alert.AlertType.INFORMATION, "Se ha eliminado la asignatura ", ButtonType.CLOSE);
+                b.showAndWait();
+            } catch (Exception ex) {
+                Logger.getLogger(FXMLEnlasarAlumAsigController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
             Alert c = new Alert(Alert.AlertType.INFORMATION, "La asignatura no se ha eliminado ", ButtonType.CLOSE);
             c.showAndWait();

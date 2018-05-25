@@ -34,31 +34,30 @@ import org.apache.commons.dbutils.handlers.ScalarHandler;
  */
 public class AlumnosDAO {
 
-    
     ////////Apache commmons**************************************************************************************
     public List<Alumno> getAllAlumnosDBUtils() {
         List<Alumno> lista = null;
-       
+
         Connection con = null;
         try {
             con = DBConnectionPool.getInstance().getConnection();
 
             QueryRunner qr = new QueryRunner();
             ResultSetHandler<List<Alumno>> handler
-              = new BeanListHandler<>(Alumno.class);
+                    = new BeanListHandler<>(Alumno.class);
             lista = qr.query(con, "select * FROM ALUMNOS", handler);
 
         } catch (Exception ex) {
             Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            
+
             DBConnectionPool.getInstance().cerrarConexion(con);
         }
         return lista;
     }
 
     public Alumno addUserDBUtils(Alumno alumno) {
-   
+
         Connection con = null;
 
         try {
@@ -66,18 +65,19 @@ public class AlumnosDAO {
             con.setAutoCommit(false);
             QueryRunner qr = new QueryRunner();
             Integer id = qr.insert(con,
-              "INSERT INTO alumnos (NOMBRE,FECHA_NACIMIENTO,MAYOR_EDAD) "
-                      + "VALUES(?,?,?)",
-              new ScalarHandler<>(),
-              alumno.getNombre(), alumno.getFecha_nacimiento(),alumno.getMayor_edad());
+                    "INSERT INTO alumnos (NOMBRE,FECHA_NACIMIENTO,MAYOR_EDAD) "
+                    + "VALUES(?,?,?)",
+                    new ScalarHandler<>(),
+                    alumno.getNombre(), alumno.getFecha_nacimiento(), alumno.getMayor_edad());
             alumno.setId(id.intValue());
             con.commit();
 
         } catch (Exception ex) {
             try {
                 Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
-                if (con!= null)
+                if (con != null) {
                     con.rollback();
+                }
             } catch (SQLException ex1) {
                 Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex1);
             }
@@ -87,15 +87,15 @@ public class AlumnosDAO {
         return alumno;
 
     }
-    
+
     public Alumno updateUserDBUtils(Alumno alumno) {//-*/-*/-*/-*/-*/-*/-*/-*/-*/*-/-*/-*/-*/-*/-*/-*
         Connection con = null;
         try {
             con = DBConnectionPool.getInstance().getConnection();
             QueryRunner qr = new QueryRunner();
-           int filas = qr.update(con,
-              "UPDATE ALUMNOS SET NOMBRE = ? WHERE ID = ?",
-              alumno.getNombre(),alumno.getId());
+            int filas = qr.update(con,
+                    "UPDATE ALUMNOS SET NOMBRE = ? WHERE ID = ?",
+                    alumno.getNombre(), alumno.getId());
         } catch (Exception ex) {
             Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
@@ -103,39 +103,42 @@ public class AlumnosDAO {
         }
         return alumno;
     }
-    
-     public int DeleteUserDBUtils(Alumno alumno) {//-*/-*/-*/-*/-*/-*/-*/-*/-*/*-/-*/-*/-*/-*/-*/-*
-        Connection con = null;int filas=-1;
+
+    public int DeleteUserDBUtils(Alumno alumno) {//-*/-*/-*/-*/-*/-*/-*/-*/-*/*-/-*/-*/-*/-*/-*/-*
+        Connection con = null;
+        int filas = -1;
         try {
             con = DBConnectionPool.getInstance().getConnection();
             QueryRunner qr = new QueryRunner();
-           filas= qr.update(con,
-              "DELETE FROM ALUMNOS WHERE ID = ?",
-              alumno.getId());
-        } catch (SQLIntegrityConstraintViolationException ex) {
-            Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
-            eliminalReferenciado(alumno);
-        }catch (Exception ex) {
+            filas = qr.update(con,
+                    "DELETE FROM ALUMNOS WHERE ID = ?",
+                    alumno.getId());
+        } catch (SQLException ex) {
+            if (ex.getMessage().indexOf("violación") != -1) {
+                eliminalReferenciado(alumno);
+            }
+        } catch (Exception ex) {
             Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             DBConnectionPool.getInstance().cerrarConexion(con);
         }
         return filas;
     }
-     public int eliminalReferenciado(Alumno alumno) {
+
+    public int eliminalReferenciado(Alumno alumno) {
         Connection con = null;
         int filas = 0;
         try {
-             con=DBConnectionPool.getInstance().getConnection();
-              QueryRunner qr = new QueryRunner();
-           filas= qr.update(con,
-              "DELETE FROM ALUMNOS WHERE ID = ?",
-              alumno.getId());
-
-           filas= qr.update(con,
-              "DELETE FROM notas WHERE ID_ALUMNO = ?",
-              alumno.getId());
+            con = DBConnectionPool.getInstance().getConnection();
+            QueryRunner qr = new QueryRunner();
+            filas = qr.update(con,
+                    "DELETE FROM notas WHERE ID_ALUMNO = ?",
+                    alumno.getId());
             con.commit();
+
+            filas = qr.update(con,
+                    "DELETE FROM ALUMNOS WHERE ID = ?",
+                    alumno.getId());
 
         } catch (Exception ex) {
             Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -147,7 +150,7 @@ public class AlumnosDAO {
                 Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex1);
             }
         } finally {
-              DBConnectionPool.getInstance().cerrarConexion(con);
+            DBConnectionPool.getInstance().cerrarConexion(con);
         }
         return filas;
 

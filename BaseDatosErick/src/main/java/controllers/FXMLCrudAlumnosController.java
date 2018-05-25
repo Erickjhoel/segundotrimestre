@@ -61,17 +61,23 @@ public class FXMLCrudAlumnosController implements Initializable {
 
     @FXML
     private void borrar(ActionEvent event) throws IOException {//se elimina por id , se pasa la id
+        int filas;
         Alumno eliminar = fxLista.getSelectionModel().getSelectedItem();
+        
+        filas=servicios.getBorrarAlum(eliminar);
+        if(filas==-1){
+            EliminarAlumnoReferenciado();
+        }else{
         int id= eliminar.getId();//EL ID DEL ALUMNNO A ELIMINAR
-//        ete.remove(eliminar);//es una lista intermedia hay que añadirlo al fxList
         fxLista.getItems().remove(eliminar);
-        servicios.getBorrarAlum(id);
-        Alert b = new Alert(Alert.AlertType.INFORMATION, "Alumno eliminado", ButtonType.CLOSE);
-                        b.showAndWait();
+        servicios.getBorrarAlum(eliminar);
         fxLista.refresh();
+        Alert b = new Alert(Alert.AlertType.INFORMATION, "Se ha eliminado el alumno ", ButtonType.CLOSE);
+            b.showAndWait();
+        }
     }
     
-    private void EliminarAlumnoReferenciado(ActionEvent event) throws IOException {
+    private void EliminarAlumnoReferenciado() throws IOException {
         Alumno eliminal = fxLista.getSelectionModel().getSelectedItem();
 
         Alert seguridad = new Alert(Alert.AlertType.CONFIRMATION, "Esta seguro que quiere eliminar al alumno esta referencido" );
@@ -87,7 +93,6 @@ public class FXMLCrudAlumnosController implements Initializable {
         }
 
         fxLista.refresh();
-
     }
 
     @FXML

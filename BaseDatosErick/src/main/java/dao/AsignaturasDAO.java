@@ -16,7 +16,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.Alumno;
 import model.Asignatura;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 /**
  *
@@ -111,44 +114,21 @@ public class AsignaturasDAO {
         return filas;
 
     }
-        public List<Asignatura> getAllAsignaturasJDBC() {
-        List<Asignatura> lista = new ArrayList<>();
-        Asignatura nuevo = null;
+       public int updateJDBCTemplate(Asignatura a) {
+        JdbcTemplate jtm = new JdbcTemplate(
+          DBConnectionPool.getInstance().getDataSource());
+        String updateQuery = "update asignaturas set NOMBRE=?,CURSO=?,CICLO=? where id = ?";
+        int filas = jtm.update(updateQuery, a.getNombre(),a.getCurso(),a.getCiclo(), a.getId());
+        return filas;
+    }
+       
+       
+       public List<Asignatura> getAllAlumnosJDBCTemplate() {
 
-        Connection con = null;
-        Statement stmt = null;
-        ResultSet rs = null;
-        try {
-            con=DBConnectionPool.getInstance().getConnection();
-
-            stmt = con.createStatement();
-            String sql;
-
-            sql = "SELECT * FROM asignaturas";
-            rs = stmt.executeQuery(sql);
-
-            //STEP 5: Extract data from result set
-            while (rs.next()) {
-                //Retrieve by column name
-                int id = rs.getInt("id");
-                String nombre = rs.getString("nombre");
-                String curso = rs.getNString("curso");
-                String ciclo = rs.getString("ciclo");
-                nuevo = new Asignatura();
-                nuevo.setCurso(curso);
-                nuevo.setId(id);
-                nuevo.setCiclo(ciclo);
-                nuevo.setNombre(nombre);
-                lista.add(nuevo);
-            }
-
-        } catch (Exception ex) {
-            Logger.getLogger(AlumnosDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            DBConnectionPool.getInstance().cerrarConexion(con);
-
-        }
-        return lista;
-
+        JdbcTemplate jtm = new JdbcTemplate(
+          DBConnectionPool.getInstance().getDataSource());
+        List<Asignatura> asignatura = jtm.query("Select * from asignaturas",
+          new BeanPropertyRowMapper(Asignatura.class));
+        return asignatura;
     }
 }
