@@ -23,10 +23,10 @@ public class AsignaturasServicios {
         return dao.getAllAlumnosJDBCTemplate();
     }
     
-    public int getBorrarAsignatura(int id){
+    public int getBorrarAsignatura(Asignatura a){
         AsignaturasDAO dao = new AsignaturasDAO();
         
-        return dao.DeleteAsignaturaJDBC(id);
+        return dao.deleteJDBCTemplate(a);
         
     }
     public int getActualizarAsignatura(Asignatura asignueva)
@@ -34,9 +34,9 @@ public class AsignaturasServicios {
         AsignaturasDAO dao = new AsignaturasDAO();
        return dao.updateJDBCTemplate(asignueva);
     }
-    public int getInsertAsignatura(Asignatura asignueva)
+    public Asignatura getInsertAsignatura(Asignatura asignueva)
     {
         AsignaturasDAO dao = new AsignaturasDAO();
-       return dao.insertAsignaturaJDBC(asignueva);
+       return dao.addUserJDBCTemplate(asignueva);
     }
 }

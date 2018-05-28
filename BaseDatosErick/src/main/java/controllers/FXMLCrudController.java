@@ -71,9 +71,8 @@ public class FXMLCrudController implements Initializable {
     @FXML
     private void eliminar(ActionEvent event) throws IOException {
         Asignatura eliminar= fxLista.getSelectionModel().getSelectedItem();
-        int id= eliminar.getId();
         fxLista.getItems().remove(eliminar);
-        servicios.getBorrarAsignatura(id);
+        servicios.getBorrarAsignatura(eliminar);
         Alert b = new Alert(Alert.AlertType.INFORMATION, "Asignatura Eliminada", ButtonType.CLOSE);
                         b.showAndWait();
         fxLista.refresh();
